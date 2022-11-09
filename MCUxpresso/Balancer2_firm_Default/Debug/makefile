@@ -43,7 +43,7 @@ main-build: Balancer2_firm_Default.axf
 Balancer2_firm_Default.axf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Default/lib" -Xlinker --gc-sections -Xlinker -Map=Balancer2_firm_Default.map -mcpu=cortex-m3 -mthumb -T "Balancer2_Debug.ld" -o "Balancer2_firm_Default.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"/home/okui/mcuxpresso/BeuatoBalancer2/Balancer2/MCUxpresso/Balancer2_firm_Default/lib" -Xlinker --gc-sections -Xlinker -Map=Balancer2_firm_Default.map -mcpu=cortex-m3 -mthumb -T "Balancer2_Debug.ld" -o "Balancer2_firm_Default.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
