@@ -9,7 +9,6 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/subdir.mk
--include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -20,23 +19,37 @@ endif
 
 -include ../makefile.defs
 
+OPTIONAL_TOOL_DEPS := \
+$(wildcard ../makefile.defs) \
+$(wildcard ../makefile.init) \
+$(wildcard ../makefile.targets) \
+
+
+BUILD_ARTIFACT_NAME := Balancer2_firm_Default
+BUILD_ARTIFACT_EXTENSION := axf
+BUILD_ARTIFACT_PREFIX :=
+BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
+
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: Balancer2_firm_Default.axf
+all:
+	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
+
+# Main-build Target
+main-build: Balancer2_firm_Default.axf
 
 # Tool invocations
-Balancer2_firm_Default.axf: $(OBJS) $(USER_OBJS)
+Balancer2_firm_Default.axf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"C:/Users/yokoyama/Documents/lpcxpresso_3.5/workspace/Balancer2_firm_Default/lib" -Xlinker --gc-sections -Xlinker -Map=Balancer2_firm_Default.map -mcpu=cortex-m3 -mthumb -T "Balancer2_Debug.ld" -o "Balancer2_firm_Default.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Default/lib" -Xlinker --gc-sections -Xlinker -Map=Balancer2_firm_Default.map -mcpu=cortex-m3 -mthumb -T "Balancer2_Debug.ld" -o "Balancer2_firm_Default.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
-	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) Balancer2_firm_Default.axf
+	-$(RM) Balancer2_firm_Default.axf
 	-@echo ' '
 
 post-build:
@@ -44,7 +57,6 @@ post-build:
 	-arm-none-eabi-size Balancer2_firm_Default.axf; arm-none-eabi-size Balancer2_firm_Default.axf; arm-none-eabi-objcopy -O binary Balancer2_firm_Default.axf Balancer2_firm_Default.bin; checksum Balancer2_firm_Default.bin;
 	-@echo ' '
 
-.PHONY: all clean dependents
-.SECONDARY: post-build
+.PHONY: all clean dependents main-build post-build
 
 -include ../makefile.targets

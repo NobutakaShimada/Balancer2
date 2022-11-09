@@ -26,7 +26,7 @@
  */
 #define MEMMAP_SIZE 352
 
-union TYPE_MEMMAP{
+extern union TYPE_MEMMAP{
 	uint8_t u8[MEMMAP_SIZE];
 	uint16_t u16[MEMMAP_SIZE/sizeof(uint16_t)];
 	uint32_t u32[MEMMAP_SIZE/sizeof(uint32_t)];

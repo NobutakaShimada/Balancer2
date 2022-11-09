@@ -1,0 +1,1192 @@
+Archive member included to satisfy reference by file (symbol)
+
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+                              ./src/control.o (memmap)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                              ./src/control.o (ClearCurrentVariables)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                              ./src/control.o (ClearEncVariables)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o) (GPIOSetDir)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+                              ./src/control.o (ClearGyroVariables)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o) (I2CMasterBuffer)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+                              ./src/cr_startup_lpc13.o (SystemInit)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+                              ./src/main.o (UARTInit)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o) (getCnt)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o) (SystickSyncCnt)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o) (FLASH_WRITE_MEMMAP)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o) (LogProc)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o) (Constmemmap)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o) (PADProc)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o) (USBInit)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o) (USB_ResetCore)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o) (USB_StringDescriptor)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o) (USB_Connect)
+F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o) (HID_GetIdle)
+d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(memset.o)
+                              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o) (memset)
+d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
+                              ./src/control.o (__aeabi_ldivmod)
+d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
+                              d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o) (__aeabi_idiv0)
+d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                              ./src/control.o (__aeabi_dmul)
+d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+                              d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(memset.o) (__aeabi_lowlevel_memset)
+
+Allocating common symbols
+Common symbol       size              file
+
+USB_AltSetting      0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+I2CReadLength       0x4               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+I2CSlaveBuffer      0xc               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+CurrentValue        0x70              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+StatValue           0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+EP0Buf              0x40              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+USB_InPutData       0x40              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+intteruptflag       0x20              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+USB_EndPointMask    0x4               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+USB_DeviceAddress   0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+newL                0x8               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+USB_EndPointStall   0x4               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+UARTBuffer          0x40              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+command             0x14              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+iBuzzerPitch        0x4               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+current_old_p       0x10              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+newR                0x8               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+bBuzzerFlag         0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+I2CMode             0x4               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+current_i           0x10              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+I2CMasterBuffer     0xc               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+USB_EndPointHalt    0x4               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+memmap              0x168             F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+srcbuf              0x1000            F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+UARTStatus          0x4               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+HID_IdleTime        0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+SystickModeCnt      0x8               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+I2CWriteLength      0x4               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+USB_Configuration   0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+result              0x10              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+SystickWaitCnt      0x8               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ADCValue            0x20              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+SetupPacket         0x8               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+USB_NumInterfaces   0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+USB_OutPutData      0x40              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+bSendUSBdata        0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+SystickSyncCnt      0x8               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ENCSPDValue         0x50              F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+isUSB_data_sending  0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+HID_Protocol        0x1               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+EP0Data             0x8               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+USB_DeviceStatus    0x2               F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 ./src/control.o
+ .data          0x00000000        0x0 ./src/control.o
+ .text.VS_C3Control
+                0x00000000       0x7c ./src/control.o
+ .text.isWhleeOverSpeed
+                0x00000000       0xc8 ./src/control.o
+ .text          0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .data          0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .bss           0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .text.SysTick_Handler
+                0x00000000        0x2 ./src/cr_startup_lpc13.o
+ .text          0x00000000        0x0 ./src/main.o
+ .data          0x00000000        0x0 ./src/main.o
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .text.ADCBurstRead
+                0x00000000       0x34 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .text.GPIOInit
+                0x00000000       0x34 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .text.GPIOGetValue
+                0x00000000       0x3c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .text.GPIOSetInterrupt
+                0x00000000      0x1ec F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .text.GPIOIntEnable
+                0x00000000       0x78 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .text.GPIOIntDisable
+                0x00000000       0x80 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .text.GPIOIntStatus
+                0x00000000       0x88 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .text.GPIOIntClear
+                0x00000000       0x78 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .text.SystemCoreClockUpdate
+                0x00000000      0x1a4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .text.UARTSend
+                0x00000000       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .text.UARTReadByte
+                0x00000000       0x34 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .text.UartSendByte
+                0x00000000       0x18 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .text.UARTTrace
+                0x00000000       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .rodata.str1.4
+                0x00000000        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.clearBuffer
+                0x00000000       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.initBuffer
+                0x00000000       0x20 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.getNowData
+                0x00000000       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.Sort_double
+                0x00000000       0x84 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.getLPFValue
+                0x00000000       0xb8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.htoa     0x00000000       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.atoi     0x00000000       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.strrev   0x00000000       0x34 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.itoa     0x00000000       0x48 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.atoh     0x00000000       0x70 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text.AtoH2inv
+                0x00000000       0x58 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .rodata        0x00000000       0x24 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .text.getIX008
+                0x00000000       0x60 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .text.BuzzerSet
+                0x00000000       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .text.BuzzerStart
+                0x00000000       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .text.BuzzerStop
+                0x00000000       0x1c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .text.isBuzzer
+                0x00000000        0xc F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .rodata        0x00000000        0x8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .text.FLASH_ReadPage
+                0x00000000       0x44 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text.setLogEnable
+                0x00000000       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text.setLogDisable
+                0x00000000       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text.setLogFlag
+                0x00000000       0x58 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text.clearLogFlagAll
+                0x00000000       0x18 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text.isLogEnable
+                0x00000000       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text.isLogRecoding
+                0x00000000       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text.LogStart
+                0x00000000       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text.LogStop  0x00000000       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .text.USB_EndPoint2
+                0x00000000        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .text.USB_EndPoint3
+                0x00000000        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_Suspend
+                0x00000000        0xc F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_Resume
+                0x00000000        0xc F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_WakeUp
+                0x00000000       0x28 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_ClearEPBuf
+                0x00000000       0x1c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_GetFrame
+                0x00000000       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .text          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+ .data          0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+ .bss           0x00000000        0x0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+ .text          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(memset.o)
+ .data          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(memset.o)
+ .bss           0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(memset.o)
+ .text          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
+ .data          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
+ .bss           0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
+ .text          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
+ .data          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
+ .bss           0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
+ .text          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .data          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .bss           0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_drsub
+                0x00000000       0x10 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dneg
+                0x00000000        0x6 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2f
+                0x00000000       0x54 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2uiz
+                0x00000000       0x32 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2lz
+                0x00000000       0x72 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2ulz
+                0x00000000       0x54 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_ul2d
+                0x00000000        0x8 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpeq
+                0x00000000       0x3c d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmple
+                0x00000000       0x62 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpge
+                0x00000000       0x62 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpun
+                0x00000000       0x1a d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_cdcmple
+                0x00000000       0x2c d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_cdrcmple
+                0x00000000       0x14 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .text          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+ .data          0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+ .bss           0x00000000        0x0 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memcpy
+                0x00000000       0x34 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memmove
+                0x00000000       0x1c d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memclr
+                0x00000000        0x8 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memset
+                0x00000000        0xa d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+MFlash32         0x00000000         0x00007000         xr
+FlashMap         0x00007000         0x00001000         xr
+RamLoc8          0x10000000         0x00002000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD ./src/control.o
+LOAD ./src/cr_startup_lpc13.o
+LOAD ./src/main.o
+LOAD F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a
+START GROUP
+LOAD d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_semihost.a
+LOAD d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a
+LOAD d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a
+END GROUP
+                0x00007000                __top_MFlash32 = 0x7000
+                0x00008000                __top_FlashMap = 0x8000
+                0x10002000                __top_RamLoc8 = 0x10002000
+
+.text           0x00000000     0x42fc
+ *(.isr_vector)
+ .isr_vector    0x00000000      0x124 ./src/cr_startup_lpc13.o
+                0x00000000                g_pfnVectors
+ *(.text*)
+ .text.ClearVariables
+                0x00000124       0x24 ./src/control.o
+                0x00000124                ClearVariables
+ .text.calibrarion
+                0x00000148       0xf0 ./src/control.o
+                0x00000148                calibrarion
+ .text.Control  0x00000238      0x304 ./src/control.o
+                0x00000238                Control
+ .text.NMI_Handler
+                0x0000053c        0x2 ./src/cr_startup_lpc13.o
+                0x0000053c                NMI_Handler
+ .text.HardFault_Handler
+                0x0000053e        0x2 ./src/cr_startup_lpc13.o
+                0x0000053e                HardFault_Handler
+ .text.MemManage_Handler
+                0x00000540        0x2 ./src/cr_startup_lpc13.o
+                0x00000540                MemManage_Handler
+ .text.BusFault_Handler
+                0x00000542        0x2 ./src/cr_startup_lpc13.o
+                0x00000542                BusFault_Handler
+ .text.UsageFault_Handler
+                0x00000544        0x2 ./src/cr_startup_lpc13.o
+                0x00000544                UsageFault_Handler
+ .text.SVCall_Handler
+                0x00000546        0x2 ./src/cr_startup_lpc13.o
+                0x00000546                SVCall_Handler
+ .text.DebugMon_Handler
+                0x00000548        0x2 ./src/cr_startup_lpc13.o
+                0x00000548                DebugMon_Handler
+ .text.PendSV_Handler
+                0x0000054a        0x2 ./src/cr_startup_lpc13.o
+                0x0000054a                PendSV_Handler
+ .text.IntDefaultHandler
+                0x0000054c        0x2 ./src/cr_startup_lpc13.o
+                0x0000054c                TIMER16_0_IRQHandler
+                0x0000054c                TIMER32_1_IRQHandler
+                0x0000054c                PIOINT1_IRQHandler
+                0x0000054c                SSP_IRQHandler
+                0x0000054c                TIMER16_1_IRQHandler
+                0x0000054c                USB_FIQHandler
+                0x0000054c                PIOINT2_IRQHandler
+                0x0000054c                BOD_IRQHandler
+                0x0000054c                WAKEUP_IRQHandler
+                0x0000054c                PIOINT0_IRQHandler
+                0x0000054c                WDT_IRQHandler
+                0x0000054c                PIOINT3_IRQHandler
+                0x0000054c                FMC_IRQHandler
+ *fill*         0x0000054e        0x2 
+ .text.Reset_Handler
+                0x00000550       0x64 ./src/cr_startup_lpc13.o
+                0x00000550                ResetISR
+                0x00000550                Reset_Handler
+ .text.LedBlink
+                0x000005b4       0x50 ./src/main.o
+                0x000005b4                LedBlink
+ .text.main     0x00000604       0xce ./src/main.o
+                0x00000604                main
+ *fill*         0x000006d2        0x2 
+ .text.ADCInit  0x000006d4       0xa0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+                0x000006d4                ADCInit
+ .text.ADCRead  0x00000774       0x24 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+                0x00000774                ADCRead
+ .text.ADC_IRQHandler
+                0x00000798      0x164 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+                0x00000798                ADC_IRQHandler
+ .text.ClearCurrentVariables
+                0x000008fc       0x64 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                0x000008fc                ClearCurrentVariables
+ .text.getCurrent
+                0x00000960       0x6c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                0x00000960                getCurrent
+ .text.CurrentControlDisable
+                0x000009cc       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                0x000009cc                CurrentControlDisable
+ .text.CurrentControlEnable
+                0x000009dc       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                0x000009dc                CurrentControlEnable
+ .text.MTRCurrentControlProc
+                0x000009ec      0x234 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                0x000009ec                MTRCurrentControlProc
+ .text.InitEncoder
+                0x00000c20       0x94 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                0x00000c20                InitEncoder
+ .text.ClearEncVariables
+                0x00000cb4       0x28 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                0x00000cb4                ClearEncVariables
+ *fill*         0x00000cdc        0x4 
+ .text.EncProc  0x00000ce0      0x188 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                0x00000ce0                EncProc
+ .text.IntEncoder
+                0x00000e68       0x90 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                0x00000e68                IntEncoder
+ .text.SysTick_Handler
+                0x00000ef8       0x44 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                0x00000ef8                SysTick_Handler
+ .text.GPIOSetDir
+                0x00000f3c       0xf0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+                0x00000f3c                GPIOSetDir
+ .text.GPIOSetValue
+                0x0000102c       0x60 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+                0x0000102c                GPIOSetValue
+ .text.GPIOGetValueBit
+                0x0000108c       0x60 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+                0x0000108c                GPIOGetValueBit
+ .text.ClearGyroVariables
+                0x000010ec       0x1c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+                0x000010ec                ClearGyroVariables
+ .text.SetI2CGain
+                0x00001108       0x70 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+                0x00001108                SetI2CGain
+ .text.getGyroI2C
+                0x00001178       0x50 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+                0x00001178                getGyroI2C
+ .text.GyroProc
+                0x000011c8       0xe8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+                0x000011c8                GyroProc
+ .text.I2C_IRQHandler
+                0x000012b0      0x230 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                0x000012b0                I2C_IRQHandler
+ .text.I2CStart
+                0x000014e0       0x50 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                0x000014e0                I2CStart
+ .text.I2CStop  0x00001530       0x1c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                0x00001530                I2CStop
+ .text.I2CInit  0x0000154c       0x70 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                0x0000154c                I2CInit
+ .text.I2CEngine
+                0x000015bc       0x34 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                0x000015bc                I2CEngine
+ .text.SystemInit
+                0x000015f0       0xec F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+                0x000015f0                SystemInit
+ .text.UART_IRQHandler
+                0x000016dc       0xd4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+                0x000016dc                UART_IRQHandler
+ .text.UARTInit
+                0x000017b0       0xd8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+                0x000017b0                UARTInit
+ .text.getCnt   0x00001888       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+                0x00001888                getCnt
+ .text.Sync     0x00001898       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001898                Sync
+ .text.getSW    0x000018c8       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x000018c8                getSW
+ .text.Wait     0x000018dc       0x44 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x000018dc                Wait
+ .text.CycleProc
+                0x00001920       0x4c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001920                CycleProc
+ .text.setLED   0x0000196c       0x24 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x0000196c                setLED
+ .text.InitMemmap
+                0x00001990      0x1b8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001990                InitMemmap
+ .text.SetMotorPwm
+                0x00001b48      0x100 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001b48                SetMotorPwm
+ .text.Timer16Init
+                0x00001c48       0x7c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001c48                Timer16Init
+ .text.Timer32Init
+                0x00001cc4       0x3c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001cc4                Timer32Init
+ .text.TIMER32_0_IRQHandler
+                0x00001d00       0x90 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001d00                TIMER32_0_IRQHandler
+ .text.DisableIntterupt
+                0x00001d90       0x3c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001d90                DisableIntterupt
+ .text.Init     0x00001dcc      0x100 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001dcc                Init
+ .text.Balancer2Init
+                0x00001ecc       0x20 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001ecc                Balancer2Init
+ .text.EnableIntterupt
+                0x00001eec       0x20 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x00001eec                EnableIntterupt
+ .text.call_IAP
+                0x00001f0c       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .text.FLASH_ProgramPage
+                0x00001f38       0x48 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+                0x00001f38                FLASH_ProgramPage
+ .text.FLASH_ErasePage
+                0x00001f80       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+                0x00001f80                FLASH_ErasePage
+ .text.FLASH_WRITE_MEMMAP
+                0x00001fb0       0x48 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+                0x00001fb0                FLASH_WRITE_MEMMAP
+ .text.FLASH_READ_MEMMAP
+                0x00001ff8       0x1c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+                0x00001ff8                FLASH_READ_MEMMAP
+ .text.LogProc  0x00002014      0x178 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+                0x00002014                LogProc
+ .text.PadWait  0x0000218c       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+                0x0000218c                PadWait
+ .text.Ds2rw    0x0000219c       0x8c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+                0x0000219c                Ds2rw
+ .text.Ds2Com   0x00002228       0x44 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+                0x00002228                Ds2Com
+ .text.PS_Set_AN
+                0x0000226c       0xa0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+                0x0000226c                PS_Set_AN
+ .text.updatePAD
+                0x0000230c       0xb8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+                0x0000230c                updatePAD
+ .text.PADProc  0x000023c4        0x8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+                0x000023c4                PADProc
+ .text.USBInit  0x000023cc       0x70 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+                0x000023cc                USBInit
+ .text.USB_Reset_Event
+                0x0000243c        0x8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+                0x0000243c                USB_Reset_Event
+ .text.SetUSBSendData
+                0x00002444       0x40 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+                0x00002444                SetUSBSendData
+ .text.InUSBDataProcces
+                0x00002484      0x19c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+                0x00002484                InUSBDataProcces
+ .text.USB_EndPoint1
+                0x00002620       0x18 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+                0x00002620                USB_EndPoint1
+ .text.USB_ResetCore
+                0x00002638       0x4c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002638                USB_ResetCore
+ .text.USB_SetupStage
+                0x00002684       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002684                USB_SetupStage
+ .text.USB_DataInStage
+                0x00002698       0x58 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002698                USB_DataInStage
+ .text.USB_DataOutStage
+                0x000026f0       0x3c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x000026f0                USB_DataOutStage
+ .text.USB_StatusInStage
+                0x0000272c       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x0000272c                USB_StatusInStage
+ .text.USB_StatusOutStage
+                0x0000273c       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x0000273c                USB_StatusOutStage
+ .text.USB_ReqGetStatus
+                0x00002750       0xf4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002750                USB_ReqGetStatus
+ .text.USB_ReqSetClrFeature
+                0x00002844      0x130 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002844                USB_ReqSetClrFeature
+ .text.USB_ReqSetAddress
+                0x00002974       0x3c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002974                USB_ReqSetAddress
+ .text.USB_ReqGetDescriptor
+                0x000029b0      0x174 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x000029b0                USB_ReqGetDescriptor
+ .text.USB_ReqGetConfiguration
+                0x00002b24       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002b24                USB_ReqGetConfiguration
+ .text.UsbAddPtr
+                0x00002b5c       0x24 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002b5c                UsbAddPtr
+ .text.USB_ReqSetConfiguration
+                0x00002b80      0x254 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002b80                USB_ReqSetConfiguration
+ .text.USB_ReqGetInterface
+                0x00002dd4       0x68 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002dd4                USB_ReqGetInterface
+ .text.USB_ReqSetInterface
+                0x00002e3c      0x1b8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002e3c                USB_ReqSetInterface
+ .text.USB_EndPoint0
+                0x00002ff4      0x32c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x00002ff4                USB_EndPoint0
+ .text.delay    0x00003320       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x00003320                delay
+ .text.EPAdr    0x0000334c       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x0000334c                EPAdr
+ .text.WrCmd    0x0000337c       0x58 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x0000337c                WrCmd
+ .text.WrCmdDat
+                0x000033d4       0x1c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x000033d4                WrCmdDat
+ .text.WrCmdEP  0x000033f0       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x000033f0                WrCmdEP
+ .text.RdCmdDat
+                0x0000341c       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x0000341c                RdCmdDat
+ .text.USB_Connect
+                0x00003454       0x5c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x00003454                USB_Connect
+ .text.USB_Reset
+                0x000034b0       0x24 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x000034b0                USB_Reset
+ .text.USB_WakeUpCfg
+                0x000034d4       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x000034d4                USB_WakeUpCfg
+ .text.USB_SetAddress
+                0x000034e8       0x3c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x000034e8                USB_SetAddress
+ .text.USB_Configure
+                0x00003524       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x00003524                USB_Configure
+ .text.USB_ConfigEP
+                0x00003554       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x00003554                USB_ConfigEP
+ .text.USB_DirCtrlEP
+                0x00003568       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x00003568                USB_DirCtrlEP
+ .text.USB_EnableEP
+                0x0000357c       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x0000357c                USB_EnableEP
+ .text.USB_DisableEP
+                0x000035a8       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x000035a8                USB_DisableEP
+ .text.USB_ResetEP
+                0x000035d4       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x000035d4                USB_ResetEP
+ .text.USB_SetStallEP
+                0x00003600       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x00003600                USB_SetStallEP
+ .text.USB_ClrStallEP
+                0x0000362c       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x0000362c                USB_ClrStallEP
+ .text.USB_ReadEP
+                0x00003658       0x80 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x00003658                USB_ReadEP
+ .text.USB_WriteEP
+                0x000036d8       0xa8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x000036d8                USB_WriteEP
+ .text.USB_IRQHandler
+                0x00003780      0x134 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x00003780                USB_IRQHandler
+ .text.HID_GetIdle
+                0x000038b4       0x2c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+                0x000038b4                HID_GetIdle
+ .text.HID_SetIdle
+                0x000038e0       0x28 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+                0x000038e0                HID_SetIdle
+ .text.HID_GetProtocol
+                0x00003908       0x20 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+                0x00003908                HID_GetProtocol
+ .text.HID_SetProtocol
+                0x00003928       0x24 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+                0x00003928                HID_SetProtocol
+ .text.memset   0x0000394c        0x4 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(memset.o)
+                0x0000394c                memset
+ .text.__aeabi_division_ldivmod
+                0x00003950       0x26 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
+                0x00003950                __aeabi_ldivmod
+ .text.__aeabi_division_uldivmod
+                0x00003976      0x174 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
+                0x00003976                __aeabi_uldivmod
+                0x0000397a                __bhs_ldivmod1
+ .text.__aeabi_division_idiv0
+                0x00003aea        0x2 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
+                0x00003aea                __aeabi_idiv0
+ .text.__aeabi_dmul
+                0x00003aec       0xfc d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00003aec                __aeabi_dmul
+ .text.__aeabi_ddiv
+                0x00003be8      0x134 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00003be8                __aeabi_ddiv
+ .text.__aeabi_dsub
+                0x00003d1c      0x1ac d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00003d1c                __aeabi_dsub
+ .text.__aeabi_dadd
+                0x00003ec8      0x110 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00003ec8                __aeabi_dadd
+ .text.__aeabi_d2iz
+                0x00003fd8       0x42 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00003fd8                __aeabi_d2iz
+ .text.__bhs_ui2d
+                0x0000401a       0x46 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x0000401a                __bhs_ui2d
+ .text.__bhs_ul2d
+                0x00004060       0x8a d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00004060                __bhs_ul2d
+ .text.__aeabi_i2d
+                0x000040ea       0x12 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x000040ea                __aeabi_i2d
+ .text.__aeabi_ui2d
+                0x000040fc        0x8 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x000040fc                __aeabi_ui2d
+ .text.__aeabi_l2d
+                0x00004104       0x1c d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00004104                __aeabi_l2d
+ .text.__aeabi_dcmplt
+                0x00004120       0x58 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00004120                __aeabi_dcmplt
+ .text.__aeabi_dcmpgt
+                0x00004178       0x58 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+                0x00004178                __aeabi_dcmpgt
+ .text.__aeabi_memset_lowlevel
+                0x000041d0       0x32 d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+                0x000041d0                __aeabi_lowlevel_memset
+ *(.rodata*)
+ *fill*         0x00004202        0x2 
+ .rodata        0x00004204       0x10 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                0x00004204                enctbl
+ .rodata        0x00004214       0x3c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .rodata        0x00004250       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+                0x00004250                USB_P_EP
+ .rodata        0x00004264       0x98 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+                0x00004264                USB_StringDescriptor
+                0x0000429c                USB_ConfigDescriptor
+                0x000042c8                USB_DeviceDescriptor
+                0x000042da                HID_ReportDescSize
+                0x000042dc                HID_ReportDescriptor
+
+.glue_7         0x000042fc        0x0
+ .glue_7        0x000042fc        0x0 linker stubs
+
+.glue_7t        0x000042fc        0x0
+ .glue_7t       0x000042fc        0x0 linker stubs
+
+.vfp11_veneer   0x000042fc        0x0
+ .vfp11_veneer  0x000042fc        0x0 linker stubs
+
+.v4_bx          0x000042fc        0x0
+ .v4_bx         0x000042fc        0x0 linker stubs
+
+.iplt           0x000042fc        0x0
+ .iplt          0x000042fc        0x0 ./src/control.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x000042fc                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000042fc                __exidx_end = .
+                0x000042fc                _etext = .
+
+.cmap           0x00007000      0x160
+ *(.Const_Map*)
+ .Const_Map     0x00007000      0x160 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+                0x00007000                Constmemmap
+
+.rel.dyn        0x00007160        0x0
+ .rel.iplt      0x00007160        0x0 ./src/control.o
+
+.data           0x10000000       0x10 load address 0x000042fc
+                0x10000000                _data = .
+ *(vtable)
+ *(.data*)
+ .data          0x10000000        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+                0x10000000                SystemCoreClock
+ .data          0x10000004        0x1 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+                0x10000004                UARTTxEmpty
+ *fill*         0x10000005        0x3 
+ .data          0x10000008        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+                0x10000008                iap_entry
+ .data          0x1000000c        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+                0x1000000c                databuffer
+                0x10000010                _edata = .
+
+.igot.plt       0x10000010        0x0 load address 0x0000430c
+ .igot.plt      0x10000010        0x0 ./src/control.o
+
+.bss            0x10000010     0x14e6 load address 0x0000430c
+                0x10000010                _bss = .
+ *(.bss*)
+ .bss           0x10000010       0x38 ./src/control.o
+ .bss           0x10000048        0x4 ./src/main.o
+ .bss           0x1000004c        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+                0x1000004c                ADCIntDone
+ .bss           0x10000050        0x2 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                0x10000050                current_cnt
+ .bss           0x10000052        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                0x10000052                enc_cnt
+ *fill*         0x10000056        0x2 
+ .bss           0x10000058       0x18 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+                0x10000058                i2cgain
+                0x10000060                gyro_old_p
+                0x10000068                gyro_old_AngureSpd
+ .bss           0x10000070       0x14 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                0x10000070                WrIndex
+                0x10000074                I2CMasterState
+                0x10000078                RdIndex
+                0x1000007c                I2CCount
+                0x10000080                I2CSlaveState
+ .bss           0x10000084        0xc F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+                0x10000084                UARTWriteCount
+                0x10000088                UARTReadCount
+                0x1000008c                UARTBuffCount
+ .bss           0x10000090        0x2 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x10000091                EncFlag
+ *fill*         0x10000092        0x2 
+ .bss           0x10000094        0x8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+                0x10000094                logmode
+                0x10000098                logtimer
+ .bss           0x1000009c        0x1 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ *fill*         0x1000009d        0x3 
+ .bss           0x100000a0        0x4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                0x100000a0                systicktemp
+ *(COMMON)
+ *fill*         0x100000a4        0x4 
+ COMMON         0x100000a8      0x20a F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+                0x100000a8                USB_InPutData
+                0x100000e8                memmap
+                0x10000250                ADCValue
+                0x10000270                USB_OutPutData
+                0x100002b0                bSendUSBdata
+                0x100002b1                isUSB_data_sending
+ *fill*         0x100002b2        0x6 
+ COMMON         0x100002b8       0x90 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                0x100002b8                CurrentValue
+                0x10000328                current_old_p
+                0x10000338                current_i
+ COMMON         0x10000348       0x60 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                0x10000348                newL
+                0x10000350                newR
+                0x10000358                ENCSPDValue
+ COMMON         0x100003a8       0x28 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                0x100003a8                I2CReadLength
+                0x100003ac                I2CSlaveBuffer
+                0x100003b8                StatValue
+                0x100003bc                I2CMode
+                0x100003c0                I2CMasterBuffer
+                0x100003cc                I2CWriteLength
+ COMMON         0x100003d0       0x44 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+                0x100003d0                UARTBuffer
+                0x10000410                UARTStatus
+ *fill*         0x10000414        0x4 
+ COMMON         0x10000418       0x40 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                0x10000418                intteruptflag
+                0x10000438                iBuzzerPitch
+                0x1000043c                bBuzzerFlag
+                0x10000440                SystickModeCnt
+                0x10000448                SystickWaitCnt
+                0x10000450                SystickSyncCnt
+ COMMON         0x10000458     0x1024 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+                0x10000458                command
+                0x1000046c                srcbuf
+                0x1000146c                result
+ *fill*         0x1000147c        0x4 
+ COMMON         0x10001480       0x72 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                0x10001480                USB_AltSetting
+                0x10001488                EP0Buf
+                0x100014c8                USB_EndPointMask
+                0x100014cc                USB_DeviceAddress
+                0x100014d0                USB_EndPointStall
+                0x100014d4                USB_EndPointHalt
+                0x100014d8                USB_Configuration
+                0x100014dc                SetupPacket
+                0x100014e4                USB_NumInterfaces
+                0x100014e8                EP0Data
+                0x100014f0                USB_DeviceStatus
+ *fill*         0x100014f2        0x2 
+ COMMON         0x100014f4        0x2 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+                0x100014f4                HID_IdleTime
+                0x100014f5                HID_Protocol
+                0x100014f6                _ebss = .
+
+.cr_heap        0x100014f6        0x0 load address 0x0000430c
+                0x100014f6                end = .
+                0x100014f6                _pvHeapStart = .
+                0x10002000                _vRamTop = __top_RamLoc8
+                0x10002000                _vStackTop = (_vRamTop - 0x0)
+OUTPUT(Balancer2_firm_Simple.axf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000     0xdf5a
+ .debug_info    0x00000000      0x9b6 ./src/control.o
+ .debug_info    0x000009b6      0x20c ./src/cr_startup_lpc13.o
+ .debug_info    0x00000bc2      0x3ce ./src/main.o
+ .debug_info    0x00000f90      0xfda F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .debug_info    0x00001f6a      0x76a F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .debug_info    0x000026d4      0xcd9 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .debug_info    0x000033ad      0xb5a F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .debug_info    0x00003f07      0x651 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .debug_info    0x00004558      0xbe4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .debug_info    0x0000513c      0x4be F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_info    0x000055fa     0x11da F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .debug_info    0x000067d4      0x545 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .debug_info    0x00006d19     0x1859 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .debug_info    0x00008572      0x8cb F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .debug_info    0x00008e3d      0x69e F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .debug_info    0x000094db      0x4bb F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .debug_info    0x00009996      0xb0c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .debug_info    0x0000a4a2     0x1302 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .debug_info    0x0000b7a4      0xc93 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .debug_info    0x0000c437      0x5bd F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .debug_info    0x0000c9f4      0xe91 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .debug_info    0x0000d885      0x6d5 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+
+.debug_abbrev   0x00000000     0x2c7a
+ .debug_abbrev  0x00000000      0x173 ./src/control.o
+ .debug_abbrev  0x00000173      0x119 ./src/cr_startup_lpc13.o
+ .debug_abbrev  0x0000028c      0x138 ./src/main.o
+ .debug_abbrev  0x000003c4      0x228 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .debug_abbrev  0x000005ec      0x1e1 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .debug_abbrev  0x000007cd      0x2e6 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .debug_abbrev  0x00000ab3      0x232 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .debug_abbrev  0x00000ce5      0x1a6 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .debug_abbrev  0x00000e8b      0x1f1 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .debug_abbrev  0x0000107c       0xf8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_abbrev  0x00001174      0x285 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .debug_abbrev  0x000013f9      0x1f5 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .debug_abbrev  0x000015ee      0x46c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .debug_abbrev  0x00001a5a      0x247 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .debug_abbrev  0x00001ca1      0x1b3 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .debug_abbrev  0x00001e54       0xc7 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .debug_abbrev  0x00001f1b      0x228 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .debug_abbrev  0x00002143      0x2f1 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .debug_abbrev  0x00002434      0x2de F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .debug_abbrev  0x00002712       0xd4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .debug_abbrev  0x000027e6      0x318 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .debug_abbrev  0x00002afe      0x17c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+
+.debug_loc      0x00000000     0x328e
+ .debug_loc     0x00000000       0xfe ./src/control.o
+ .debug_loc     0x000000fe       0x31 ./src/cr_startup_lpc13.o
+ .debug_loc     0x0000012f       0x94 ./src/main.o
+ .debug_loc     0x000001c3      0x13c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .debug_loc     0x000002ff      0x17b F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .debug_loc     0x0000047a      0x11e F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .debug_loc     0x00000598      0xabb F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .debug_loc     0x00001053       0x81 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .debug_loc     0x000010d4       0x40 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .debug_loc     0x00001114      0x1cd F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_loc     0x000012e1      0x214 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .debug_loc     0x000014f5      0x782 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .debug_loc     0x00001c77      0x255 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .debug_loc     0x00001ecc      0x284 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .debug_loc     0x00002150      0x150 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .debug_loc     0x000022a0      0x1a7 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .debug_loc     0x00002447      0x293 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .debug_loc     0x000026da      0x5a3 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .debug_loc     0x00002c7d      0x611 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+
+.debug_aranges  0x00000000      0x730
+ .debug_aranges
+                0x00000000       0x40 ./src/control.o
+ .debug_aranges
+                0x00000040       0x70 ./src/cr_startup_lpc13.o
+ .debug_aranges
+                0x000000b0       0x28 ./src/main.o
+ .debug_aranges
+                0x000000d8       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .debug_aranges
+                0x00000110       0x40 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .debug_aranges
+                0x00000150       0x40 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .debug_aranges
+                0x00000190       0x68 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .debug_aranges
+                0x000001f8       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .debug_aranges
+                0x00000230       0x40 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .debug_aranges
+                0x00000270       0x28 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_aranges
+                0x00000298       0x48 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .debug_aranges
+                0x000002e0       0x78 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .debug_aranges
+                0x00000358       0xb0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .debug_aranges
+                0x00000408       0x48 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .debug_aranges
+                0x00000450       0x60 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .debug_aranges
+                0x000004b0       0x18 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .debug_aranges
+                0x000004c8       0x48 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .debug_aranges
+                0x00000510       0x50 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .debug_aranges
+                0x00000560       0x98 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .debug_aranges
+                0x000005f8       0x18 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .debug_aranges
+                0x00000610       0xe8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .debug_aranges
+                0x000006f8       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+
+.debug_ranges   0x00000000      0x5d8
+ .debug_ranges  0x00000000       0x30 ./src/control.o
+ .debug_ranges  0x00000030       0x60 ./src/cr_startup_lpc13.o
+ .debug_ranges  0x00000090       0x18 ./src/main.o
+ .debug_ranges  0x000000a8       0x28 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .debug_ranges  0x000000d0       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .debug_ranges  0x00000100       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .debug_ranges  0x00000130       0x58 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .debug_ranges  0x00000188       0x28 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .debug_ranges  0x000001b0       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .debug_ranges  0x000001e0       0x18 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_ranges  0x000001f8       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .debug_ranges  0x00000230       0x80 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .debug_ranges  0x000002b0       0xa0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .debug_ranges  0x00000350       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .debug_ranges  0x00000388       0x50 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .debug_ranges  0x000003d8       0x38 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .debug_ranges  0x00000410       0x40 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .debug_ranges  0x00000450       0x88 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .debug_ranges  0x000004d8       0xd8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .debug_ranges  0x000005b0       0x28 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+
+.debug_line     0x00000000     0x32ab
+ .debug_line    0x00000000      0x456 ./src/control.o
+ .debug_line    0x00000456      0x25a ./src/cr_startup_lpc13.o
+ .debug_line    0x000006b0      0x211 ./src/main.o
+ .debug_line    0x000008c1      0x1e6 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .debug_line    0x00000aa7      0x1e3 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .debug_line    0x00000c8a      0x21d F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .debug_line    0x00000ea7      0x23c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .debug_line    0x000010e3      0x19f F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .debug_line    0x00001282      0x196 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .debug_line    0x00001418      0x18c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_line    0x000015a4      0x22e F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .debug_line    0x000017d2      0x204 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .debug_line    0x000019d6      0x416 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .debug_line    0x00001dec      0x195 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .debug_line    0x00001f81      0x21b F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .debug_line    0x0000219c       0x93 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .debug_line    0x0000222f      0x209 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .debug_line    0x00002438      0x2e8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .debug_line    0x00002720      0x477 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .debug_line    0x00002b97      0x13c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .debug_line    0x00002cd3      0x43e F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .debug_line    0x00003111      0x19a F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+
+.debug_str      0x00000000     0x2431
+ .debug_str     0x00000000      0x64a ./src/control.o
+                                0x6c0 (size before relaxing)
+ .debug_str     0x0000064a      0x114 ./src/cr_startup_lpc13.o
+                                0x290 (size before relaxing)
+ .debug_str     0x0000075e      0x101 ./src/main.o
+                                0x292 (size before relaxing)
+ .debug_str     0x0000085f      0x9e6 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+                                0xdf1 (size before relaxing)
+ .debug_str     0x00001245       0x83 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+                                0x622 (size before relaxing)
+ .debug_str     0x000012c8      0x12e F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+                                0xad2 (size before relaxing)
+ .debug_str     0x000013f6       0xc8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+                                0x916 (size before relaxing)
+ .debug_str     0x000014be       0x99 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+                                0x5ef (size before relaxing)
+ .debug_str     0x00001557       0xfb F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+                                0xaf1 (size before relaxing)
+ .debug_str     0x00001652       0x36 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+                                0x495 (size before relaxing)
+ .debug_str     0x00001688      0x121 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+                                0xeb2 (size before relaxing)
+ .debug_str     0x000017a9       0xe3 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+                                0x262 (size before relaxing)
+ .debug_str     0x0000188c      0x188 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+                               0x10df (size before relaxing)
+ .debug_str     0x00001a14       0xbc F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+                                0x5dd (size before relaxing)
+ .debug_str     0x00001ad0       0xb8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+                                0x5da (size before relaxing)
+ .debug_str     0x00001b88        0xd F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+                                0x504 (size before relaxing)
+ .debug_str     0x00001b95      0x147 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+                                0x6bf (size before relaxing)
+ .debug_str     0x00001cdc       0xd6 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+                                0xf06 (size before relaxing)
+ .debug_str     0x00001db2      0x50c F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+                                0x776 (size before relaxing)
+ .debug_str     0x000022be       0x19 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+                                0x5b9 (size before relaxing)
+ .debug_str     0x000022d7      0x12b F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+                                0x7b3 (size before relaxing)
+ .debug_str     0x00002402       0x2f F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+                                0x640 (size before relaxing)
+
+.comment        0x00000000       0xb9
+ .comment       0x00000000       0x49 ./src/control.o
+                                 0x4a (size before relaxing)
+ .comment       0x00000049       0x4a ./src/cr_startup_lpc13.o
+ .comment       0x00000049       0x4a ./src/main.o
+ .comment       0x00000049       0x70 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+                                 0x71 (size before relaxing)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .comment       0x000000b9       0x71 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+ .comment       0x000000b9       0x4a d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(memset.o)
+ .comment       0x000000b9       0x4a d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+
+.ARM.attributes
+                0x00000000       0x2b
+ .ARM.attributes
+                0x00000000       0x2d ./src/control.o
+ .ARM.attributes
+                0x0000002d       0x2d ./src/cr_startup_lpc13.o
+ .ARM.attributes
+                0x0000005a       0x2d ./src/main.o
+ .ARM.attributes
+                0x00000087       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .ARM.attributes
+                0x000000ba       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .ARM.attributes
+                0x000000ed       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .ARM.attributes
+                0x00000120       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .ARM.attributes
+                0x00000153       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .ARM.attributes
+                0x00000186       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .ARM.attributes
+                0x000001b9       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .ARM.attributes
+                0x000001ec       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .ARM.attributes
+                0x0000021f       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .ARM.attributes
+                0x00000252       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .ARM.attributes
+                0x00000285       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .ARM.attributes
+                0x000002b8       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .ARM.attributes
+                0x000002eb       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(mot.o)
+ .ARM.attributes
+                0x0000031e       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .ARM.attributes
+                0x00000351       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .ARM.attributes
+                0x00000384       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .ARM.attributes
+                0x000003b7       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_descriptors.o)
+ .ARM.attributes
+                0x000003ea       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .ARM.attributes
+                0x0000041d       0x33 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
+ .ARM.attributes
+                0x00000450       0x2d d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libcr_c.a(memset.o)
+ .ARM.attributes
+                0x0000047d       0x1b d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_64.o)
+ .ARM.attributes
+                0x00000498       0x1b d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(division_idiv0.o)
+ .ARM.attributes
+                0x000004b3       0x2d d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(double.o)
+ .ARM.attributes
+                0x000004e0       0x1b d:/nxp/mcuxpressoide_11.6.1_8255/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.6.1.202207200623/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libcr_eabihelpers.a(memcpy.o)
+
+.debug_frame    0x00000000     0x10ec
+ .debug_frame   0x00000000       0xc4 ./src/control.o
+ .debug_frame   0x000000c4       0xc8 ./src/cr_startup_lpc13.o
+ .debug_frame   0x0000018c       0x44 ./src/main.o
+ .debug_frame   0x000001d0       0x58 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(adc.o)
+ .debug_frame   0x00000228       0x94 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(current.o)
+ .debug_frame   0x000002bc       0x90 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(enc.o)
+ .debug_frame   0x0000034c       0xd4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gpio.o)
+ .debug_frame   0x00000420       0x78 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(gyro.o)
+ .debug_frame   0x00000498       0x74 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(i2c.o)
+ .debug_frame   0x0000050c       0x30 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_frame   0x0000053c       0x88 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(uart.o)
+ .debug_frame   0x000005c4      0x144 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(util.o)
+ .debug_frame   0x00000708      0x1b4 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(vs-bb022.o)
+ .debug_frame   0x000008bc       0xb0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(flash.o)
+ .debug_frame   0x0000096c       0xc0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(log.o)
+ .debug_frame   0x00000a2c       0xb0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(pad.o)
+ .debug_frame   0x00000adc       0xb0 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_user.o)
+ .debug_frame   0x00000b8c      0x1d8 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_core.o)
+ .debug_frame   0x00000d64      0x318 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hardware.o)
+ .debug_frame   0x0000107c       0x70 F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib\libBalancer2_lib.a(usb_hiduser.o)
