@@ -1,0 +1,5 @@
+../src/control.c:8:6:ClearVariables	8	static
+../src/control.c:19:15:calibrarion	40	static
+../src/control.c:62:6:Control	104	static
+../src/control.c:130:6:VS_C3Control	24	static
+../src/control.c:146:15:isWhleeOverSpeed	32	static
