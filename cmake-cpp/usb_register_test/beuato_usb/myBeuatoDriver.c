@@ -90,6 +90,7 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 
 ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
+	/*
 	const int MAX_RAW_TEXT_SIZE = 128;
 	if(count >= MAX_RAW_TEXT_SIZE) 
 	{
@@ -99,7 +100,7 @@ ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *
 
 	printk("extract start(%lld)", count);
 
-	s8 user_raw_text[MAX_RAW_TEXT_SIZE];
+	char user_raw_text[MAX_RAW_TEXT_SIZE];
 	copy_from_user(user_raw_text, buff, count);
 
 	loff_t ofs = seek_space(user_raw_text, count, 0);
@@ -109,14 +110,61 @@ ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *
 		return -1;
 	}
 
-	s8 extract_text[MAX_RAW_TEXT_SIZE];
+	char extract_text[MAX_RAW_TEXT_SIZE];
 	memset(extract_text, 0, MAX_RAW_TEXT_SIZE);
 	memcpy(extract_text, user_raw_text, ofs);	
 
+
 	DMESG_INFO("mydevice_write(%lld):%s", ofs, extract_text);
+	*/
+
+	BeuatoCtrl* pDev = file->private_data;
+	char data[64];
+	memset(data, 0, 64);
+	data[0] = 'r';
+	data[3] = '4';
+
+
+	char* transmit_buff;
+	struct urb* urb_header;
+	urb_header = usb_alloc_urb(0, GFP_KERNEL);
+	if(!urb_header) 
+	{
+		DMESG_ERR("Memory allocation failed");
+		return -1;
+	}
+
+	usb_init_urb(urb_header);
+	DMESG_INFO("Initialized");
+
+	transmit_buff = usb_alloc_coherent(pDev->pDev, 64, GFP_KERNEL, &urb_header->transfer_dma);
+	DMESG_INFO("Buffer Allocated");
+
+
+
+	usb_free_urb(urb_header);
+	DMESG_INFO("Free Urb");
+
+	usb_free_coherent(pDev->pDev, 64, transmit_buff, urb_header->transfer_dma);
+	DMESG_INFO("Free Buffer");
+
 	DMESG_INFO("Finished");
 
 	return count;
+
+Write_Error:
+	usb_free_coherent(pDev->pDev, 64, transmit_buff, urb_header->transfer_dma);
+	usb_free_urb(urb_header);
+	return -1;
+
+
+	/*
+	BeuatoCtrl* pDev = fp->private_data;
+	int written = usb_control_msg(pDev, 
+		usb_sndctrlpipe(pDev->pDev, 0),
+		0, (USB_DIR_OUT | USB_TYPE_VENDOR),
+		data, 64, 100);
+	*/
 }
 
 int Probe(UsbInterface* ip, const UsbDeviceID* pID) 
