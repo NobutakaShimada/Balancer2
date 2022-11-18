@@ -13,7 +13,6 @@ int Probe(UsbInterface* ip, const UsbDeviceID* pID);
 void Disconnect(UsbInterface* ip);
 int Open(struct inode *inode, struct file *file);
 int Release(struct inode *inode, struct file *file);
-ssize_t Read(struct file *file, char __user *buff, size_t count, loff_t *f_pos);
 ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
 
 typedef struct {
@@ -75,17 +74,49 @@ int Release(struct inode *inode, struct file *file)
 	return 0;
 }
 
-ssize_t Read(struct file *file, char __user *buff, size_t count, loff_t *f_pos)
+loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos) 
 {
-	printk("mydevice_read");
-	buff[0] = 'A';
-	return 1;
+	for(loff_t i = pos ; i < count; i ++ ) 
+	{
+		if(buff_from_user[i] == ' ') 
+		{
+			return i;
+		}
+	}
+
+	return -1;
 }
+
 
 ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
-	printk("mydevice_write");
-	return 1;
+	const int MAX_RAW_TEXT_SIZE = 128;
+	if(count >= MAX_RAW_TEXT_SIZE) 
+	{
+		DMESG_ERR("Data size is too large");
+		return -1;
+	}
+
+	printk("extract start(%lld)", count);
+
+	s8 user_raw_text[MAX_RAW_TEXT_SIZE];
+	copy_from_user(user_raw_text, buff, count);
+
+	loff_t ofs = seek_space(user_raw_text, count, 0);
+	if( ofs < 0 )
+	{
+		DMESG_ERR("Extraction of space was failed");
+		return -1;
+	}
+
+	s8 extract_text[MAX_RAW_TEXT_SIZE];
+	memset(extract_text, 0, MAX_RAW_TEXT_SIZE);
+	memcpy(extract_text, user_raw_text, ofs);	
+
+	DMESG_INFO("mydevice_write(%lld):%s", ofs, extract_text);
+	DMESG_INFO("Finished");
+
+	return count;
 }
 
 int Probe(UsbInterface* ip, const UsbDeviceID* pID) 
