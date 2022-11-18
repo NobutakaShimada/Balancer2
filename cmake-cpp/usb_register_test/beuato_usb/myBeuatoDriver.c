@@ -2,75 +2,77 @@
 #include <linux/kernel.h>
 #include <linux/usb.h>
 #include <linux/slab.h> // kmalloc
-#include "typedefs.h"
+
+#include "config.h"
+#include "logging.h"
+//#include "typedefs.h"
 
 #define VENDOR_ID 0x1962
 #define PRODUCT_ID 0x2080
 
 #define MINOR_BASE 192			// マイナー番号
 
-int Probe(UsbInterface* ip, const UsbDeviceID* pID);
-void Disconnect(UsbInterface* ip);
-int Open(struct inode *inode, struct file *file);
-int Release(struct inode *inode, struct file *file);
-ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
+int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID);
+void skel_disconnect(struct usb_interface* ip);
+int skel_open(struct inode *inode, struct file *file);
+int skel_release(struct inode *inode, struct file *file);
+ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
 
-typedef struct {
-	UsbDevice* pDev;
-	UsbInterface* ip;
-	u8 bulkInEndpointAddr;			// エンドポイントのアドレス
-	Kref kref;
-} BeuatoCtrl;
+typedef struct usb_skel {
+	struct usb_device* pDev;
+	struct usb_interface* ip;
+	u8 bulkInEndpointAddr;			// エンドポイントのアドレス(In)
+	struct kref kref;
+} ;
 
-struct usb_device_id entries[] = {
+struct usb_device_id skel_table[] = {
 	{USB_DEVICE(VENDOR_ID, PRODUCT_ID)},
 	{}
 };
 
 
-struct usb_driver usb_driver = {
+struct usb_driver skel_driver = {
 	.name = "BeuatoBalancer Driver",
-	.id_table = entries,
-	.probe = Probe,					// 最初に実行される関数
-	.disconnect = Disconnect		// 切断時に実行される関数
+	.id_table = skel_table,
+	.probe = skel_probe,					// 最初に実行される関数
+	.disconnect = skel_disconnect		// 切断時に実行される関数
 };
 
 // ファイルオペレーション
-FileOperations usb_fops = {
+struct file_operations skel_fops = {
 	.owner = THIS_MODULE,
-	.write = Write,
-	.open = Open,
-	.release = Release,
+	.write = skel_write,
+	.open = skel_open,
+	.release = skel_release,
 };
 
-UsbClassDriver class = {
+struct usb_class_driver skel_class = {
 	.name = "usb/BeuatoCtrl%d",
-	.fops = &usb_fops,
+	.fops = &skel_fops,
 	.minor_base = MINOR_BASE
 };
 
 // 破棄関数
-void Dispose(Kref* pKref) 
+void skel_dispose(struct kref* pKref) 
 {
-#define ToDev(d) container_of(d, BeuatoCtrl, kref)
-	BeuatoCtrl* pDev = ToDev(pKref);
+	struct usb_skel* pDev = container_of(pKref, struct usb_skel, kref);
 	usb_put_dev(pDev->pDev);
 	kfree(pDev);			// 独自の構造体の破棄
 }
 
-int Open(struct inode *inode, struct file *file)
+int skel_open(struct inode *inode, struct file *file)
 {
-	UsbInterface* pIntf = usb_find_interface(&usb_driver, iminor(inode));
-	BeuatoCtrl* pDev = usb_get_intfdata(pIntf);
+	struct usb_interface* pIntf = usb_find_interface(&skel_driver, iminor(inode));
+	struct usb_skel* pDev = usb_get_intfdata(pIntf);
 	kref_get(&pDev->kref);
 	file->private_data = (void*)pDev;
 	return 0;
 }
 
-int Release(struct inode *inode, struct file *file)
+int skel_release(struct inode *inode, struct file *file)
 {
-	BeuatoCtrl* pDev = file->private_data;
-	kref_put(&pDev->kref, Dispose);
+	struct usb_skel* pDev = file->private_data;
+	kref_put(&pDev->kref, skel_dispose);
 	return 0;
 }
 
@@ -88,7 +90,7 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 }
 
 
-ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
+ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
 	/*
 	const int MAX_RAW_TEXT_SIZE = 128;
@@ -118,7 +120,7 @@ ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *
 	DMESG_INFO("mydevice_write(%lld):%s", ofs, extract_text);
 	*/
 
-	BeuatoCtrl* pDev = file->private_data;
+	struct usb_skel* pDev = file->private_data;
 	char data[64];
 	memset(data, 0, 64);
 	data[0] = 'r';
@@ -137,29 +139,40 @@ ssize_t Write(struct file *file, const char __user *buff, size_t count, loff_t *
 	usb_init_urb(urb_header);
 	DMESG_INFO("Initialized");
 
-	transmit_buff = usb_alloc_coherent(pDev->pDev, 64, GFP_KERNEL, &urb_header->transfer_dma);
+	transmit_buff = kmalloc(64, GFP_KERNEL);
 	DMESG_INFO("Buffer Allocated");
+	
+	if(!kmalloc) 
+	{
+		goto skel_write_Error;
+	}
 
+	//copy_from_user(urb_header->transfer_buffer, transmit_buff, 64);	
+	//DMESG_INFO("Copy data from user");
 
+	/*
+	usb_fill_bulk_urb(urb_header, pDev->pDev, 
+		usb_sndbulkpipe(pDev->pDev, ))
+	*/
+
+	kfree(transmit_buff);
+	DMESG_INFO("Free Buffer");
 
 	usb_free_urb(urb_header);
 	DMESG_INFO("Free Urb");
-
-	usb_free_coherent(pDev->pDev, 64, transmit_buff, urb_header->transfer_dma);
-	DMESG_INFO("Free Buffer");
 
 	DMESG_INFO("Finished");
 
 	return count;
 
-Write_Error:
+skel_write_Error:
 	usb_free_coherent(pDev->pDev, 64, transmit_buff, urb_header->transfer_dma);
 	usb_free_urb(urb_header);
 	return -1;
 
 
 	/*
-	BeuatoCtrl* pDev = fp->private_data;
+	usb_skel* pDev = fp->private_data;
 	int written = usb_control_msg(pDev, 
 		usb_sndctrlpipe(pDev->pDev, 0),
 		0, (USB_DIR_OUT | USB_TYPE_VENDOR),
@@ -167,11 +180,11 @@ Write_Error:
 	*/
 }
 
-int Probe(UsbInterface* ip, const UsbDeviceID* pID) 
+int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID) 
 {
 	int errno = -ENOMEM;
 
-	BeuatoCtrl* pDev = kmalloc(sizeof(BeuatoCtrl), GFP_KERNEL);
+	struct usb_skel* pDev = kmalloc(sizeof(struct usb_skel), GFP_KERNEL);
 	if(!pDev)
 	{
 		DMESG_ERR("Out of memory.\n");
@@ -183,15 +196,15 @@ int Probe(UsbInterface* ip, const UsbDeviceID* pID)
 	pDev->pDev = usb_get_dev(interface_to_usbdev(ip));		// USBデバイスの存在チェック
 	pDev->ip = ip;
 
-	UsbHostInterface* pHostIf = ip->cur_altsetting;
+	struct usb_host_interface* pHostIf = ip->cur_altsetting;
 
 	// 0番目のエンドポイントの取得
-	UsbEndpointDescriptor* ep = &pHostIf->endpoint[0].desc;
+	struct usb_endpoint_descriptor* ep = &pHostIf->endpoint[0].desc;
 	pDev->bulkInEndpointAddr = ep->bEndpointAddress;
 
 	usb_set_intfdata(ip, pDev);
 
-	errno = usb_register_dev(ip, &class);
+	errno = usb_register_dev(ip, &skel_class);
 	if(errno) 
 	{
 		DMESG_ERR("Not able to get minor for this device.\n");
@@ -199,29 +212,29 @@ int Probe(UsbInterface* ip, const UsbDeviceID* pID)
 		goto L_Error;
 	}
 
-	dev_info(&ip->dev, "[+] BeuatoCtrl: Attached=%d", ip->minor);
+	dev_info(&ip->dev, "[+] usb_skel: Attached=%d", ip->minor);
 	return 0;
 
 L_Error:
 	if(pDev) 
 	{
-		kref_put(&pDev->kref, Dispose);
+		kref_put(&pDev->kref, skel_dispose);
 	}
 	return errno;
 }
 
-void Disconnect(UsbInterface* ip) 
+void skel_disconnect(struct usb_interface* ip) 
 {
-	dev_info(&ip->dev, "[+] BeuatoCtrl: (%d) is Disconnected", ip->minor);
+	dev_info(&ip->dev, "[+] usb_skel: (%d) is skel_disconnected", ip->minor);
 
-	BeuatoCtrl* pDev = usb_get_intfdata(ip);
+	struct usb_skel* pDev = usb_get_intfdata(ip);
 	usb_set_intfdata(ip, NULL);
 
-	usb_deregister_dev(ip, &class);
-	kref_put(&pDev->kref, Dispose);
+	usb_deregister_dev(ip, &skel_class);
+	kref_put(&pDev->kref, skel_dispose);
 }
 
-MODULE_DEVICE_TABLE(usb, entries);
-module_usb_driver(usb_driver);
+MODULE_DEVICE_TABLE(usb, skel_table);
+module_usb_driver(skel_driver);
 
 MODULE_LICENSE("Dual BSD/GPL");
