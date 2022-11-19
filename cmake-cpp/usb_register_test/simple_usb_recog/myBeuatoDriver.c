@@ -18,12 +18,12 @@ int skel_open(struct inode *inode, struct file *file);
 int skel_release(struct inode *inode, struct file *file);
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
 
-typedef struct usb_skel {
+struct usb_skel {
 	struct usb_device* pDev;
 	struct usb_interface* ip;
 	u8 bulkInEndpointAddr;			// エンドポイントのアドレス(In)
 	struct kref kref;
-} ;
+};
 
 struct usb_device_id skel_table[] = {
 	{USB_DEVICE(VENDOR_ID, PRODUCT_ID)},
@@ -92,92 +92,8 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
-	/*
-	const int MAX_RAW_TEXT_SIZE = 128;
-	if(count >= MAX_RAW_TEXT_SIZE) 
-	{
-		DMESG_ERR("Data size is too large");
-		return -1;
-	}
-
-	printk("extract start(%lld)", count);
-
-	char user_raw_text[MAX_RAW_TEXT_SIZE];
-	copy_from_user(user_raw_text, buff, count);
-
-	loff_t ofs = seek_space(user_raw_text, count, 0);
-	if( ofs < 0 )
-	{
-		DMESG_ERR("Extraction of space was failed");
-		return -1;
-	}
-
-	char extract_text[MAX_RAW_TEXT_SIZE];
-	memset(extract_text, 0, MAX_RAW_TEXT_SIZE);
-	memcpy(extract_text, user_raw_text, ofs);	
-
-
-	DMESG_INFO("mydevice_write(%lld):%s", ofs, extract_text);
-	*/
-
-	struct usb_skel* pDev = file->private_data;
-	char data[64];
-	memset(data, 0, 64);
-	data[0] = 'r';
-	data[3] = '4';
-
-
-	char* transmit_buff;
-	struct urb* urb_header;
-	urb_header = usb_alloc_urb(0, GFP_KERNEL);
-	if(!urb_header) 
-	{
-		DMESG_ERR("Memory allocation failed");
-		return -1;
-	}
-
-	usb_init_urb(urb_header);
-	DMESG_INFO("Initialized");
-
-	transmit_buff = kmalloc(64, GFP_KERNEL);
-	DMESG_INFO("Buffer Allocated");
-	
-	if(!kmalloc) 
-	{
-		goto skel_write_Error;
-	}
-
-	//copy_from_user(urb_header->transfer_buffer, transmit_buff, 64);	
-	//DMESG_INFO("Copy data from user");
-
-	/*
-	usb_fill_bulk_urb(urb_header, pDev->pDev, 
-		usb_sndbulkpipe(pDev->pDev, ))
-	*/
-
-	kfree(transmit_buff);
-	DMESG_INFO("Free Buffer");
-
-	usb_free_urb(urb_header);
-	DMESG_INFO("Free Urb");
-
-	DMESG_INFO("Finished");
-
+	DMESG_INFO("mydevice_write\n");
 	return count;
-
-skel_write_Error:
-	usb_free_coherent(pDev->pDev, 64, transmit_buff, urb_header->transfer_dma);
-	usb_free_urb(urb_header);
-	return -1;
-
-
-	/*
-	usb_skel* pDev = fp->private_data;
-	int written = usb_control_msg(pDev, 
-		usb_sndctrlpipe(pDev->pDev, 0),
-		0, (USB_DIR_OUT | USB_TYPE_VENDOR),
-		data, 64, 100);
-	*/
 }
 
 int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID) 
