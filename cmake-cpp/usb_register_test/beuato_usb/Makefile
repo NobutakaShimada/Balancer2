@@ -3,7 +3,7 @@ CFILES = myBeuatoDriver.c
 obj-m := myBeuatoDriver.o
 MyDeviceModule-objs := $(CFILES:.c=.o)
 
-ccflags-y += -std=gnu99 -Wall -Wno-declaration-after-statement
+ccflags-y += -std=gnu11 -Wall -Wno-declaration-after-statement
 
 
 all:

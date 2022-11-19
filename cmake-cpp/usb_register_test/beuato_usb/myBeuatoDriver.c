@@ -4,8 +4,8 @@
 #include <linux/slab.h> // kmalloc
 
 #include "config.h"
+#include "driver_define.h"
 #include "logging.h"
-//#include "typedefs.h"
 
 #define VENDOR_ID 0x1962
 #define PRODUCT_ID 0x2080
@@ -18,18 +18,10 @@ int skel_open(struct inode *inode, struct file *file);
 int skel_release(struct inode *inode, struct file *file);
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
 
-typedef struct usb_skel {
-	struct usb_device* pDev;
-	struct usb_interface* ip;
-	u8 bulkInEndpointAddr;			// エンドポイントのアドレス(In)
-	struct kref kref;
-} ;
-
 struct usb_device_id skel_table[] = {
 	{USB_DEVICE(VENDOR_ID, PRODUCT_ID)},
 	{}
 };
-
 
 struct usb_driver skel_driver = {
 	.name = "BeuatoBalancer Driver",
@@ -56,7 +48,7 @@ struct usb_class_driver skel_class = {
 void skel_dispose(struct kref* pKref) 
 {
 	struct usb_skel* pDev = container_of(pKref, struct usb_skel, kref);
-	usb_put_dev(pDev->pDev);
+	usb_put_dev(pDev->udev);
 	kfree(pDev);			// 独自の構造体の破棄
 }
 
@@ -142,7 +134,7 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	transmit_buff = kmalloc(64, GFP_KERNEL);
 	DMESG_INFO("Buffer Allocated");
 	
-	if(!kmalloc) 
+	if(transmit_buff == NULL) 
 	{
 		goto skel_write_Error;
 	}
@@ -166,7 +158,7 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	return count;
 
 skel_write_Error:
-	usb_free_coherent(pDev->pDev, 64, transmit_buff, urb_header->transfer_dma);
+	usb_free_coherent(pDev->udev, 64, transmit_buff, urb_header->transfer_dma);
 	usb_free_urb(urb_header);
 	return -1;
 
@@ -190,17 +182,36 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 		DMESG_ERR("Out of memory.\n");
 		goto L_Error;
 	}
-
 	memset(pDev, 0, sizeof(*pDev));
+
+	init_usb_anchor(&pDev->submitted);
+	init_completion(&pDev->bulk_in_completion);
 	kref_init(&pDev->kref);							// 参照カウンタの初期化
-	pDev->pDev = usb_get_dev(interface_to_usbdev(ip));		// USBデバイスの存在チェック
+	pDev->udev = usb_get_dev(interface_to_usbdev(ip));		// USBデバイスの存在チェック
 	pDev->ip = ip;
 
 	struct usb_host_interface* pHostIf = ip->cur_altsetting;
 
-	// 0番目のエンドポイントの取得
-	struct usb_endpoint_descriptor* ep = &pHostIf->endpoint[0].desc;
-	pDev->bulkInEndpointAddr = ep->bEndpointAddress;
+	// エンドポイントの取得
+	// https://wiki.bit-hive.com/north/pg/usb%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90
+	for(int i = 0 ; i < pHostIf->desc.bNumEndpoints; ++i ) 
+	{
+		dev_info(&ip->dev, "Endpoint %d\n", i);
+
+		struct usb_endpoint_descriptor* endpoint = &pHostIf->endpoint[i].desc;
+
+		if(usb_endpoint_dir_in(endpoint)) 
+		{
+			pDev->bulk_in_endpointAddr = endpoint->bEndpointAddress;
+			dev_info(&ip->dev, "[I] Endpoint count:%d\n", i);
+		}
+
+		if(usb_endpoint_dir_out(endpoint)) 
+		{
+			pDev->bulk_out_endpointAddr = endpoint->bEndpointAddress;
+			dev_info(&ip->dev, "[O] Endpoint count:%d\n", i);
+		}
+	}
 
 	usb_set_intfdata(ip, pDev);
 
