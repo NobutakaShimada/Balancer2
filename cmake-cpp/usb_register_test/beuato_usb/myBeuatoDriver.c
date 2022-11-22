@@ -87,8 +87,6 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 }
 
 
-
-
 void report_in_handler(u8 *buf, int length)
 {
 	DMESG_INFO("[I] Read Message:%d", length);
@@ -133,8 +131,8 @@ int prepare_read(struct usb_interface* ip, const struct usb_device_id* pID, stru
 		return -1;
 	}
 
-	pDev->int_in_buffer = kmalloc(64, GFP_KERNEL);
-	memset(pDev->int_in_buffer, 0, 64);
+	pDev->int_in_buffer = kmalloc(pDev->int_in_buffer_length, GFP_KERNEL);
+	memset(pDev->int_in_buffer, 0, pDev->int_in_buffer_length);
 	DMESG_INFO("Allocation");
 
 	return 0;
@@ -145,7 +143,7 @@ int run_read(struct usb_skel* pDev)
 	usb_fill_int_urb(pDev->int_in_urb, pDev->udev, 
 		usb_rcvintpipe(pDev->udev, pDev->int_in_endpoint->bEndpointAddress),
 		pDev->int_in_buffer,
-		64,
+		pDev->int_in_buffer_length,
 		urb_in_complete,
 		pDev,
 		pDev->int_in_endpoint->bInterval
@@ -230,10 +228,6 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	*/
 
 	struct usb_skel* pDev = file->private_data;
-
-
-	char data[64];
-	memset(data, 0, 64);
 	
 	struct urb* urb_header;
 	urb_header = usb_alloc_urb(0, GFP_KERNEL);
@@ -244,15 +238,15 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	}
 
 	char* transmit_buff;
-	transmit_buff = kmalloc(64, GFP_KERNEL);
-	memset(transmit_buff, 0, 64);
+	transmit_buff = kmalloc(pDev->int_out_buffer_length, GFP_KERNEL);
+	memset(transmit_buff, 0, pDev->int_out_buffer_length);
 	transmit_buff[0] = 'r';
-	transmit_buff[4] = 4;
+	transmit_buff[3] = 8;
 
 	usb_fill_int_urb(urb_header, pDev->udev, 
 		usb_sndintpipe(pDev->udev, pDev->int_out_endpoint->bEndpointAddress),
 		transmit_buff,
-		64,
+		pDev->int_out_buffer_length,
 		urb_out_complete,
 		pDev,
 		pDev->int_out_endpoint->bInterval
@@ -278,7 +272,7 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	return count;
 
 skel_write_Error:
-	usb_free_coherent(pDev->udev, 64, transmit_buff, urb_header->transfer_dma);
+	usb_free_coherent(pDev->udev, pDev->int_out_buffer_length, transmit_buff, urb_header->transfer_dma);
 	usb_free_urb(urb_header);
 	return -1;
 }
@@ -312,12 +306,14 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 		if(usb_endpoint_dir_in(endpoint)) 
 		{
 			pDev->int_in_endpoint = endpoint;
+			pDev->int_in_buffer_length = endpoint->wMaxPacketSize;
 			dev_info(&ip->dev, "[I] Endpoint count:%d\n", i);
 		}
 
 		if(usb_endpoint_dir_out(endpoint)) 
 		{
 			pDev->int_out_endpoint = endpoint;
+			pDev->int_out_buffer_length = endpoint->wMaxPacketSize;
 			dev_info(&ip->dev, "[O] Endpoint count:%d\n", i);
 		}
 	}

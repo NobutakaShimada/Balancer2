@@ -15,5 +15,5 @@ struct usb_skel {
     dma_addr_t* int_in_dma;
 
     struct usb_endpoint_descriptor* int_out_endpoint;
-
+    int int_out_buffer_length;
 } ;
