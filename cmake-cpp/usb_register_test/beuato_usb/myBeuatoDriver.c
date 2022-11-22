@@ -15,6 +15,7 @@
 
 #define MINOR_BASE 192			// マイナー番号
 
+/** プロトタイプ宣言 **/ 
 int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID);
 void skel_disconnect(struct usb_interface* ip);
 int skel_open(struct inode *inode, struct file *file);
@@ -22,11 +23,13 @@ int skel_release(struct inode *inode, struct file *file);
 ssize_t skel_read (struct file* file, char __user *buff, size_t count, loff_t *f_pos) ;
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
 
+/** ベンダーIDとプロダクトIDの登録 **/ 
 struct usb_device_id skel_table[] = {
 	{USB_DEVICE(VENDOR_ID, PRODUCT_ID)},
 	{}
 };
 
+/** ドライバ初期化時の処理の登録 **/
 struct usb_driver skel_driver = {
 	.name = "BeuatoBalancer Driver",
 	.id_table = skel_table,
@@ -34,27 +37,27 @@ struct usb_driver skel_driver = {
 	.disconnect = skel_disconnect		// 切断時に実行される関数
 };
 
-// ファイルオペレーション
+
+/** ファイルオペレーションの登録 **/
 struct file_operations skel_fops = {
 	.owner = THIS_MODULE,
-	.write = skel_write,
 	.open = skel_open,
 	.release = skel_release,
+	.write = skel_write,
 };
 
+/** ドライバクラスの登録 */
 struct usb_class_driver skel_class = {
 	.name = "usb/BeuatoCtrl%d",
 	.fops = &skel_fops,
 	.minor_base = MINOR_BASE
 };
 
-
-// 破棄関数
-void skel_dispose(struct kref* pKref) 
+static void skel_dispose(struct kref* pKref) 
 {
 	struct usb_skel* pDev = container_of(pKref, struct usb_skel, kref);
 	usb_put_dev(pDev->udev);
-	kfree(pDev);			// 独自の構造体の破棄
+	kfree(pDev);
 }
 
 int skel_open(struct inode *inode, struct file *file)
