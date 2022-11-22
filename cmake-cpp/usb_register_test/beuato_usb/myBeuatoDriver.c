@@ -1,7 +1,10 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/sched.h>
+#include <linux/completion.h>
 #include <linux/usb.h>
 #include <linux/slab.h> // kmalloc
+
 
 #include "config.h"
 #include "driver_define.h"
@@ -16,6 +19,7 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID);
 void skel_disconnect(struct usb_interface* ip);
 int skel_open(struct inode *inode, struct file *file);
 int skel_release(struct inode *inode, struct file *file);
+ssize_t skel_read (struct file* file, char __user *buff, size_t count, loff_t *f_pos) ;
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
 
 struct usb_device_id skel_table[] = {
@@ -33,6 +37,7 @@ struct usb_driver skel_driver = {
 // ファイルオペレーション
 struct file_operations skel_fops = {
 	.owner = THIS_MODULE,
+	.read = skel_read,
 	.write = skel_write,
 	.open = skel_open,
 	.release = skel_release,
@@ -82,7 +87,7 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 	return -1;
 }
 
-void report_handler(u8 *buf, int length)
+void report_out_handler(u8 *buf, int length)
 {
 	int x, y, p;
 
@@ -103,11 +108,11 @@ void report_handler(u8 *buf, int length)
 	DMESG_INFO("Report Handled");
 }
 
-void urb_complete(struct urb* urb) 
+void urb_out_complete(struct urb* urb) 
 {
 	switch (urb->status) {
 	case 0:
-		report_handler(urb->transfer_buffer, urb->transfer_buffer_length);
+		report_out_handler(urb->transfer_buffer, urb->transfer_buffer_length);
 		//usb_submit_urb(urb, GFP_ATOMIC);
 		DMESG_INFO("Urb Success");
 		break;
@@ -124,6 +129,69 @@ void urb_complete(struct urb* urb)
 
 	DMESG_INFO("Completed");
 }
+
+
+
+
+void urb_in_complete(struct urb* urb) 
+{
+	switch (urb->status) {
+	case 0:
+		report_out_handler(urb->transfer_buffer, urb->transfer_buffer_length);
+		//proc_load_rom(urb);
+		//usb_submit_urb(urb, GFP_ATOMIC);
+		DMESG_INFO("Urb load rom Success");
+		break;
+	case -ECONNRESET:
+	case -ENOENT:
+	case -ESHUTDOWN:
+		DMESG_ERR("urb shutting down with %d\n", urb->status);
+		break;
+	default:
+		DMESG_ERR("urb status %d received\n", urb->status);	
+		break;
+	}
+
+	DMESG_INFO("Completed");
+}
+
+
+ssize_t skel_read (struct file* file, char __user *buff, size_t count, loff_t *f_pos) 
+{
+	struct urb* urb_header;
+	urb_header = usb_alloc_urb(0, GFP_KERNEL);
+	if(!urb_header) 
+	{
+		DMESG_ERR("Memory allocation failed");
+		return -1;
+	}
+
+	char* recv_buff;
+	recv_buff = kmalloc(64, GFP_KERNEL);
+	memset(recv_buff, 0, 64);
+
+	struct usb_skel* pDev = file->private_data;
+
+	usb_fill_int_urb(urb_header, pDev->udev, 
+		usb_rcvintpipe(pDev->udev, pDev->int_in_endpoint->bEndpointAddress),
+		recv_buff,
+		64,
+		urb_in_complete,
+		pDev,
+		pDev->int_out_endpoint->bInterval
+	);
+
+	usb_submit_urb(urb_header, GFP_KERNEL);
+
+	kfree(recv_buff);
+	DMESG_INFO("Free Buffer");
+
+	usb_free_urb(urb_header);
+	DMESG_INFO("Free Urb");
+
+	return count;
+}
+
 
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
@@ -179,13 +247,10 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 		usb_sndintpipe(pDev->udev, pDev->int_out_endpoint->bEndpointAddress),
 		transmit_buff,
 		64,
-		urb_complete,
+		urb_out_complete,
 		pDev,
 		pDev->int_out_endpoint->bInterval
 	);
-
-	//urb_header->transfer_buffer = transmit_buff;
-	//urb_header->transfer_buffer_length = 5;
 
 	DMESG_INFO("Buffer Allocated");
 	
@@ -201,22 +266,13 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 
 	usb_free_urb(urb_header);
 	DMESG_INFO("Free Urb");
-
+	
 	return count;
 
 skel_write_Error:
 	usb_free_coherent(pDev->udev, 64, transmit_buff, urb_header->transfer_dma);
 	usb_free_urb(urb_header);
 	return -1;
-
-
-	/*
-	usb_skel* pDev = fp->private_data;
-	int written = usb_control_msg(pDev, 
-		usb_sndctrlpipe(pDev->pDev, 0),
-		0, (USB_DIR_OUT | USB_TYPE_VENDOR),
-		data, 64, 100);
-	*/
 }
 
 int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID) 
