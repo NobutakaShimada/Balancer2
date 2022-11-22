@@ -3,8 +3,7 @@
 #include <linux/sched.h>
 #include <linux/completion.h>
 #include <linux/usb.h>
-#include <linux/slab.h> // kmalloc
-
+#include <linux/slab.h>
 
 #include "config.h"
 #include "driver_define.h"
@@ -53,6 +52,7 @@ struct usb_class_driver skel_class = {
 	.minor_base = MINOR_BASE
 };
 
+
 static void skel_dispose(struct kref* pKref) 
 {
 	struct usb_skel* pDev = container_of(pKref, struct usb_skel, kref);
@@ -60,19 +60,25 @@ static void skel_dispose(struct kref* pKref)
 	kfree(pDev);
 }
 
+/* デバイスオープン時に実行 */
 int skel_open(struct inode *inode, struct file *file)
 {
-	struct usb_interface* pIntf = usb_find_interface(&skel_driver, iminor(inode));
-	struct usb_skel* pDev = usb_get_intfdata(pIntf);
+	struct usb_interface* ip = usb_find_interface(&skel_driver, iminor(inode));
+	struct usb_skel* pDev = usb_get_intfdata(ip);
+
 	kref_get(&pDev->kref);
 	file->private_data = (void*)pDev;
+
 	return 0;
 }
 
+
+/* デバイスリリース時に実行 */
 int skel_release(struct inode *inode, struct file *file)
 {
 	struct usb_skel* pDev = file->private_data;
 	kref_put(&pDev->kref, skel_dispose);
+
 	return 0;
 }
 
@@ -90,6 +96,13 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 }
 
 
+/** USB-HID-INの制御 
+ * 
+ * 
+ * 
+ * **/
+
+/* データの解釈 */
 void report_in_handler(u8 *buf, int length)
 {
 	DMESG_INFO("[I] Read Message:%d", length);
@@ -103,7 +116,7 @@ void report_in_handler(u8 *buf, int length)
 	DMESG_INFO("Report Handled");
 }
 
-
+/** HID-INデータ完了通知 **/
 void urb_in_complete(struct urb* urb) 
 {
 	switch (urb->status) {
@@ -124,7 +137,7 @@ void urb_in_complete(struct urb* urb)
 	DMESG_INFO("Completed");
 }
 
-
+/** データ読み込み準備 **/
 int prepare_read(struct usb_interface* ip, const struct usb_device_id* pID, struct usb_skel* pDev) 
 {
 	pDev->int_in_urb = usb_alloc_urb(0, GFP_KERNEL);
@@ -141,6 +154,7 @@ int prepare_read(struct usb_interface* ip, const struct usb_device_id* pID, stru
 	return 0;
 }
 
+/** データ読み込み開始 **/
 int run_read(struct usb_skel* pDev) 
 {
 	usb_fill_int_urb(pDev->int_in_urb, pDev->udev, 
@@ -158,7 +172,13 @@ int run_read(struct usb_skel* pDev)
 	return 0;
 }
 
+/** USB-HID-OUTの制御 
+ * 
+ * 
+ * 
+ * **/
 
+/* データの解釈 */
 void report_out_handler(u8 *buf, int length)
 {
 	switch (buf[0])
@@ -178,6 +198,7 @@ void report_out_handler(u8 *buf, int length)
 	DMESG_INFO("Report Handled");
 }
 
+/** HID-OUTデータ完了通知 **/
 void urb_out_complete(struct urb* urb) 
 {
 	switch (urb->status) {
@@ -200,6 +221,7 @@ void urb_out_complete(struct urb* urb)
 	DMESG_INFO("Completed");
 }
 
+/** データ書き込み **/
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
 	/*
@@ -280,6 +302,12 @@ skel_write_Error:
 	return -1;
 }
 
+
+/**
+ * USB接続開始
+ * 
+ * **/
+
 int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID) 
 {
 	int errno = -ENOMEM;
@@ -348,6 +376,11 @@ L_Error:
 	}
 	return errno;
 }
+
+/**
+ * USB接続終了
+ * 
+ * **/
 
 void skel_disconnect(struct usb_interface* ip) 
 {
