@@ -37,7 +37,6 @@ struct usb_driver skel_driver = {
 // ファイルオペレーション
 struct file_operations skel_fops = {
 	.owner = THIS_MODULE,
-	.read = skel_read,
 	.write = skel_write,
 	.open = skel_open,
 	.release = skel_release,
@@ -87,14 +86,84 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 	return -1;
 }
 
+
+
+
+void report_in_handler(u8 *buf, int length)
+{
+	DMESG_INFO("[I] Read Message:%d", length);
+	printk("Data:");
+
+	for(int i = 0 ; i < length; i ++) 
+	{
+		printk(KERN_CONT "%x ", buf[i]);			
+	}
+
+	DMESG_INFO("Report Handled");
+}
+
+
+void urb_in_complete(struct urb* urb) 
+{
+	switch (urb->status) {
+	case 0:
+		report_in_handler(urb->transfer_buffer, urb->transfer_buffer_length);
+		DMESG_INFO("Urb load rom Success");
+		break;
+	case -ECONNRESET:
+	case -ENOENT:
+	case -ESHUTDOWN:
+		DMESG_ERR("urb shutting down with %d\n", urb->status);
+		break;
+	default:
+		DMESG_ERR("urb status %d received\n", urb->status);	
+		break;
+	}
+
+	DMESG_INFO("Completed");
+}
+
+
+int prepare_read(struct usb_interface* ip, const struct usb_device_id* pID, struct usb_skel* pDev) 
+{
+	pDev->int_in_urb = usb_alloc_urb(0, GFP_KERNEL);
+	if(!pDev->int_in_urb) 
+	{
+		DMESG_ERR("Memory allocation failed");
+		return -1;
+	}
+
+	pDev->int_in_buffer = kmalloc(64, GFP_KERNEL);
+	memset(pDev->int_in_buffer, 0, 64);
+	DMESG_INFO("Allocation");
+
+	return 0;
+}
+
+int run_read(struct usb_skel* pDev) 
+{
+	usb_fill_int_urb(pDev->int_in_urb, pDev->udev, 
+		usb_rcvintpipe(pDev->udev, pDev->int_in_endpoint->bEndpointAddress),
+		pDev->int_in_buffer,
+		64,
+		urb_in_complete,
+		pDev,
+		pDev->int_in_endpoint->bInterval
+	);
+
+	usb_submit_urb(pDev->int_in_urb, GFP_KERNEL);
+	DMESG_INFO("Prepare read");
+
+	return 0;
+}
+
+
 void report_out_handler(u8 *buf, int length)
 {
-	int x, y, p;
-
 	switch (buf[0])
 	{
 		case 'r':
-			DMESG_INFO("Read Message");
+			DMESG_INFO("[O] Read Message");
 			printk("Data:");
 			for(int i = 0 ; i < length; i ++) 
 			{
@@ -129,69 +198,6 @@ void urb_out_complete(struct urb* urb)
 
 	DMESG_INFO("Completed");
 }
-
-
-
-
-void urb_in_complete(struct urb* urb) 
-{
-	switch (urb->status) {
-	case 0:
-		report_out_handler(urb->transfer_buffer, urb->transfer_buffer_length);
-		//proc_load_rom(urb);
-		//usb_submit_urb(urb, GFP_ATOMIC);
-		DMESG_INFO("Urb load rom Success");
-		break;
-	case -ECONNRESET:
-	case -ENOENT:
-	case -ESHUTDOWN:
-		DMESG_ERR("urb shutting down with %d\n", urb->status);
-		break;
-	default:
-		DMESG_ERR("urb status %d received\n", urb->status);	
-		break;
-	}
-
-	DMESG_INFO("Completed");
-}
-
-
-ssize_t skel_read (struct file* file, char __user *buff, size_t count, loff_t *f_pos) 
-{
-	struct urb* urb_header;
-	urb_header = usb_alloc_urb(0, GFP_KERNEL);
-	if(!urb_header) 
-	{
-		DMESG_ERR("Memory allocation failed");
-		return -1;
-	}
-
-	char* recv_buff;
-	recv_buff = kmalloc(64, GFP_KERNEL);
-	memset(recv_buff, 0, 64);
-
-	struct usb_skel* pDev = file->private_data;
-
-	usb_fill_int_urb(urb_header, pDev->udev, 
-		usb_rcvintpipe(pDev->udev, pDev->int_in_endpoint->bEndpointAddress),
-		recv_buff,
-		64,
-		urb_in_complete,
-		pDev,
-		pDev->int_out_endpoint->bInterval
-	);
-
-	usb_submit_urb(urb_header, GFP_KERNEL);
-
-	kfree(recv_buff);
-	DMESG_INFO("Free Buffer");
-
-	usb_free_urb(urb_header);
-	DMESG_INFO("Free Urb");
-
-	return count;
-}
-
 
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
@@ -261,6 +267,8 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 
 	usb_submit_urb(urb_header, GFP_KERNEL);
 
+	run_read(pDev);
+
 	kfree(transmit_buff);
 	DMESG_INFO("Free Buffer");
 
@@ -291,7 +299,6 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 	kref_init(&pDev->kref);							// 参照カウンタの初期化
 	pDev->udev = usb_get_dev(interface_to_usbdev(ip));		// USBデバイスの存在チェック
 	pDev->ip = ip;
-
 
 	// エンドポイントの取得
 	// https://wiki.bit-hive.com/north/pg/usb%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90
@@ -325,8 +332,16 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 	}
 
 	dev_info(&ip->dev, "[+] usb_skel: Attached=%d", ip->minor);
-	return 0;
 
+	errno = prepare_read(ip, pID, pDev);
+	if(errno) 
+	{
+		DMESG_ERR("Failed to prepare reading buffer\n");
+		goto L_Error;
+	}
+
+	return 0;
+	//return run_read(pDev);
 L_Error:
 	if(pDev) 
 	{
@@ -341,6 +356,13 @@ void skel_disconnect(struct usb_interface* ip)
 
 	struct usb_skel* pDev = usb_get_intfdata(ip);
 	usb_set_intfdata(ip, NULL);
+
+	// dispose interrupt in buffer
+	kfree(pDev->int_in_buffer);
+	DMESG_INFO("Free Buffer");
+
+	usb_free_urb(pDev->int_in_urb);
+	DMESG_INFO("Free Urb");
 
 	usb_deregister_dev(ip, &skel_class);
 	kref_put(&pDev->kref, skel_dispose);
