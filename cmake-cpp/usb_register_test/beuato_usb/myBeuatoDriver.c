@@ -44,6 +44,7 @@ struct usb_class_driver skel_class = {
 	.minor_base = MINOR_BASE
 };
 
+
 // 破棄関数
 void skel_dispose(struct kref* pKref) 
 {
@@ -81,6 +82,48 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 	return -1;
 }
 
+void report_handler(u8 *buf, int length)
+{
+	int x, y, p;
+
+	switch (buf[0])
+	{
+		case 'r':
+			DMESG_INFO("Read Message");
+			printk("Data:");
+			for(int i = 0 ; i < length; i ++) 
+			{
+				printk(KERN_CONT "%x ", buf[i]);			
+			}
+			break;
+		default:
+			DMESG_INFO("Other Message:%c", buf[0]);
+	}
+
+	DMESG_INFO("Report Handled");
+}
+
+void urb_complete(struct urb* urb) 
+{
+	switch (urb->status) {
+	case 0:
+		report_handler(urb->transfer_buffer, urb->transfer_buffer_length);
+		//usb_submit_urb(urb, GFP_ATOMIC);
+		DMESG_INFO("Urb Success");
+		break;
+	case -ECONNRESET:
+	case -ENOENT:
+	case -ESHUTDOWN:
+		DMESG_ERR("urb shutting down with %d\n", urb->status);
+		break;
+	default:
+		DMESG_ERR("urb status %d received\n", urb->status);
+		//usb_submit_urb(urb, GFP_ATOMIC);			
+		break;
+	}
+
+	DMESG_INFO("Completed");
+}
 
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
@@ -113,13 +156,11 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	*/
 
 	struct usb_skel* pDev = file->private_data;
+
+
 	char data[64];
 	memset(data, 0, 64);
-	data[0] = 'r';
-	data[3] = '4';
-
-
-	char* transmit_buff;
+	
 	struct urb* urb_header;
 	urb_header = usb_alloc_urb(0, GFP_KERNEL);
 	if(!urb_header) 
@@ -128,10 +169,24 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 		return -1;
 	}
 
-	usb_init_urb(urb_header);
-	DMESG_INFO("Initialized");
-
+	char* transmit_buff;
 	transmit_buff = kmalloc(64, GFP_KERNEL);
+	memset(transmit_buff, 0, 64);
+	transmit_buff[0] = 'r';
+	transmit_buff[4] = 4;
+
+	usb_fill_int_urb(urb_header, pDev->udev, 
+		usb_sndintpipe(pDev->udev, pDev->int_out_endpoint->bEndpointAddress),
+		transmit_buff,
+		64,
+		urb_complete,
+		pDev,
+		pDev->int_out_endpoint->bInterval
+	);
+
+	//urb_header->transfer_buffer = transmit_buff;
+	//urb_header->transfer_buffer_length = 5;
+
 	DMESG_INFO("Buffer Allocated");
 	
 	if(transmit_buff == NULL) 
@@ -139,21 +194,13 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 		goto skel_write_Error;
 	}
 
-	//copy_from_user(urb_header->transfer_buffer, transmit_buff, 64);	
-	//DMESG_INFO("Copy data from user");
-
-	/*
-	usb_fill_bulk_urb(urb_header, pDev->pDev, 
-		usb_sndbulkpipe(pDev->pDev, ))
-	*/
+	usb_submit_urb(urb_header, GFP_KERNEL);
 
 	kfree(transmit_buff);
 	DMESG_INFO("Free Buffer");
 
 	usb_free_urb(urb_header);
 	DMESG_INFO("Free Urb");
-
-	DMESG_INFO("Finished");
 
 	return count;
 
@@ -185,15 +232,14 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 	memset(pDev, 0, sizeof(*pDev));
 
 	init_usb_anchor(&pDev->submitted);
-	init_completion(&pDev->bulk_in_completion);
 	kref_init(&pDev->kref);							// 参照カウンタの初期化
 	pDev->udev = usb_get_dev(interface_to_usbdev(ip));		// USBデバイスの存在チェック
 	pDev->ip = ip;
 
-	struct usb_host_interface* pHostIf = ip->cur_altsetting;
 
 	// エンドポイントの取得
 	// https://wiki.bit-hive.com/north/pg/usb%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90
+	struct usb_host_interface* pHostIf = ip->cur_altsetting;
 	for(int i = 0 ; i < pHostIf->desc.bNumEndpoints; ++i ) 
 	{
 		dev_info(&ip->dev, "Endpoint %d\n", i);
@@ -202,17 +248,16 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 
 		if(usb_endpoint_dir_in(endpoint)) 
 		{
-			pDev->bulk_in_endpointAddr = endpoint->bEndpointAddress;
+			pDev->int_in_endpoint = endpoint;
 			dev_info(&ip->dev, "[I] Endpoint count:%d\n", i);
 		}
 
 		if(usb_endpoint_dir_out(endpoint)) 
 		{
-			pDev->bulk_out_endpointAddr = endpoint->bEndpointAddress;
+			pDev->int_out_endpoint = endpoint;
 			dev_info(&ip->dev, "[O] Endpoint count:%d\n", i);
 		}
 	}
-
 	usb_set_intfdata(ip, pDev);
 
 	errno = usb_register_dev(ip, &skel_class);

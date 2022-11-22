@@ -6,8 +6,9 @@ struct usb_skel {
 	struct usb_device* udev;
 	struct usb_interface* ip;
     struct usb_anchor submitted;
-	u8 bulk_in_endpointAddr;			// エンドポイントのアドレス(In)
-    u8 bulk_out_endpointAddr;           // エンドポイントのアドレス(Out)
 	struct kref kref;
-    struct completion bulk_in_completion;
+
+    struct usb_endpoint_descriptor* int_in_endpoint;
+    struct usb_endpoint_descriptor* int_out_endpoint;
+
 } ;
