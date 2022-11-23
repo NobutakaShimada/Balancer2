@@ -4,6 +4,8 @@
 #include <linux/completion.h>
 #include <linux/usb.h>
 #include <linux/slab.h>
+#include <linux/fs.h>
+#include <linux/proc_fs.h>
 
 #include "config.h"
 #include "driver_define.h"
@@ -21,6 +23,10 @@ int skel_open(struct inode *inode, struct file *file);
 int skel_release(struct inode *inode, struct file *file);
 ssize_t skel_read (struct file* file, char __user *buff, size_t count, loff_t *f_pos) ;
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
+
+int skel_proc_open(struct inode *inode, struct file *file);
+ssize_t skel_proc_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos);
+
 
 /** ベンダーIDとプロダクトIDの登録 **/ 
 struct usb_device_id skel_table[] = {
@@ -52,6 +58,13 @@ struct usb_class_driver skel_class = {
 	.minor_base = MINOR_BASE
 };
 
+
+struct proc_dir_entry* proc_entry;
+
+struct proc_ops skel_proc_fops = {
+	.proc_open = skel_proc_open,
+	.proc_read = skel_proc_read,
+};
 
 static void skel_dispose(struct kref* pKref) 
 {
@@ -90,15 +103,23 @@ int skel_release(struct inode *inode, struct file *file)
  * 
  * **/
 
+struct user_read_result read_results; 
+static const int MAX_IN_TEXT_SIZE = 64;
+
 /* データの解釈 */
-void report_in_handler(u8 *buf, int length)
+void report_in_handler(unsigned char *buf, int length)
 {
 	DMESG_INFO("[I] Read Message:%d", length);
 	printk("Data:");
 
-	for(int i = 0 ; i < length; i ++) 
+	if( buf[0] == 'r' ) 
 	{
-		printk(KERN_CONT "%x ", buf[i]);			
+		int datasize = buf[1];
+
+		for(int i = 0 ; i < datasize; ++i) 
+		{
+			printk(KERN_CONT "%x ", buf[i+2]);			
+		}
 	}
 
 	DMESG_INFO("Report Handled");
@@ -138,6 +159,9 @@ int prepare_read(struct usb_interface* ip, const struct usb_device_id* pID, stru
 	pDev->int_in_buffer = kmalloc(pDev->int_in_buffer_length, GFP_KERNEL);
 	memset(pDev->int_in_buffer, 0, pDev->int_in_buffer_length);
 	DMESG_INFO("Allocation");
+
+	read_results.buffer = kmalloc(MAX_IN_TEXT_SIZE, GFP_KERNEL);
+	read_results.buffer_length = MAX_IN_TEXT_SIZE;
 
 	return 0;
 }
@@ -374,6 +398,11 @@ skel_write_urb_Error:
 	return -1;
 }
 
+
+static const int MAX_PROC_TEXT_SIZE = 128;
+static const char* PROC_NAME = "BeuatoProc";
+
+
 /**
  * USB接続開始
  * 
@@ -438,8 +467,14 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 		goto L_Error;
 	}
 
+	proc_entry = proc_create(PROC_NAME, S_IRUSR | S_IWUSR | S_IWGRP | S_IRGRP | S_IWOTH | S_IROTH, NULL, &skel_proc_fops);
+	if(proc_entry == NULL)
+	{
+		DMESG_ERR("procfs error");
+		goto L_Error;
+	}
+
 	return 0;
-	//return run_read(pDev);
 L_Error:
 	if(pDev) 
 	{
@@ -462,6 +497,7 @@ void skel_disconnect(struct usb_interface* ip)
 
 	// dispose interrupt in buffer
 	kfree(pDev->int_in_buffer);
+	kfree(read_results.buffer);
 	DMESG_INFO("Free Buffer");
 
 	usb_free_urb(pDev->int_in_urb);
@@ -469,9 +505,39 @@ void skel_disconnect(struct usb_interface* ip)
 
 	usb_deregister_dev(ip, &skel_class);
 	kref_put(&pDev->kref, skel_dispose);
+
+	remove_proc_entry(PROC_NAME, NULL);
 }
+
+
+int skel_proc_open(struct inode *inode, struct file *file)
+{
+	DMESG_INFO("Open");
+
+	return 0;
+}
+
+ssize_t skel_proc_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
+{
+	int len = 0;
+	char temp_buff[64];
+	memset(temp_buff, 0, 64);
+	len = sprintf(temp_buff, "Hello\n");
+
+	int ret = copy_to_user(buf, temp_buff, len);
+	if(ret != 0)
+	{
+		DMESG_ERR("copy_to_info failed:%d", ret);
+		return -EFAULT;
+	}
+
+	f_pos += len;
+
+	return len;
+}
+
 
 MODULE_DEVICE_TABLE(usb, skel_table);
 module_usb_driver(skel_driver);
 
-MODULE_LICENSE("Dual BSD/GPL");
+MODULE_LICENSE("GPL");

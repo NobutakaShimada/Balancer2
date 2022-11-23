@@ -1,4 +1,7 @@
+CONFIG_MODULE_SIG=n
+
 CFILES = myBeuatoDriver.c
+
 
 obj-m := myBeuatoDriver.o
 MyDeviceModule-objs := $(CFILES:.c=.o)

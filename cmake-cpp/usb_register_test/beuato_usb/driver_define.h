@@ -1,6 +1,8 @@
 #pragma once
 
 #include <linux/usb.h>
+#include <linux/fs.h>
+#include <linux/proc_fs.h>
 
 struct usb_skel {
 	struct usb_device* udev;
@@ -29,6 +31,13 @@ struct user_read_parameter
 {
     long address;
     long datasize;
+} ;
+
+struct user_read_result 
+{
+    long datasize;
+    char* buffer;
+    int buffer_length;
 } ;
 
 struct user_command 
