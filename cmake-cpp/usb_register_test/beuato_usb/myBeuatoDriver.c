@@ -82,18 +82,6 @@ int skel_release(struct inode *inode, struct file *file)
 	return 0;
 }
 
-loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos) 
-{
-	for(loff_t i = pos ; i < count; i ++ ) 
-	{
-		if(buff_from_user[i] == ' ') 
-		{
-			return i;
-		}
-	}
-
-	return -1;
-}
 
 
 /** USB-HID-INの制御 
@@ -221,36 +209,105 @@ void urb_out_complete(struct urb* urb)
 	DMESG_INFO("Completed");
 }
 
+/** Spaceの位置の検索 **/
+loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos) 
+{
+	for(loff_t i = pos ; i < count; i ++ ) 
+	{
+		if(buff_from_user[i] == ' ' || buff_from_user[i] == 0) 
+		{
+			return i;
+		}
+	}
+
+	return count-1;
+}
+
+static const int MAX_RAW_TEXT_SIZE = 64;
+static const int RETVAL_PARSE_OK = 0;
+static const int RETVAL_PARSE_FINISHED = 1;
+static const int RETVAL_PARSE_INVALID = -1;
+
+
+int parse_user_command(char* raw_text,  size_t count, struct user_command* command) 
+{
+	char user_raw_text[MAX_RAW_TEXT_SIZE];
+	loff_t offset = 0;
+	loff_t next_space = 0;
+	const int MAX_ARGUMENT_LOOP = 10;
+
+	if(user_raw_text[0] == 'r') 
+	{
+		command->command_state = STATE_READ;
+	}
+	else
+	{
+		command->command_state = STATE_INVALID;
+		return RETVAL_PARSE_INVALID;
+	}
+
+	for(int i = 0 ; i < MAX_ARGUMENT_LOOP; ++i) 
+	{
+		next_space = seek_space(user_raw_text, count, offset);
+
+		if(offset == next_space) 
+		{
+			return RETVAL_PARSE_FINISHED;
+		}
+
+		offset = next_space + 1;
+	}
+	
+	return RETVAL_PARSE_OK;
+}
+
 /** データ書き込み **/
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos)
 {
-	/*
-	const int MAX_RAW_TEXT_SIZE = 128;
 	if(count >= MAX_RAW_TEXT_SIZE) 
 	{
 		DMESG_ERR("Data size is too large");
 		return -1;
 	}
 
-	printk("extract start(%lld)", count);
-
 	char user_raw_text[MAX_RAW_TEXT_SIZE];
+	memset(user_raw_text, 0, MAX_RAW_TEXT_SIZE);
 	copy_from_user(user_raw_text, buff, count);
 
-	loff_t ofs = seek_space(user_raw_text, count, 0);
-	if( ofs < 0 )
+	struct user_command command;
+	parse_user_command(user_raw_text, count, &command);
+
+	loff_t ofs_1 = seek_space(user_raw_text, count, 0);
+	loff_t ofs_2 = seek_space(user_raw_text, count, ofs_1+1);
+	loff_t ofs_3 = seek_space(user_raw_text, count, ofs_2+1);
+	if( ofs_1 == ofs_2 || ofs_2 == ofs_3)
 	{
 		DMESG_ERR("Extraction of space was failed");
 		return -1;
 	}
 
 	char extract_text[MAX_RAW_TEXT_SIZE];
+	enum command_state state = STATE_INVALID;
+	long address;
+	long datasize;
+	if(user_raw_text[0] == 'r') 
+	{
+		state = STATE_READ;
+	}
+	else 
+	{
+		return 10;
+	}
+
 	memset(extract_text, 0, MAX_RAW_TEXT_SIZE);
-	memcpy(extract_text, user_raw_text, ofs);	
-
-
-	DMESG_INFO("mydevice_write(%lld):%s", ofs, extract_text);
-	*/
+	memcpy(extract_text, user_raw_text + ofs_1 + 1, ofs_2 - ofs_1 - 1);	
+	kstrtol(extract_text, 16, &address);	
+	DMESG_INFO("mydevice_write:%s, %d", extract_text, address);
+	
+	memset(extract_text, 0, MAX_RAW_TEXT_SIZE);
+	memcpy(extract_text, user_raw_text + ofs_2 + 1, ofs_3 - ofs_2 - 1);	
+	kstrtol(extract_text, 16, &datasize);
+	DMESG_INFO("mydevice_write:%s, %d", extract_text, datasize);
 
 	struct usb_skel* pDev = file->private_data;
 	
@@ -266,7 +323,9 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	transmit_buff = kmalloc(pDev->int_out_buffer_length, GFP_KERNEL);
 	memset(transmit_buff, 0, pDev->int_out_buffer_length);
 	transmit_buff[0] = 'r';
-	transmit_buff[3] = 8;
+	transmit_buff[1] = address & 0xFF;
+	transmit_buff[2] = (address & 0xFF00) >> 8;
+	transmit_buff[3] = datasize;
 
 	usb_fill_int_urb(urb_header, pDev->udev, 
 		usb_sndintpipe(pDev->udev, pDev->int_out_endpoint->bEndpointAddress),

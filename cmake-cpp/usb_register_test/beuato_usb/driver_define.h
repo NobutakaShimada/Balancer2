@@ -17,3 +17,22 @@ struct usb_skel {
     struct usb_endpoint_descriptor* int_out_endpoint;
     int int_out_buffer_length;
 } ;
+
+
+enum command_state 
+{
+    STATE_READ,
+    STATE_INVALID
+};
+
+struct user_read_parameter 
+{
+    long address;
+    long datasize;
+} ;
+
+struct user_command 
+{
+    enum command_state command_state;
+    struct user_read_parameter read_parameters;
+} ;
