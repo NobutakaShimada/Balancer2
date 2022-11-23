@@ -371,13 +371,8 @@ skel_write_buffer_Error:
 
 skel_write_urb_Error:
 	usb_free_urb(urb_header);
-
-skel_write_Error:
-	usb_free_coherent(pDev->udev, pDev->int_out_buffer_length, transmit_buff, urb_header->transfer_dma);
-	usb_free_urb(urb_header);
 	return -1;
 }
-
 
 /**
  * USB接続開始
