@@ -35,9 +35,9 @@ struct user_read_parameter
 
 struct user_read_result 
 {
-    unsigned long datasize;
-    unsigned char* buffer;
-    unsigned int buffer_length;
+    volatile unsigned long datasize;
+    volatile unsigned char* buffer;
+    volatile unsigned int buffer_length;
 } ;
 
 struct user_command 

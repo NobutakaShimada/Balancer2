@@ -116,19 +116,21 @@ void report_in_handler(unsigned char *buf, int length)
 	if( buf[0] == 'r' ) 
 	{
 		int datasize = buf[1];
+		DMESG_INFO("Data Size:%d", datasize);
 		if(datasize >= read_results.buffer_length) 
 		{
 			DMESG_ERR("Buffer Overflow");
 			return;
 		}
 
+		read_results.datasize = datasize;
+
+		DMESG_INFO("Data:", datasize);
 		for(int i = 0 ; i < read_results.datasize; ++i) 
 		{
 			printk(KERN_CONT "%x ", buf[i+2]);		
 			read_results.buffer[i] = buf[i+2];	
 		}
-
-		read_results.datasize = datasize;
 	}
 
 	DMESG_INFO("Report Handled");
@@ -169,7 +171,7 @@ int prepare_read(struct usb_interface* ip, const struct usb_device_id* pID, stru
 	memset(pDev->int_in_buffer, 0, pDev->int_in_buffer_length);
 	DMESG_INFO("Allocation");
 
-	read_results.buffer = kmalloc(MAX_IN_TEXT_SIZE, GFP_KERNEL);
+	read_results.buffer = kmalloc(MAX_IN_TEXT_SIZE, GFP_ATOMIC);
 	read_results.buffer_length = MAX_IN_TEXT_SIZE;
 
 	return 0;
@@ -551,7 +553,8 @@ ssize_t skel_proc_read(struct file *filp, char __user *buf, size_t count, loff_t
 		return -EFAULT;
 	}
 
-	//f_pos += len_all;
+	//DMESG_INFO("Rom Read Completed");
+	f_pos += len_all;
 
 	return len_all;
 }
