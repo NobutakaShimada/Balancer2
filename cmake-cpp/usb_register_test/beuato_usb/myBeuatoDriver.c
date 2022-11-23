@@ -112,14 +112,23 @@ void report_in_handler(unsigned char *buf, int length)
 	DMESG_INFO("[I] Read Message:%d", length);
 	printk("Data:");
 
+
 	if( buf[0] == 'r' ) 
 	{
 		int datasize = buf[1];
-
-		for(int i = 0 ; i < datasize; ++i) 
+		if(datasize >= read_results.buffer_length) 
 		{
-			printk(KERN_CONT "%x ", buf[i+2]);			
+			DMESG_ERR("Buffer Overflow");
+			return;
 		}
+
+		for(int i = 0 ; i < read_results.datasize; ++i) 
+		{
+			printk(KERN_CONT "%x ", buf[i+2]);		
+			read_results.buffer[i] = buf[i+2];	
+		}
+
+		read_results.datasize = datasize;
 	}
 
 	DMESG_INFO("Report Handled");
@@ -399,7 +408,7 @@ skel_write_urb_Error:
 }
 
 
-static const int MAX_PROC_TEXT_SIZE = 128;
+static const int MAX_PROC_TEXT_SIZE = 512;
 static const char* PROC_NAME = "BeuatoProc";
 
 
@@ -519,21 +528,32 @@ int skel_proc_open(struct inode *inode, struct file *file)
 
 ssize_t skel_proc_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
 {
-	int len = 0;
-	char temp_buff[64];
-	memset(temp_buff, 0, 64);
-	len = sprintf(temp_buff, "Hello\n");
+	char temp_buff[MAX_PROC_TEXT_SIZE];
+	char result_buff[MAX_PROC_TEXT_SIZE];
+	memset(temp_buff, 0, MAX_PROC_TEXT_SIZE);
 
-	int ret = copy_to_user(buf, temp_buff, len);
+	int len_head = 0;
+	len_head = sprintf(temp_buff, "r %x ", read_results.datasize);
+	
+	int offset = len_head;
+	for(int i = 0 ; i < read_results.datasize; i ++ ) 
+	{
+		int len_part = sprintf(temp_buff + offset, "%x ", read_results.buffer[i]);
+		offset += len_part;
+	}
+
+	int len_all = sprintf(result_buff, "%s\n", temp_buff);
+
+	int ret = copy_to_user(buf, result_buff, len_all);
 	if(ret != 0)
 	{
 		DMESG_ERR("copy_to_info failed:%d", ret);
 		return -EFAULT;
 	}
 
-	f_pos += len;
+	//f_pos += len_all;
 
-	return len;
+	return len_all;
 }
 
 
