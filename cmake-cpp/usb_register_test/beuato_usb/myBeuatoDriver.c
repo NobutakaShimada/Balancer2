@@ -224,19 +224,20 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 }
 
 static const int MAX_RAW_TEXT_SIZE = 64;
-static const int RETVAL_PARSE_OK = 0;
+static const int RETVAL_FUNC_OK = 0;
 static const int RETVAL_PARSE_FINISHED = 1;
 static const int RETVAL_PARSE_INVALID = -1;
 
-
 int parse_user_command(char* raw_text,  size_t count, struct user_command* command) 
 {
-	char user_raw_text[MAX_RAW_TEXT_SIZE];
+	char temporary_text[MAX_RAW_TEXT_SIZE];
 	loff_t offset = 0;
 	loff_t next_space = 0;
 	const int MAX_ARGUMENT_LOOP = 10;
 
-	if(user_raw_text[0] == 'r') 
+	memset(command, 0, sizeof(struct user_command));
+
+	if(raw_text[0] == 'r') 
 	{
 		command->command_state = STATE_READ;
 	}
@@ -246,19 +247,64 @@ int parse_user_command(char* raw_text,  size_t count, struct user_command* comma
 		return RETVAL_PARSE_INVALID;
 	}
 
+	offset = seek_space(raw_text, count, 0);
+
 	for(int i = 0 ; i < MAX_ARGUMENT_LOOP; ++i) 
 	{
-		next_space = seek_space(user_raw_text, count, offset);
+		next_space = seek_space(raw_text, count, offset + 1);
 
 		if(offset == next_space) 
 		{
 			return RETVAL_PARSE_FINISHED;
 		}
 
-		offset = next_space + 1;
+		if( command->command_state == STATE_READ ) 
+		{
+			struct user_read_parameter* read_parameter = &command->read_parameters;
+
+			memset(temporary_text, 0, MAX_RAW_TEXT_SIZE);
+			memcpy(temporary_text, raw_text + offset + 1, next_space - offset - 1);	
+
+			DMESG_INFO("argument(%d,%d):%s", offset, next_space, temporary_text);
+
+			switch(i)
+			{
+				case 0:
+					kstrtol(temporary_text, 16, &read_parameter->address);	
+					break;
+				case 1:
+					kstrtol(temporary_text, 16, &read_parameter->datasize);	
+					break;
+			}
+		}
+		
+		offset = next_space;
 	}
 	
-	return RETVAL_PARSE_OK;
+	return RETVAL_FUNC_OK;
+}
+
+static const int RETVAL_FORMAT_INVALID = -1;
+
+int format_buffer_command(const struct user_command* command, char** buffer, int buffer_size)
+{
+	if(command->command_state == STATE_READ) 
+	{
+		char* transmit_buff = *buffer;
+		long address = command->read_parameters.address;
+		long datasize = command->read_parameters.datasize;
+
+		transmit_buff[0] = 'r';
+		transmit_buff[1] = address & 0xFF;
+		transmit_buff[2] = (address & 0xFF00) >> 8;
+		transmit_buff[3] = datasize;
+	}
+	else 
+	{
+		return RETVAL_FORMAT_INVALID;
+	}
+
+	return RETVAL_FUNC_OK;
 }
 
 /** データ書き込み **/
@@ -275,39 +321,14 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	copy_from_user(user_raw_text, buff, count);
 
 	struct user_command command;
-	parse_user_command(user_raw_text, count, &command);
-
-	loff_t ofs_1 = seek_space(user_raw_text, count, 0);
-	loff_t ofs_2 = seek_space(user_raw_text, count, ofs_1+1);
-	loff_t ofs_3 = seek_space(user_raw_text, count, ofs_2+1);
-	if( ofs_1 == ofs_2 || ofs_2 == ofs_3)
+	if(parse_user_command(user_raw_text, count, &command) < 0 )
 	{
-		DMESG_ERR("Extraction of space was failed");
+		DMESG_ERR("Parsing failed");
 		return -1;
 	}
 
-	char extract_text[MAX_RAW_TEXT_SIZE];
-	enum command_state state = STATE_INVALID;
-	long address;
-	long datasize;
-	if(user_raw_text[0] == 'r') 
-	{
-		state = STATE_READ;
-	}
-	else 
-	{
-		return 10;
-	}
-
-	memset(extract_text, 0, MAX_RAW_TEXT_SIZE);
-	memcpy(extract_text, user_raw_text + ofs_1 + 1, ofs_2 - ofs_1 - 1);	
-	kstrtol(extract_text, 16, &address);	
-	DMESG_INFO("mydevice_write:%s, %d", extract_text, address);
-	
-	memset(extract_text, 0, MAX_RAW_TEXT_SIZE);
-	memcpy(extract_text, user_raw_text + ofs_2 + 1, ofs_3 - ofs_2 - 1);	
-	kstrtol(extract_text, 16, &datasize);
-	DMESG_INFO("mydevice_write:%s, %d", extract_text, datasize);
+	long address = command.read_parameters.address;
+	long datasize = command.read_parameters.datasize;
 
 	struct usb_skel* pDev = file->private_data;
 	
@@ -316,44 +337,40 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	if(!urb_header) 
 	{
 		DMESG_ERR("Memory allocation failed");
-		return -1;
+		goto skel_write_urb_Error;
 	}
 
 	char* transmit_buff;
 	transmit_buff = kmalloc(pDev->int_out_buffer_length, GFP_KERNEL);
 	memset(transmit_buff, 0, pDev->int_out_buffer_length);
-	transmit_buff[0] = 'r';
-	transmit_buff[1] = address & 0xFF;
-	transmit_buff[2] = (address & 0xFF00) >> 8;
-	transmit_buff[3] = datasize;
-
-	usb_fill_int_urb(urb_header, pDev->udev, 
-		usb_sndintpipe(pDev->udev, pDev->int_out_endpoint->bEndpointAddress),
-		transmit_buff,
-		pDev->int_out_buffer_length,
-		urb_out_complete,
-		pDev,
-		pDev->int_out_endpoint->bInterval
-	);
-
-	DMESG_INFO("Buffer Allocated");
-	
-	if(transmit_buff == NULL) 
+	if (format_buffer_command(&command, &transmit_buff, pDev->int_out_buffer_length ) < 0)
 	{
-		goto skel_write_Error;
+		DMESG_ERR("Format failed");
+		goto skel_write_buffer_Error;
 	}
 
-	usb_submit_urb(urb_header, GFP_KERNEL);
+	usb_fill_int_urb(
+			urb_header, pDev->udev, 
+			usb_sndintpipe(pDev->udev, pDev->int_out_endpoint->bEndpointAddress),
+			transmit_buff,
+			pDev->int_out_buffer_length,
+			urb_out_complete,
+			pDev,
+			pDev->int_out_endpoint->bInterval);
 
+	usb_submit_urb(urb_header, GFP_KERNEL);
+	
 	run_read(pDev);
 
 	kfree(transmit_buff);
-	DMESG_INFO("Free Buffer");
-
 	usb_free_urb(urb_header);
-	DMESG_INFO("Free Urb");
-	
 	return count;
+
+skel_write_buffer_Error:
+	kfree(transmit_buff);
+
+skel_write_urb_Error:
+	usb_free_urb(urb_header);
 
 skel_write_Error:
 	usb_free_coherent(pDev->udev, pDev->int_out_buffer_length, transmit_buff, urb_header->transfer_dma);
