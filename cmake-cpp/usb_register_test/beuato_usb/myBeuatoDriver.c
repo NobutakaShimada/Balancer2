@@ -24,9 +24,6 @@ int skel_release(struct inode *inode, struct file *file);
 ssize_t skel_read (struct file* file, char __user *buff, size_t count, loff_t *f_pos) ;
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
 
-int skel_proc_open(struct inode *inode, struct file *file);
-ssize_t skel_proc_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos);
-
 
 /** ベンダーIDとプロダクトIDの登録 **/ 
 struct usb_device_id skel_table[] = {
@@ -48,6 +45,7 @@ struct file_operations skel_fops = {
 	.owner = THIS_MODULE,
 	.open = skel_open,
 	.release = skel_release,
+	.read = skel_read,
 	.write = skel_write,
 };
 
@@ -59,12 +57,7 @@ struct usb_class_driver skel_class = {
 };
 
 
-struct proc_dir_entry* proc_entry;
 
-struct proc_ops skel_proc_fops = {
-	.proc_open = skel_proc_open,
-	.proc_read = skel_proc_read,
-};
 
 static void skel_dispose(struct kref* pKref) 
 {
@@ -411,8 +404,6 @@ skel_write_urb_Error:
 
 
 static const int MAX_PROC_TEXT_SIZE = 512;
-static const char* PROC_NAME = "BeuatoProc";
-
 
 /**
  * USB接続開始
@@ -478,13 +469,6 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 		goto L_Error;
 	}
 
-	proc_entry = proc_create(PROC_NAME, S_IRUSR | S_IWUSR | S_IWGRP | S_IRGRP | S_IWOTH | S_IROTH, NULL, &skel_proc_fops);
-	if(proc_entry == NULL)
-	{
-		DMESG_ERR("procfs error");
-		goto L_Error;
-	}
-
 	return 0;
 L_Error:
 	if(pDev) 
@@ -516,19 +500,10 @@ void skel_disconnect(struct usb_interface* ip)
 
 	usb_deregister_dev(ip, &skel_class);
 	kref_put(&pDev->kref, skel_dispose);
-
-	remove_proc_entry(PROC_NAME, NULL);
 }
 
 
-int skel_proc_open(struct inode *inode, struct file *file)
-{
-	DMESG_INFO("Open");
-
-	return 0;
-}
-
-ssize_t skel_proc_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
+ssize_t skel_read (struct file* file, char __user *buf, size_t count, loff_t *f_pos) 
 {
 	char temp_buff[MAX_PROC_TEXT_SIZE];
 	char result_buff[MAX_PROC_TEXT_SIZE];
@@ -553,11 +528,11 @@ ssize_t skel_proc_read(struct file *filp, char __user *buf, size_t count, loff_t
 		return -EFAULT;
 	}
 
-	//DMESG_INFO("Rom Read Completed");
 	f_pos += len_all;
 
 	return len_all;
 }
+
 
 
 MODULE_DEVICE_TABLE(usb, skel_table);
