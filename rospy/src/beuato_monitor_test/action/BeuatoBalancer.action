@@ -1,0 +1,7 @@
+# Goal
+---
+# Result
+uint32 sampling_number
+---
+# Feedback
+int16[] ad_gyro

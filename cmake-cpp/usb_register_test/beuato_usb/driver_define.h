@@ -14,7 +14,6 @@ struct usb_skel {
     unsigned char* int_in_buffer;
     int int_in_buffer_length;
     struct urb* int_in_urb;
-    dma_addr_t* int_in_dma;
 
     struct usb_endpoint_descriptor* int_out_endpoint;
     int int_out_buffer_length;

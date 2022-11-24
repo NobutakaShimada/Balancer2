@@ -69,6 +69,8 @@ static void skel_dispose(struct kref* pKref)
 /* デバイスオープン時に実行 */
 int skel_open(struct inode *inode, struct file *file)
 {
+	DMESG_INFO("Device open");
+
 	struct usb_interface* ip = usb_find_interface(&skel_driver, iminor(inode));
 	struct usb_skel* pDev = usb_get_intfdata(ip);
 
@@ -82,6 +84,8 @@ int skel_open(struct inode *inode, struct file *file)
 /* デバイスリリース時に実行 */
 int skel_release(struct inode *inode, struct file *file)
 {
+	DMESG_INFO("Device release");
+
 	struct usb_skel* pDev = file->private_data;
 	kref_put(&pDev->kref, skel_dispose);
 
@@ -91,10 +95,7 @@ int skel_release(struct inode *inode, struct file *file)
 
 
 /** USB-HID-INの制御 
- * 
- * 
- * 
- * **/
+ **/
 
 struct user_read_result read_results; 
 static const int MAX_IN_TEXT_SIZE = 64;
@@ -220,7 +221,6 @@ void urb_out_complete(struct urb* urb)
 	switch (urb->status) {
 	case 0:
 		report_out_handler(urb->transfer_buffer, urb->transfer_buffer_length);
-		//usb_submit_urb(urb, GFP_ATOMIC);
 		DMESG_INFO("Urb Success");
 		break;
 	case -ECONNRESET:
@@ -230,7 +230,6 @@ void urb_out_complete(struct urb* urb)
 		break;
 	default:
 		DMESG_ERR("urb status %d received\n", urb->status);
-		//usb_submit_urb(urb, GFP_ATOMIC);			
 		break;
 	}
 
@@ -392,6 +391,7 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 
 	kfree(transmit_buff);
 	usb_free_urb(urb_header);
+
 	return count;
 
 skel_write_buffer_Error:
