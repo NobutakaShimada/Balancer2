@@ -11,24 +11,50 @@ from std_msgs.msg import UInt32
 
 from beuato_monitor_test.msg import BeuatoBalancerAction, BeuatoBalancerGoal
 
-
 action_client = actionlib.SimpleActionClient('my_beuato', BeuatoBalancerAction)
+
+class DataBoard:
+    _max_count = 0    
+    
+    def __init__(self, *args, **kwargs):
+        self._data = []
+
+        if 'max_count' in kwargs:
+            self._max_count = kwargs['max_count']
+        
+    def add(self, value):
+        rospy.loginfo('add value:{0}'.format(value))
+        self._data.append(value)
+        
+        if self._max_count == 0:
+            return
+        
+        if self._data.count >= self._max_count:
+            num = self._data.count - self._max_count
+            
+            for i in range(0, num):
+                self._data.pop(0)
+    
+    def refer(self):
+        return self._data
+    
+    def clear(self):
+        return self._data.clear()
+
+
 
 def init():
     rospy.init_node('beuato_client_controller', disable_signals=True)
     action_client.wait_for_server()
 
-def ros_callback(msg):
-    print(msg)
-
 # https://answers.ros.org/question/234418/easiest-way-to-implement-http-server-that-can-send-ros-messages/
 threading.Thread(target=lambda: init()).start()
 
-
 app = Flask(__name__)
+data_board = DataBoard()
 
 def receive_callback(feedback):
-    print(feedback)
+    data_board.add(feedback.ad_gyro)
 
 @app.route('/')
 def hello_world():
@@ -36,6 +62,7 @@ def hello_world():
 
 @app.route('/capture_start')
 def capture_start():   
+    data_board.clear()
     goal = BeuatoBalancerGoal()
     goal.is_capture_mode = True
     action_client.send_goal(goal, feedback_cb=receive_callback)
@@ -50,6 +77,7 @@ def capture_stop():
 
 @app.route('/sampling', methods=["GET"])
 def run_sampling():
+    data_board.clear()
     number = request.args.get('number')
     if number == None:
         abort(400)
@@ -59,10 +87,18 @@ def run_sampling():
     action_client.send_goal(goal, feedback_cb=receive_callback)
     
     return 'Sampling...'
+
+@app.route('/recent')
+def get_recent_data():
+    data_context = ""
+    data_current = data_board.refer()
+    
+    for data in data_current:
+        data_context = data_context + str(data) + ","
+    
+    return 'Gyro Data({0}):'.format(len(data_current)) + data_context
     
 
-def receive_callback(feedback):
-    print(feedback)
 
 if __name__ == '__main__':    
     app.run(debug=True)
