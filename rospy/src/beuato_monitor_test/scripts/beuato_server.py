@@ -52,6 +52,10 @@ class BeuatoBalancerServer(object):
             sensor_value = 0
             with open(self._beuato_dir, 'r') as fin:                    
                 temp = fin.readline().split(" ")
+                
+                if len(temp) < 4:
+                    continue
+                
                 temp_arr = int(temp[3], 16).to_bytes(1, 'big') + int(temp[2], 16).to_bytes(1, 'big')
                 
                 sensor_value = int.from_bytes(temp_arr, 'big', signed=True)
