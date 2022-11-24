@@ -31,5 +31,6 @@ catkin_install_python(
   PROGRAMS
   scripts/beuato_server.py
   scripts/beuato_client.py
+  scripts/beuato_client_controller.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
