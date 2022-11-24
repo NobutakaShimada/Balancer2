@@ -30,5 +30,6 @@ include_directories(
 catkin_install_python(
   PROGRAMS
   scripts/beuato_server.py
+  scripts/beuato_client.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

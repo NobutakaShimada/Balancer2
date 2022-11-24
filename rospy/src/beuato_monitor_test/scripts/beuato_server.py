@@ -2,6 +2,7 @@
 #!usr/env/bin python3
 
 import os
+import sys
 import rospy
 import actionlib
 
@@ -29,11 +30,20 @@ class BeuatoBalancerServer(object):
     def execute_callback(self, goal):
         suspend = False
         rate = rospy.Rate(2)
+
+        sampling_size = sys.maxsize
+        if goal.is_capture_mode == False:
+            sampling_size = goal.sampling_number
+        
         counter = 0
-        for counter in range(0, 1000):
+        for i in range(0, sampling_size):
+            counter = counter + 1
+            
             if self._as.is_preempt_requested():
                 rospy.loginfo('%s Preempted' % self._action_name)
-                success = True
+                suspend = True
+                self._result.sampling_number = counter
+                self._as.set_preempted(self._result)
                 break
 
             with open(self._beuato_dir, 'w') as fout:            
@@ -47,12 +57,13 @@ class BeuatoBalancerServer(object):
                 sensor_value = int.from_bytes(temp_arr, 'big', signed=True)
                 rospy.loginfo("{0}".format(temp_arr))
                        
-            self._feedback.ad_gyro.append(sensor_value)
+            self._feedback.ad_gyro = sensor_value
             self._as.publish_feedback(self._feedback)
             rate.sleep()
 
-        self._result.sampling_number = counter
-        self._as.set_succeeded(self._result)
+        if suspend == False:
+            self._result.sampling_number = counter
+            self._as.set_succeeded(self._result)
 
     def is_connected(self):
         return self._is_connect_device

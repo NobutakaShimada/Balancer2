@@ -1,7 +1,9 @@
 # Goal
+bool is_capture_mode
+uint32 sampling_number
 ---
 # Result
 uint32 sampling_number
 ---
 # Feedback
-int16[] ad_gyro
+int16 ad_gyro
