@@ -24,8 +24,6 @@ def ros_callback(msg):
 # https://answers.ros.org/question/234418/easiest-way-to-implement-http-server-that-can-send-ros-messages/
 threading.Thread(target=lambda: init()).start()
 
-rospy.Subscriber('/request', UInt32, ros_callback)
-pub = rospy.Publisher('/response', UInt32, queue_size=10)
 
 app = Flask(__name__)
 
