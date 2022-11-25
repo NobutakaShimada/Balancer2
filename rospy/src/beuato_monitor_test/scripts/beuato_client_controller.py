@@ -4,8 +4,10 @@
 import rospy
 import actionlib
 import threading
+import os
+import rosparam
 
-from flask import Flask, request, abort
+from flask import Flask, request, render_template, redirect, abort
 
 from std_msgs.msg import UInt32
 
@@ -43,22 +45,30 @@ class DataBoard:
 
 
 
+root_path = rosparam.get_param("/beuato_client_controller/flask_root_path")
+if root_path != None:
+    app = Flask(__name__, root_path=root_path)
+else:
+    app = Flask(__name__)    
+    
+
+data_board = DataBoard()
+
+
 def init():
+    print(app.root_path)
     rospy.init_node('beuato_client_controller', disable_signals=True)
     action_client.wait_for_server()
 
 # https://answers.ros.org/question/234418/easiest-way-to-implement-http-server-that-can-send-ros-messages/
 threading.Thread(target=lambda: init()).start()
 
-app = Flask(__name__)
-data_board = DataBoard()
-
 def receive_callback(feedback):
     data_board.add(feedback.ad_gyro)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return render_template('index.html')
 
 @app.route('/capture_start')
 def capture_start():   
@@ -67,13 +77,13 @@ def capture_start():
     goal.is_capture_mode = True
     action_client.send_goal(goal, feedback_cb=receive_callback)
     
-    return 'Capture Start'
+    return redirect('/recent')
     
 @app.route('/capture_stop')
 def capture_stop():
     action_client.cancel_goal()
     
-    return 'Capture Stop'
+    return redirect('/recent')
 
 @app.route('/sampling', methods=["GET"])
 def run_sampling():
