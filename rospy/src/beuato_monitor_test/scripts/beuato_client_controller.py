@@ -46,7 +46,7 @@ class DataBoard:
 
 
 root_path = rosparam.get_param("/beuato_client_controller/flask_root_path")
-if root_path != None:
+if root_path != "":
     app = Flask(__name__, root_path=root_path)
 else:
     app = Flask(__name__)    
@@ -67,8 +67,14 @@ def receive_callback(feedback):
     data_board.add(feedback.ad_gyro)
 
 @app.route('/')
-def hello_world():
+def index():
     return render_template('index.html')
+
+
+@app.route('/dashboard')
+def index_dashboard():
+    return render_template('/dashboard/index.html')
+
 
 @app.route('/capture_start')
 def capture_start():   
@@ -96,7 +102,7 @@ def run_sampling():
     goal.sampling_number = int(number)
     action_client.send_goal(goal, feedback_cb=receive_callback)
     
-    return 'Sampling...'
+    return redirect('/recent')
 
 @app.route('/recent')
 def get_recent_data():
@@ -108,6 +114,15 @@ def get_recent_data():
     
     return 'Gyro Data({0}):'.format(len(data_current)) + data_context
     
+    
+@app.route('/api/recent')
+def get_recent_data_api():
+    transmit_data = { 
+        'ad_gyro' : data_board.refer(),
+        'sampling_number' : len(data_board.refer())
+    }
+    
+    return transmit_data
 
 
 if __name__ == '__main__':    
