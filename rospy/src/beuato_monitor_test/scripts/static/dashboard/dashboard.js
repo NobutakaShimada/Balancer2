@@ -12,7 +12,8 @@
   $.ajax({
     url: '/api/recent',
     type: 'get',
-    cache: false,
+    data : {},
+    cache: true,
     dataType: 'json'
    })
    .done(function(response){
@@ -56,7 +57,6 @@
         }
       }
     })
-    
    })
    .fail(function(xhr) {
     console.log("failed");

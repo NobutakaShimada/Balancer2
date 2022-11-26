@@ -5,6 +5,9 @@ import os
 import sys
 import rospy
 import actionlib
+import stat
+
+from common_driver.beuato_errorcode import BeuatoErrorCode
 
 from beuato_monitor_test.msg import BeuatoBalancerAction, BeuatoBalancerResult, BeuatoBalancerFeedback
 
@@ -17,18 +20,39 @@ class BeuatoBalancerServer(object):
     
     
     def __init__(self, name):
-        if os.path.exists(self._beuato_dir) == False:
+        if self.is_device_found() == False:
             rospy.logerr("Not Found Device : {0}".format(self._beuato_dir))
-            return
-        
+        elif self.is_device_accessible() == False:
+            rospy.logerr("Device Accesibility Error : {0}".format(self._beuato_dir))
+                
         self._is_connect_device = True
 
         self._action_name = name
         self._as = actionlib.SimpleActionServer(self._action_name, BeuatoBalancerAction, execute_cb=self.execute_callback, auto_start=False)
         self._as.start()
         
+    def is_device_found(self):
+        return os.path.exists(self._beuato_dir)
+    
+    def is_device_accessible(self):       
+        st = os.stat(self._beuato_dir)
+        return bool(st.st_mode & (stat.S_IRUSR | stat.S_IWUSR))
+    
+    def suspend_loop(self, counter):
+        self._suspend = True
+        self._result.sampling_number = counter
+        self._result.is_suspend_for_error = False
+        self._as.set_preempted(self._result)
+    
+    def abort_loop(self, counter, error_state):
+        self._suspend = True
+        self._result.sampling_number = counter
+        self._result.is_suspend_for_error = True
+        self._result.errorcode = error_state.value
+        self._as.set_succeeded(self._result)
+    
     def execute_callback(self, goal):
-        suspend = False
+        self._suspend = False
         rate = rospy.Rate(2)
 
         sampling_size = sys.maxsize
@@ -36,20 +60,26 @@ class BeuatoBalancerServer(object):
             sampling_size = goal.sampling_number
         
         counter = 0
-        for i in range(0, sampling_size):
-            counter = counter + 1
-            
+        for i in range(0, sampling_size):           
             if self._as.is_preempt_requested():
                 rospy.loginfo('%s Preempted' % self._action_name)
-                suspend = True
-                self._result.sampling_number = counter
-                self._as.set_preempted(self._result)
+                self.suspend_loop(counter)
+            elif self.is_device_found() == False :
+                rospy.logerr("Not Found Device : {0}".format(self._beuato_dir))
+                self.abort_loop(counter, BeuatoErrorCode.DEVICE_NOT_FOUND)
+            elif self.is_device_accessible() == False:
+                rospy.logerr("Device Accesibility Error : {0}".format(self._beuato_dir))
+                self.abort_loop(counter, BeuatoErrorCode.DEVICE_ACCESIBILITY_ERROR)
+            
+            if self._suspend == True:
                 break
 
             with open(self._beuato_dir, 'w') as fout:            
                 fout.write('r 68 2 ')
-                
+            
+            counter = counter + 1
             sensor_value = 0
+
             with open(self._beuato_dir, 'r') as fin:                    
                 temp = fin.readline().split(" ")
                 
@@ -65,7 +95,7 @@ class BeuatoBalancerServer(object):
             self._as.publish_feedback(self._feedback)
             rate.sleep()
 
-        if suspend == False:
+        if self._suspend == False:
             self._result.sampling_number = counter
             self._as.set_succeeded(self._result)
 

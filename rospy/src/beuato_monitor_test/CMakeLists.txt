@@ -14,6 +14,8 @@ add_action_files(
     BeuatoBalancer.action
 )
 
+catkin_python_setup()
+
 generate_messages(
   DEPENDENCIES
   std_msgs
@@ -21,11 +23,14 @@ generate_messages(
 )
 
 
+
 catkin_package()
 
 include_directories(
     ${catkin_INCLUDE_DIRS}
 )
+
+
 
 catkin_install_python(
   PROGRAMS
