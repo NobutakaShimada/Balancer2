@@ -6,6 +6,7 @@ import sys
 import rospy
 import actionlib
 import stat
+import time
 
 from common_driver.beuato_errorcode import BeuatoErrorCode
 
@@ -60,6 +61,7 @@ class BeuatoBalancerServer(object):
             sampling_size = goal.sampling_number
         
         counter = 0
+        time_start = time.perf_counter()
         for i in range(0, sampling_size):           
             if self._as.is_preempt_requested():
                 rospy.loginfo('%s Preempted' % self._action_name)
@@ -90,7 +92,9 @@ class BeuatoBalancerServer(object):
                 
                 sensor_value = int.from_bytes(temp_arr, 'big', signed=True)
                 rospy.loginfo("{0}".format(temp_arr))
-                       
+            
+            time_sampling = time.perf_counter()
+            self._feedback.time = time_sampling - time_start
             self._feedback.ad_gyro = sensor_value
             self._as.publish_feedback(self._feedback)
             rate.sleep()

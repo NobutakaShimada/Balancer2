@@ -9,6 +9,9 @@ import rosparam
 
 from flask import Flask, request, render_template, redirect, abort
 
+import numpy as np
+import pandas as pd
+
 from std_msgs.msg import UInt32
 
 from beuato_monitor_test.msg import BeuatoBalancerAction, BeuatoBalancerGoal
@@ -21,24 +24,27 @@ class DataBoard:
     _errorcode = BeuatoErrorCode.OK
     
     def __init__(self, *args, **kwargs):
-        self._data = []
+        self._data = pd.Series([0], index=[0.0])
+        self._values = []
         self._error_reason = None
 
         if 'max_count' in kwargs:
             self._max_count = kwargs['max_count']
         
-    def add(self, value):
-        rospy.loginfo('add value:{0}'.format(value))
-        self._data.append(value)
+    def add(self, time, value):       
+        df_add = pd.DataFrame( {'time' : [time], 'value' : [value]})
+        self._data = pd.concat([self._data, df_add ], ignore_index=True)
+        
+        self._values.append(value)
         
         if self._max_count == 0:
             return
         
-        if self._data.count >= self._max_count:
-            num = self._data.count - self._max_count
+        if self._values.count >= self._max_count:
+            num = self._values.count - self._max_count
             
             for i in range(0, num):
-                self._data.pop(0)
+                self._values.pop(0)
     
     def give_errorcode(self, errorcode):
         self._errorcode = BeuatoErrorCode(errorcode)
@@ -47,13 +53,15 @@ class DataBoard:
         return self._errorcode.value
     
     def refer(self):
-        return self._data
+        return self._values
+    
+    def print_data(self):
+        print(self._data)
     
     def clear(self):
         self._errorcode = BeuatoErrorCode.OK
-        return self._data.clear()
-
-
+        self._data = pd.DataFrame([{'time':0.0, 'value':0.0}], columns=['time', 'value'])
+        self._values.clear()
 
 root_path = rosparam.get_param("/beuato_client_controller/flask_root_path")
 if root_path != "":
@@ -73,7 +81,8 @@ def init():
 threading.Thread(target=lambda: init()).start()
 
 def receive_callback(feedback):
-    data_board.add(feedback.ad_gyro)
+    print(feedback)
+    data_board.add(feedback.time, feedback.ad_gyro)
 
 def complete_callback(status, result):
     rospy.loginfo('complete callback')
@@ -129,6 +138,8 @@ def get_recent_data_api():
     errorcode = data_board.get_errorcode()
     transmit_data['is_error'] = errorcode != BeuatoErrorCode.OK.value
     transmit_data['errorcode'] = errorcode
+
+    data_board.print_data()
 
     return transmit_data
 

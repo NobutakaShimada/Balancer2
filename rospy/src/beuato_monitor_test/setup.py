@@ -5,7 +5,7 @@ from distutils.core import setup
 from catkin_pkg.python_setup import generate_distutils_setup
 d = generate_distutils_setup(
     packages=['common_driver'],
-    package_dir={'': 'src'},
-    requires=['std_msgs', 'rospy', 'rosbag', 'tf']
+    package_dir={'': 'scripts'},
+    requires=['std_msgs', 'rospy']
 )
 setup(**d)

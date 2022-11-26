@@ -46,9 +46,19 @@
       },
       options: {
         scales: {
+          xAxes : [{
+            scaleLabel : {
+              display : true,
+              labelString : "Time [s]"
+            }
+          }],
           yAxes: [{
             ticks: {
-              beginAtZero: false
+              beginAtZero: false,
+            },
+            scaleLabel : {
+              display : true,
+              labelString : "Gyro Value"
             }
           }]
         },
