@@ -27,6 +27,7 @@ class DataBoard:
         self._data = pd.Series([0], index=[0.0])
         self._values = []
         self._error_reason = None
+        self._predicted_period = 1
 
         if 'max_count' in kwargs:
             self._max_count = kwargs['max_count']
@@ -55,12 +56,30 @@ class DataBoard:
     def refer(self):
         return self._values
     
+    def set_predicted_period(self, value):
+        self._predicted_period = value
+
+    def refer_predicted_period(self):
+        return self._predicted_period
+    
+    def refer_time(self):
+        if 'time' not in self._data:
+            return list()
+        else:
+            return list(self._data['time'].values)
+    
+    def refer_data(self):
+        if 'value' not in self._data:
+            return list()
+        else:
+            return list(self._data['value'].values)
+    
     def print_data(self):
         print(self._data)
     
     def clear(self):
         self._errorcode = BeuatoErrorCode.OK
-        self._data = pd.DataFrame([{'time':0.0, 'value':0.0}], columns=['time', 'value'])
+        self._data = pd.DataFrame(columns=['time', 'value'])
         self._values.clear()
 
 root_path = rosparam.get_param("/beuato_client_controller/flask_root_path")
@@ -83,6 +102,7 @@ threading.Thread(target=lambda: init()).start()
 def receive_callback(feedback):
     print(feedback)
     data_board.add(feedback.time, feedback.ad_gyro)
+    data_board.set_predicted_period(feedback.predicted_period)
 
 def complete_callback(status, result):
     rospy.loginfo('complete callback')
@@ -131,8 +151,10 @@ def run_sampling():
 @app.route('/api/recent')
 def get_recent_data_api():
     transmit_data = { 
-        'ad_gyro' : data_board.refer(),
-        'sampling_number' : len(data_board.refer())
+        'time' : data_board.refer_time(),
+        'ad_gyro' : data_board.refer_data(),
+        'sampling_number' : len(data_board.refer()),
+        'predicted_period' : data_board.refer_predicted_period()
     }
     
     errorcode = data_board.get_errorcode()

@@ -10,3 +10,4 @@ int32 errorcode
 # Feedback
 int16 ad_gyro
 float32 time
+float32 predicted_period

@@ -96,6 +96,7 @@ class BeuatoBalancerServer(object):
             time_sampling = time.perf_counter()
             self._feedback.time = time_sampling - time_start
             self._feedback.ad_gyro = sensor_value
+            self._feedback.predicted_period = rate.sleep_dur.nsecs * 1e-9
             self._as.publish_feedback(self._feedback)
             rate.sleep()
 
