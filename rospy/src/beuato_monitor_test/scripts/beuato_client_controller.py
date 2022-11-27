@@ -35,26 +35,12 @@ class DataBoard:
     def add(self, time, value):       
         df_add = pd.DataFrame( {'time' : [time], 'value' : [value]})
         self._data = pd.concat([self._data, df_add ], ignore_index=True)
-        
-        self._values.append(value)
-        
-        if self._max_count == 0:
-            return
-        
-        if self._values.count >= self._max_count:
-            num = self._values.count - self._max_count
-            
-            for i in range(0, num):
-                self._values.pop(0)
-    
-    def give_errorcode(self, errorcode):
+
+    def set_errorcode(self, errorcode):
         self._errorcode = BeuatoErrorCode(errorcode)
     
     def get_errorcode(self):
         return self._errorcode.value
-    
-    def refer(self):
-        return self._values
     
     def set_predicted_period(self, value):
         self._predicted_period = value
@@ -107,7 +93,7 @@ def receive_callback(feedback):
 def complete_callback(status, result):
     rospy.loginfo('complete callback')
     if(result.is_suspend_for_error):
-        data_board.give_errorcode(result.errorcode)
+        data_board.set_errorcode(result.errorcode)
 
 @app.route('/')
 def index():
@@ -153,7 +139,7 @@ def get_recent_data_api():
     transmit_data = { 
         'time' : data_board.refer_time(),
         'ad_gyro' : data_board.refer_data(),
-        'sampling_number' : len(data_board.refer()),
+        'sampling_number' : len(data_board.refer_time()),
         'predicted_period' : data_board.refer_predicted_period()
     }
     
