@@ -135,7 +135,8 @@ void urb_in_complete(struct urb* urb)
 {
 	switch (urb->status) {
 	case 0:
-		report_in_handler(urb->transfer_buffer, urb->transfer_buffer_length);
+		//report_in_handler(urb->transfer_buffer, urb->transfer_buffer_length);
+		report_in_handler(urb->transfer_buffer, urb->actual_length);
 		DMESG_INFO("Urb load rom Success");
 		break;
 	case -ECONNRESET:
