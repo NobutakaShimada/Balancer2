@@ -135,6 +135,8 @@ void urb_in_complete(struct urb* urb)
 {
 	switch (urb->status) {
 	case 0:
+                DMESG_INFO("[IN] actual=%d / max=%d",
+			urb->actual_length, urb->transfer_buffer_length);
 		//report_in_handler(urb->transfer_buffer, urb->transfer_buffer_length);
 		report_in_handler(urb->transfer_buffer, urb->actual_length);
 		DMESG_INFO("Urb load rom Success");
@@ -221,6 +223,8 @@ void urb_out_complete(struct urb* urb)
 {
 	switch (urb->status) {
 	case 0:
+                DMESG_INFO("[OUT] actual=%d / max=%d",
+			urb->actual_length, urb->transfer_buffer_length);
 		report_out_handler(urb->transfer_buffer, urb->transfer_buffer_length);
 		DMESG_INFO("Urb Success");
 		break;
