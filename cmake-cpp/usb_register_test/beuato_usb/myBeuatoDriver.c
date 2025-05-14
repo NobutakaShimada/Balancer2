@@ -6,6 +6,12 @@
 #include <linux/slab.h>
 #include <linux/fs.h>
 #include <linux/proc_fs.h>
+#include <linux/ioctl.h>
+
+/* 先頭の #include 群の下あたりに追記 */
+#include <linux/wait.h>
+#include <linux/poll.h>
+#include <linux/atomic.h>
 
 #include "config.h"
 #include "driver_define.h"
@@ -16,6 +22,18 @@
 
 #define MINOR_BASE 192			// マイナー番号
 
+#define MAX_PROC_TEXT_SIZE 512
+
+/* === for debug information into dmesg === */
+#define BEAUTO_IOC_SET_DEBUG _IOW('B', 0, int)
+static atomic_t beuato_dbg = ATOMIC_INIT(0);
+
+/* === 受信完了通知用 === */
+static DECLARE_WAIT_QUEUE_HEAD(beuato_waitq);
+static atomic_t beuato_data_ready = ATOMIC_INIT(0);
+
+
+
 /** プロトタイプ宣言 **/ 
 int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID);
 void skel_disconnect(struct usb_interface* ip);
@@ -23,7 +41,8 @@ int skel_open(struct inode *inode, struct file *file);
 int skel_release(struct inode *inode, struct file *file);
 ssize_t skel_read (struct file* file, char __user *buff, size_t count, loff_t *f_pos) ;
 ssize_t skel_write(struct file *file, const char __user *buff, size_t count, loff_t *f_pos);
-
+__poll_t skel_poll(struct file *file, poll_table *wait);
+long skel_ioctl(struct file *file, unsigned int cmd, unsigned long arg);
 
 /** ベンダーIDとプロダクトIDの登録 **/ 
 struct usb_device_id skel_table[] = {
@@ -47,6 +66,8 @@ struct file_operations skel_fops = {
 	.release = skel_release,
 	.read = skel_read,
 	.write = skel_write,
+	.poll = skel_poll,
+	.unlocked_ioctl = skel_ioctl,
 };
 
 /** ドライバクラスの登録 */
@@ -76,7 +97,6 @@ int skel_open(struct inode *inode, struct file *file)
 
 	kref_get(&pDev->kref);
 	file->private_data = (void*)pDev;
-
 	return 0;
 }
 
@@ -103,14 +123,14 @@ static const int MAX_IN_TEXT_SIZE = 64;
 /* データの解釈 */
 void report_in_handler(unsigned char *buf, int length)
 {
-	DMESG_INFO("[I] Read Message:%d", length);
-	printk("Data:");
+	DMESG_DEBUG("[I] Read Message:%d", length);
+	//printk("Data:");
 
 
 	if( buf[0] == 'r' ) 
 	{
 		int datasize = buf[1];
-		DMESG_INFO("Data Size:%d", datasize);
+		DMESG_DEBUG("Data Size:%d", datasize);
 		if(datasize >= read_results.buffer_length) 
 		{
 			DMESG_ERR("Buffer Overflow");
@@ -119,15 +139,15 @@ void report_in_handler(unsigned char *buf, int length)
 
 		read_results.datasize = datasize;
 
-		DMESG_INFO("Data:", datasize);
+		DMESG_DEBUG("Data:", datasize);
 		for(int i = 0 ; i < read_results.datasize; ++i) 
 		{
-			printk(KERN_CONT "%x ", buf[i+2]);		
+			//printk(KERN_CONT "%x ", buf[i+2]);		
 			read_results.buffer[i] = buf[i+2];	
 		}
 	}
 
-	DMESG_INFO("Report Handled");
+	DMESG_DEBUG("Report Handled");
 }
 
 /** HID-INデータ完了通知 **/
@@ -135,11 +155,40 @@ void urb_in_complete(struct urb* urb)
 {
 	switch (urb->status) {
 	case 0:
-                DMESG_INFO("[IN] actual=%d / max=%d",
+                DMESG_DEBUG("[IN] actual=%d / max=%d",
 			urb->actual_length, urb->transfer_buffer_length);
+
+		struct usb_skel *pDev = urb->context;
+		if(pDev->received_len + urb->actual_length > sizeof(pDev->bin_buf)) {
+			DMESG_ERR("Rx overflow, packet dropped\n");
+			pDev->received_len = 0;
+			goto resubmit;
+		}
+		memcpy(pDev->bin_buf + pDev->received_len,
+			urb->transfer_buffer, urb->actual_length);
+		pDev->received_len += urb->actual_length;
+		if(pDev->expected_len == 0 && urb->actual_length >= 2) {
+			pDev->expected_len = ((u8 *)urb->transfer_buffer)[1] + 2;
+		}
+
+		if(pDev->received_len < pDev->expected_len)
+			goto resubmit;
+
+		size_t true_len = 2 + pDev->bin_buf[1];
+		DMESG_DEBUG("true_len:%d\n", true_len);
 		//report_in_handler(urb->transfer_buffer, urb->transfer_buffer_length);
-		report_in_handler(urb->transfer_buffer, urb->actual_length);
-		DMESG_INFO("Urb load rom Success");
+		//report_in_handler(urb->transfer_buffer, urb->actual_length);
+		//report_in_handler(pDev->bin_buf, pDev->received_len);
+		report_in_handler(pDev->bin_buf, true_len);
+		DMESG_DEBUG("Urb load rom Success");
+
+		// wakeup
+		atomic_set(&beuato_data_ready, 1);
+		wake_up_interruptible(&beuato_waitq);
+		pDev->received_len = 0;
+		pDev->expected_len = 0;
+resubmit:
+		usb_submit_urb(urb, GFP_ATOMIC);
 		break;
 	case -ECONNRESET:
 	case -ENOENT:
@@ -151,7 +200,7 @@ void urb_in_complete(struct urb* urb)
 		break;
 	}
 
-	DMESG_INFO("Completed");
+	DMESG_DEBUG("Completed");
 }
 
 /** データ読み込み準備 **/
@@ -166,7 +215,7 @@ int prepare_read(struct usb_interface* ip, const struct usb_device_id* pID, stru
 
 	pDev->int_in_buffer = kmalloc(pDev->int_in_buffer_length, GFP_KERNEL);
 	memset(pDev->int_in_buffer, 0, pDev->int_in_buffer_length);
-	DMESG_INFO("Allocation");
+	DMESG_DEBUG("Allocation");
 
 	read_results.buffer = kmalloc(MAX_IN_TEXT_SIZE, GFP_ATOMIC);
 	read_results.buffer_length = MAX_IN_TEXT_SIZE;
@@ -185,9 +234,9 @@ int run_read(struct usb_skel* pDev)
 		pDev,
 		pDev->int_in_endpoint->bInterval
 	);
-
+        DMESG_DEBUG("read/bInterval:%d\n",pDev->int_in_endpoint->bInterval);
 	usb_submit_urb(pDev->int_in_urb, GFP_KERNEL);
-	DMESG_INFO("Prepare read");
+	DMESG_DEBUG("Prepare read");
 
 	return 0;
 }
@@ -204,18 +253,20 @@ void report_out_handler(u8 *buf, int length)
 	switch (buf[0])
 	{
 		case 'r':
-			DMESG_INFO("[O] Read Message");
-			printk("Data:");
+			DMESG_DEBUG("[O] Read Message");
+			//printk("Data:");
 			for(int i = 0 ; i < length; i ++) 
 			{
-				printk(KERN_CONT "%x ", buf[i]);			
+				//printk(KERN_CONT "%x ", buf[i]);			
 			}
 			break;
 		default:
-			DMESG_INFO("Other Message:%c", buf[0]);
+			DMESG_DEBUG("Other Message:%c", buf[0]);
+			DMESG_DEBUG("length:%d", length);
+			DMESG_DEBUG("buf:%s", buf);
 	}
 
-	DMESG_INFO("Report Handled");
+	DMESG_DEBUG("Report Handled");
 }
 
 /** HID-OUTデータ完了通知 **/
@@ -223,10 +274,11 @@ void urb_out_complete(struct urb* urb)
 {
 	switch (urb->status) {
 	case 0:
-                DMESG_INFO("[OUT] actual=%d / max=%d",
+                DMESG_DEBUG("[OUT] actual=%d / max=%d",
 			urb->actual_length, urb->transfer_buffer_length);
 		report_out_handler(urb->transfer_buffer, urb->transfer_buffer_length);
-		DMESG_INFO("Urb Success");
+		kfree(urb->transfer_buffer);
+		DMESG_DEBUG("Urb Success");
 		break;
 	case -ECONNRESET:
 	case -ENOENT:
@@ -238,7 +290,7 @@ void urb_out_complete(struct urb* urb)
 		break;
 	}
 
-	DMESG_INFO("Completed");
+	DMESG_DEBUG("Completed");
 }
 
 /** Spaceの位置の検索 **/
@@ -297,7 +349,7 @@ int parse_user_command(char* raw_text,  size_t count, struct user_command* comma
 			memset(temporary_text, 0, MAX_RAW_TEXT_SIZE);
 			memcpy(temporary_text, raw_text + offset + 1, next_space - offset - 1);	
 
-			DMESG_INFO("argument(%d,%d):%s", offset, next_space, temporary_text);
+			DMESG_DEBUG("argument(%d,%d):%s", offset, next_space, temporary_text);
 
 			switch(i)
 			{
@@ -381,6 +433,9 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 		goto skel_write_buffer_Error;
 	}
 
+	pDev->expected_len = 0;
+	pDev->received_len = 0;
+
 	usb_fill_int_urb(
 			urb_header, pDev->udev, 
 			usb_sndintpipe(pDev->udev, pDev->int_out_endpoint->bEndpointAddress),
@@ -394,7 +449,7 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 	
 	run_read(pDev);
 
-	kfree(transmit_buff);
+	//kfree(transmit_buff);
 	usb_free_urb(urb_header);
 
 	return count;
@@ -407,8 +462,6 @@ skel_write_urb_Error:
 	return -1;
 }
 
-
-static const int MAX_PROC_TEXT_SIZE = 512;
 
 /**
  * USB接続開始
@@ -508,7 +561,56 @@ void skel_disconnect(struct usb_interface* ip)
 }
 
 
-ssize_t skel_read (struct file* file, char __user *buf, size_t count, loff_t *f_pos) 
+
+/* read_results → ASCII 1 行 ("r <len> <data…>\n") へ変換して
+ * 文字列を dst に書き込み、生成したバイト数を返す。
+ */
+static int build_line(char *dst)
+{
+    int len = sprintf(dst, "r %x ", read_results.datasize);
+
+    for (int i = 0; i < read_results.datasize; ++i)
+        len += sprintf(dst + len, "%x ", read_results.buffer[i]);
+
+    dst[len++] = '\n';
+    return len;
+}
+
+
+ssize_t skel_read(struct file *file, char __user *buf,
+                  size_t count, loff_t *ppos)
+{
+    static char line_buf[MAX_PROC_TEXT_SIZE];
+    static size_t pos = 0, len = 0;
+
+    /* 行バッファを使い切っていたら新しいデータ到着を待つ */
+    if (pos >= len) {
+        /* ブロッキング待ち（^C で中断可） */
+        if (wait_event_interruptible(beuato_waitq,
+                atomic_read(&beuato_data_ready)))
+            return -ERESTARTSYS;
+
+        /* read_results → ASCII へ変換 */
+        len = build_line(line_buf);
+        pos = 0;
+
+        /* フラグをクリアして次回受信を待てるように */
+        atomic_set(&beuato_data_ready, 0);
+    }
+
+    /* 残りを必要量だけコピー */
+    size_t ncopy = min(count, len - pos);
+    if (copy_to_user(buf, line_buf + pos, ncopy))
+        return -EFAULT;
+
+    pos += ncopy;
+    return ncopy;
+}
+
+
+
+
+ssize_t skel_read_org (struct file* file, char __user *buf, size_t count, loff_t *f_pos) 
 {
 	char temp_buff[MAX_PROC_TEXT_SIZE];
 	char result_buff[MAX_PROC_TEXT_SIZE];
@@ -538,6 +640,27 @@ ssize_t skel_read (struct file* file, char __user *buf, size_t count, loff_t *f_
 	return len_all;
 }
 
+__poll_t skel_poll(struct file *file, poll_table *wait)
+{
+	poll_wait(file, &beuato_waitq, wait);
+	return atomic_read(&beuato_data_ready) ? POLLIN|POLLRDNORM : 0;
+}
+
+long skel_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+{
+	struct usb_skel *pDev = file->private_data;
+	int val;
+
+	switch(cmd) {
+	case BEAUTO_IOC_SET_DEBUG:
+		if( copy_from_user(&val, (int __user *)arg, sizeof(int)))
+			return -EFAULT;
+		atomic_set(&beuato_dbg, val ? 1 : 0);
+		return 0;
+	default:
+		return -ENOTTY;
+	}
+}
 
 
 MODULE_DEVICE_TABLE(usb, skel_table);

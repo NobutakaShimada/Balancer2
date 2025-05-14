@@ -7,16 +7,20 @@
 struct usb_skel {
 	struct usb_device* udev;
 	struct usb_interface* ip;
-    struct usb_anchor submitted;
+	struct usb_anchor submitted;
 	struct kref kref;
 
-    struct usb_endpoint_descriptor* int_in_endpoint;
-    unsigned char* int_in_buffer;
-    int int_in_buffer_length;
-    struct urb* int_in_urb;
+	struct usb_endpoint_descriptor* int_in_endpoint;
+	unsigned char* int_in_buffer;
+	int int_in_buffer_length;
+	struct urb* int_in_urb;
 
-    struct usb_endpoint_descriptor* int_out_endpoint;
-    int int_out_buffer_length;
+	struct usb_endpoint_descriptor* int_out_endpoint;
+	int int_out_buffer_length;
+
+	size_t expected_len;
+	size_t received_len;
+	u8 bin_buf[1024]
 } ;
 
 
