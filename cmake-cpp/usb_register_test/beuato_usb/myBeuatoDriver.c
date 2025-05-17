@@ -52,7 +52,8 @@ struct usb_device_id skel_table[] = {
 
 /** ドライバ初期化時の処理の登録 **/
 struct usb_driver skel_driver = {
-	.name = "BeuatoBalancer Driver",
+//	.name = "BeuatoBalancer Driver",
+	.name = "BeuatoBalancer_Driver",
 	.id_table = skel_table,
 	.probe = skel_probe,					// 最初に実行される関数
 	.disconnect = skel_disconnect		// 切断時に実行される関数
