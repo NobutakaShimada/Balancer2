@@ -9,6 +9,7 @@ struct usb_skel {
 	struct usb_interface* ip;
 	struct usb_anchor submitted;
 	struct kref kref;
+	bool disconnected;
 
 	struct usb_endpoint_descriptor* int_in_endpoint;
 	unsigned char* int_in_buffer;
@@ -41,6 +42,7 @@ struct user_read_result
     volatile unsigned long datasize;
     volatile unsigned char* buffer;
     volatile unsigned int buffer_length;
+    volatile unsigned int ready_to_return;
 } ;
 
 struct user_command 

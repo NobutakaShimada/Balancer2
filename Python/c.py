@@ -117,7 +117,7 @@ def parse_beuato_ascii(line: Union[str, bytes]) -> Tuple[bytes, int]:
     payload = bytes(int(tok, 16) for tok in parts[2:])
     return payload, datasize
 
-Debug = False
+Debug = True
 
 
 @ld
@@ -128,69 +128,103 @@ def send_and_receive(addr, comstr):
     # 計測開始
     start_send = time.time()
     dev.write(command)
-    dev.flush()
+    #dev.flush()
     end_send = time.time()
     send_time = (end_send - start_send) * 1000 # msec
 
-    
-    res = dev.readline()
-    if Debug: print(res)
+
+    #res = dev.readline()
+    res = dev.read(64)
+    if Debug: print(f'readline: {res}')
 
     payload, size = parse_beuato_ascii(res)
     if Debug: print(f"size:{size}")
 
+    val = None
     if vartype == "d":
-        val = struct.unpack("<d", payload)[0]
-        if Debug: print(f"double: {val}")
+        if size == 8:
+            val = struct.unpack("<d", payload)[0]
+            if Debug: print(f"double: {val}")
+        else:
+            print(f"reply len miss match!: {vartype} but size byte received.")
     elif vartype  == "s":
-        val = struct.unpack("<h", payload)[0]
-        if Debug: print(f"short: {val}")
+        if size == 2:
+            val = struct.unpack("<h", payload)[0]
+            if Debug: print(f"short: {val}")
+        else:
+            print(f"reply len miss match!: {vartype} but size byte received.")
     elif vartype  == "us":
-        val = struct.unpack("<H", payload)[0]
-        if Debug: print(f"ushort: {val}")
+        if size == 2:
+            val = struct.unpack("<H", payload)[0]
+            if Debug: print(f"ushort: {val}")
+        else:
+            print(f"reply len miss match!: {vartype} but size byte received.")
     elif vartype  == "c":
-        val = struct.unpack("<c", payload)[0]
-        if Debug: print(f"char: {val}")
+        if size == 1:
+            val = struct.unpack("<c", payload)[0]
+            if Debug: print(f"char: {val}")
+        else:
+            print(f"reply len miss match!: {vartype} but size byte received.")
+
     elif vartype  == "uc":
-        val = struct.unpack("<B", payload)[0]
-        if Debug: print(f"uchar: {val}")
+        if size == 1:
+            val = struct.unpack("<B", payload)[0]
+            if Debug: print(f"uchar: {val}")
+        else:
+            print(f"reply len miss match!: {vartype} but size byte received.")
     elif vartype  == "ull":
-        val = struct.unpack("<Q", payload)[0]
-        if Debug: print(f"ulonglong: {val}")
+        if size == 8:
+            val = struct.unpack("<Q", payload)[0]
+            if Debug: print(f"ulonglong: {val}")
+        else:
+            print(f"reply len miss match!: {vartype} but size byte received.")
 
     return val
 
 
 if __name__ == '__main__':
+    DRIVER_DEBUG=1
     with open('/dev/BeuatoCtrl0', mode='r+b', buffering=0) as dev:
         import fcntl
-        fcntl.ioctl(dev, 0x40044200, struct.pack("I",0)) # debug dmesg
+        fcntl.ioctl(dev, 0x40044200, struct.pack("I",DRIVER_DEBUG)) # debug dmesg
 
-        try:
-            while True:
+        while True:
+            try:
+                print("----------------------------")
+
                 #dev.write(b"r 68 2 ")
                 #command, length = make_command("BODY_ANGLE","r")
                 #length = 63
                 #command_str = f"r 0 {length:x} "
                 #command = command_str.encode("ascii")
 
-                body_angle,timing1 = send_and_receive("BODY_ANGLE", "r")
-                body_angular_spd, timing2 = send_and_receive("BODY_ANGULAR_SPD", "r")
-                wheel_angle_l, timing3 = send_and_receive("WHEEL_ANGLE_L", "r")
-                gyro_data, timing4  = send_and_receive("GYRO_DATA", "r")
+                #import pdb; pdb.set_trace()
 
-                print("----------------------------")
+                body_angle,timing1 = send_and_receive("BODY_ANGLE", "r")
                 print(f"BODY_ANGLE: {body_angle}")
+                #time.sleep(0.001)
+                body_angular_spd, timing2 = send_and_receive("BODY_ANGULAR_SPD", "r")
                 print(f"BODY_ANGULAR_SPD: {body_angular_spd}")
+                #time.sleep(0.001)
+
+                wheel_angle_l, timing3 = send_and_receive("WHEEL_ANGLE_L", "r")
                 print(f"WHEEL_ANGLE_L: {wheel_angle_l}")
+                #time.sleep(0.001)
+
+                gyro_data, timing4  = send_and_receive("GYRO_DATA", "r")
                 print(f"GYRO_DATA: {gyro_data}")
+                #time.sleep(0.001)
 
                 """
                 if (i+1)%10 == 0:
                     print(f"  {i+1}/{iterations} 完了")
                     print(f"  最新レイテンシ - BODY_ANGLE: {timing1['latency_ms']:.3f}ms")
                 """
+            except ValueError as e:
+                print(e)
+                continue
 
-        except KeyboardInterrupt:
-            print("\n計測を中断しました")
-            ld.print_stats()
+            except KeyboardInterrupt:
+                print("\n計測を中断しました")
+                ld.print_stats()
+                break
