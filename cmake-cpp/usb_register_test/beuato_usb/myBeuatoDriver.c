@@ -24,8 +24,6 @@
 
 #define MAX_PROC_TEXT_SIZE 512
 
-/* === for debug information into dmesg === */
-#define BEAUTO_IOC_SET_DEBUG _IOW('B', 0, int)
 static atomic_t beuato_dbg = ATOMIC_INIT(0);
 
 /* === 受信完了通知用 === */
@@ -201,6 +199,8 @@ int skel_open(struct inode *inode, struct file *file)
 
 	clear_device_state(pDev);
 	line_pos = line_len = 0; //reset
+        pDev->mode = BEUATO_MODE_BINARY; // reset to binary mode at every open
+
 	run_read(pDev);
 
 	DMESG_DEBUG("successfully opened.");
@@ -738,7 +738,8 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 	kref_init(&pDev->kref);							// 参照カウンタの初期化
 	pDev->udev = usb_get_dev(interface_to_usbdev(ip));		// USBデバイスの存在チェック
 	pDev->ip = ip;
-
+	pDev->mode = BEUATO_MODE_BINARY;
+	DMESG_DEBUG("return mode: %d\n", pDev->mode)
 	// エンドポイントの取得
 	// https://wiki.bit-hive.com/north/pg/usb%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90
 	struct usb_host_interface* pHostIf = ip->cur_altsetting;
@@ -843,7 +844,7 @@ void skel_disconnect(struct usb_interface* ip)
 /* read_results → ASCII 1 行 ("r <len> <data…>\n") へ変換して
  * 文字列を dst に書き込み、生成したバイト数を返す。
  */
-static int build_line(char *dst)
+static int build_line_ascii(char *dst)
 {
     if(!read_results.ready_to_return)
     	DMESG_INFO("once used read_results are reused! WRONG.\n");
@@ -856,6 +857,37 @@ static int build_line(char *dst)
     read_results.ready_to_return = 0; // already copied to return buf for "read" call.
     return len;
 }
+
+static int build_line_binary(char *dst)
+{
+    int datasize;
+
+    if (!read_results.ready_to_return) {
+        DMESG_INFO("once used read_results are reused! WRONG.\n");
+    }
+
+    /* データ長を取得 */
+    datasize = read_results.datasize;
+    if (datasize < 0)
+        datasize = 0;
+    if (datasize > MAX_IN_TEXT_SIZE)
+        datasize = MAX_IN_TEXT_SIZE;
+
+    /* ヘッダ: 'r' + uint8_t length */
+    dst[0] = 'r';
+    dst[1] = (u8)datasize;
+
+    /* データ本体をコピー */
+    if (datasize > 0)
+        memcpy(dst + 2, read_results.buffer, datasize);
+
+    /* 返却済みフラグをクリア */
+    read_results.ready_to_return = 0;
+
+    /* トータル長を返す */
+    return datasize + 2;
+}
+
 
 
 ssize_t skel_read_partial(struct file *file, char __user *buf,
@@ -879,7 +911,7 @@ ssize_t skel_read_partial(struct file *file, char __user *buf,
 	if(wait_event_interruptible(beuato_waitq, atomic_read(&beuato_data_ready)))
 		return -ERESTARTSYS;
 
-	line_len = build_line(line_buf);
+	line_len = build_line_ascii(line_buf);
 	line_pos = 0;
 	atomic_set(&beuato_data_ready, 0);
 
@@ -898,11 +930,21 @@ ssize_t skel_read(struct file *file, char __user *buf,
 	//char line_buf[MAX_PROC_TEXT_SIZE];
 	//size_t len;
 
+	struct usb_skel *pDev = file->private_data;
+
 	if(wait_event_interruptible(beuato_waitq, atomic_read(&beuato_data_ready))) {
 		DMESG_INFO("wait_event failed.\n");
 		return -ERESTARTSYS;
 	}
-	line_len = build_line(line_buf);
+	if (pDev->mode == BEUATO_MODE_BINARY) {
+		line_len = build_line_binary(line_buf);
+		DMESG_DEBUG("respond binary mode.\n");
+	}
+	else {
+		line_len = build_line_ascii(line_buf);
+		DMESG_DEBUG("respond ascii mode.\n");
+	}
+
 	atomic_set(&beuato_data_ready, 0);
 	if(count < (size_t)line_len) {
 		DMESG_INFO("read() requests %d bytes but should return more byte length %d.\n",count, line_len);
@@ -930,7 +972,7 @@ ssize_t skel_read_org2(struct file *file, char __user *buf,
             return -ERESTARTSYS;
 
         /* read_results → ASCII へ変換 */
-        len = build_line(line_buf);
+        len = build_line_ascii(line_buf);
         pos = 0;
 
         /* フラグをクリアして次回受信を待てるように */
@@ -985,14 +1027,22 @@ __poll_t skel_poll(struct file *file, poll_table *wait)
 long skel_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
 	struct usb_skel *pDev = file->private_data;
-	int val;
+	int val, mode;
 
 	switch(cmd) {
-	case BEAUTO_IOC_SET_DEBUG:
+	case BEUATO_IOC_SET_DEBUG:
 		if( copy_from_user(&val, (int __user *)arg, sizeof(int)))
 			return -EFAULT;
 		atomic_set(&beuato_dbg, val ? 1 : 0);
 		return 0;
+	case BEUATO_IOC_SET_MODE:
+        	if (copy_from_user(&mode, (int __user *)arg, sizeof(int)))
+	            return -EFAULT;
+	        if (mode != BEUATO_MODE_ASCII && mode != BEUATO_MODE_BINARY)
+	            return -EINVAL;
+	        pDev->mode = mode;
+	        return 0;
+
 	default:
 		return -ENOTTY;
 	}

@@ -4,12 +4,26 @@
 #include <linux/fs.h>
 #include <linux/proc_fs.h>
 
+// for Debug log switch
+#define BEUATO_IOC_SET_DEBUG _IOW('B', 0, int)
+
+// for binary / ascii mode selection
+#define BEUATO_IOC_SET_MODE _IOW('B', 1, int)
+
+/* モードの定義 */
+enum {
+    BEUATO_MODE_ASCII  = 0,
+    BEUATO_MODE_BINARY = 1,
+};
+
+
 struct usb_skel {
 	struct usb_device* udev;
 	struct usb_interface* ip;
 	struct usb_anchor submitted;
 	struct kref kref;
 	bool disconnected;
+	int mode; // mode 0: binary(default)  1: ascii
 
 	struct usb_endpoint_descriptor* int_in_endpoint;
 	unsigned char* int_in_buffer;

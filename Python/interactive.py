@@ -4,7 +4,10 @@ import functools
 from LatencyMeasurer import LatencyMeasurer as ld
 from BeuatoMemMap import memory_map
 
-Debug = True
+IOCTL_DEBUG = 0x40044200
+IOCTL_READ_MODE = 0x40044201
+
+Debug = False
 
 def make_command(var_name: str, com: str) -> bytes:
     """
@@ -44,6 +47,7 @@ def parse_beuato_ascii(line: Union[str, bytes]) -> Tuple[bytes, int]:
     >>> struct.unpack('<H', payload)[0]
     48042
     """
+
     if isinstance(line, bytes):
         line = line.decode('ascii', errors='ignore')
 
@@ -62,6 +66,7 @@ def parse_beuato_ascii(line: Union[str, bytes]) -> Tuple[bytes, int]:
         raise ValueError(f"Length mismatch: header {datasize}, data {len(parts)-2}")
 
     payload = bytes(int(tok, 16) for tok in parts[2:])
+    #print(f'payload: {payload}')
     return payload, datasize
 
 
@@ -137,7 +142,9 @@ if __name__ == '__main__':
     DRIVER_DEBUG = 1 # 0: no debug 1: debug
     with open('/dev/BeuatoCtrl0', mode='r+b', buffering=0) as dev:
         import fcntl
-        fcntl.ioctl(dev, 0x40044200, struct.pack("I",DRIVER_DEBUG)) # debug dmesg
+        #fcntl.ioctl(dev, 0x40044200, struct.pack("I",DRIVER_DEBUG)) # debug dmesg
+        fcntl.ioctl(dev, IOCTL_DEBUG, struct.pack("I", DRIVER_DEBUG))
+        fcntl.ioctl(dev, IOCTL_READ_MODE, struct.pack("I", 0))
 
 
         while True:
