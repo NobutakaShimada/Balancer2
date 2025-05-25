@@ -3,6 +3,9 @@ import functools
 #import latency_decorator as ld
 from LatencyMeasurer import LatencyMeasurer as ld
 
+
+Debug = True
+
 # Define memory map dictionary: variable name → [address, byte length, type]
 memory_map = {
     "Product_ID": [0, 2, "us"],
@@ -75,16 +78,22 @@ def make_command(var_name: str, com: str) -> bytes:
     """
     var_name に対応するアドレスとバイト長を
     "r addr, len " の形式で組み、ASCII/binary バイト列で返す。
-    例: var_name="BODY_ANGLE", com="r" → b"r 18, 8 "
+    例: var_name="BODY_ANGLE", com="r" → b"r 18 8 "
     """
     try:
         addr, length, vartype = memory_map[var_name]
     except KeyError:
         raise ValueError(f"Unknown variable: {var_name!r}")
     # addr を 16 進文字列に（0xなし、小文字）
+    b_cmd = make_command_from_addr(addr, length, com)
+    return b_cmd, length, vartype
+
+def make_command_from_addr(addr, length, com: str) -> bytes:
     addr_hex = format(addr, 'x')
-    cmd = f"{com} {addr_hex} {length} "
-    return cmd.encode('ascii'), length, vartype
+    len_hex = format(length, 'x')
+    cmd = f"{com} {addr_hex} {len_hex} "
+    return cmd.encode('ascii')
+
 
 import struct
 from typing import Tuple, Union
@@ -107,6 +116,12 @@ def parse_beuato_ascii(line: Union[str, bytes]) -> Tuple[bytes, int]:
         line = line.decode('ascii', errors='ignore')
 
     parts = line.strip().split()
+    if Debug:
+        print("parts: ", end="")
+        for p in parts:
+            print(f"{p}", end="/")
+        print("")
+
     if len(parts) < 3 or parts[0] != 'r':
         raise ValueError("Malformed Beuato reply")
 
@@ -117,29 +132,18 @@ def parse_beuato_ascii(line: Union[str, bytes]) -> Tuple[bytes, int]:
     payload = bytes(int(tok, 16) for tok in parts[2:])
     return payload, datasize
 
-Debug = True
 
 
-@ld
-def send_and_receive(addr, comstr):
-    command, length, vartype = make_command(addr, comstr)
-    if Debug: print(f'{command}: ({length})')
 
-    # 計測開始
-    start_send = time.time()
+def send_and_receive_command_only(command, length):
     dev.write(command)
-    #dev.flush()
-    end_send = time.time()
-    send_time = (end_send - start_send) * 1000 # msec
 
-
-    #res = dev.readline()
-    res = dev.read(64)
+    res = dev.read(256)
     if Debug: print(f'readline: {res}')
 
-    payload, size = parse_beuato_ascii(res)
-    if Debug: print(f"size:{size}")
+    return res
 
+def responce_decode(payload, size, vartype):
     val = None
     if vartype == "d":
         if size == 8:
@@ -181,36 +185,45 @@ def send_and_receive(addr, comstr):
 
     return val
 
+def send_and_receive_command(command, length, vartype):
+    res = send_and_receive_command_only(command, length)
+
+    payload, size = parse_beuato_ascii(res)
+    if Debug: print(f"payload:{payload} size:{size}")
+
+    return responce_decode(payload, size, vartype)
+
+@ld
+def send_and_receive(addr, comstr):
+    command, length, vartype = make_command(addr, comstr)
+    if Debug: print(f'{command}: ({length})')
+    return send_and_receive_command(command, length, vartype)
+
+
 
 if __name__ == '__main__':
-    DRIVER_DEBUG = 0 # 0: no debug 1: debug
+    DRIVER_DEBUG = 1 # 0: no debug 1: debug
     with open('/dev/BeuatoCtrl0', mode='r+b', buffering=0) as dev:
         import fcntl
         fcntl.ioctl(dev, 0x40044200, struct.pack("I",DRIVER_DEBUG)) # debug dmesg
 
+
         while True:
+            addr, length = map(int, input("addr, length = ").split())
+            print(f'addr: {addr}, length: {length}')
             try:
                 print("----------------------------")
 
-                #dev.write(b"r 68 2 ")
-                #command, length = make_command("BODY_ANGLE","r")
-                #length = 63
-                #command_str = f"r 0 {length:x} "
-                #command = command_str.encode("ascii")
+                #addr = 0x0
+                #length = 2
+                command = make_command_from_addr(addr, length, "r")
+                print(command)
+                res = send_and_receive_command_only(command, length)
+                payload, size = parse_beuato_ascii(res)
+                print(f"payload:{payload} size:{size}")
 
-                #import pdb; pdb.set_trace()
-
-                body_angle,timing1 = send_and_receive("BODY_ANGLE", "r")
-                print(f"BODY_ANGLE: {body_angle}")
-
-                body_angular_spd, timing2 = send_and_receive("BODY_ANGULAR_SPD", "r")
-                print(f"BODY_ANGULAR_SPD: {body_angular_spd}")
-
-                wheel_angle_l, timing3 = send_and_receive("WHEEL_ANGLE_L", "r")
-                print(f"WHEEL_ANGLE_L: {wheel_angle_l}")
-
-                gyro_data, timing4  = send_and_receive("GYRO_DATA", "r")
-                print(f"GYRO_DATA: {gyro_data}")
+                #body_angle,timing1 = send_and_receive("BODY_ANGLE", "r")
+                #print(f"BODY_ANGLE: {body_angle}")
 
                 """
                 if (i+1)%10 == 0:

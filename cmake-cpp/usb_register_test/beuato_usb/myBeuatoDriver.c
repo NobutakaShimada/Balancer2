@@ -158,16 +158,16 @@ int run_read(struct usb_skel* pDev)
 	int ret = usb_submit_urb(pDev->int_in_urb, GFP_ATOMIC);
 	if(ret) {
 		if(ret == -EBUSY)
-			DMESG_DEBUG("run_read: urb submit BUSY.")
+			DMESG_DEBUG("run_read: urb submit BUSY.\n")
 		else
-			DMESG_DEBUG("run_read: urb submit Other err(%d).", ret)
+			DMESG_DEBUG("run_read: urb submit Other err(%d).\n", ret)
 		usb_unanchor_urb(pDev->int_in_urb);
-		DMESG_DEBUG("no submit and return");
+		DMESG_DEBUG("no submit and return\n");
 		return ret;
 	}
 
 	usb_anchor_urb(pDev->int_in_urb, &(pDev->submitted));
-	DMESG_DEBUG("submit and anchor done.");
+	DMESG_DEBUG("submit and anchor done.\n");
 
 	return 0;
 }
@@ -184,7 +184,7 @@ static void skel_dispose(struct kref* pKref)
 /* デバイスオープン時に実行 */
 int skel_open(struct inode *inode, struct file *file)
 {
-	DMESG_INFO("Device open");
+	DMESG_INFO("Device open\n");
 
 	struct usb_interface* ip = usb_find_interface(&skel_driver, iminor(inode));
 	struct usb_skel* pDev = usb_get_intfdata(ip);
@@ -211,14 +211,14 @@ int skel_open(struct inode *inode, struct file *file)
 /* デバイスリリース時に実行 */
 int skel_release(struct inode *inode, struct file *file)
 {
-	DMESG_INFO("Device release");
+	DMESG_INFO("Device release\n");
 
 	struct usb_skel* pDev = file->private_data;
 	//free_read_results(&read_results); // no need to free here.
 
 	kref_put(&pDev->kref, skel_dispose);
 
-	DMESG_DEBUG("successfully released.");
+	DMESG_DEBUG("successfully released.\n");
 	return 0;
 }
 
@@ -228,24 +228,25 @@ int skel_release(struct inode *inode, struct file *file)
 /* データの解釈 */
 void report_in_handler(unsigned char *buf, int length)
 {
-	DMESG_DEBUG("[I] Read Message:%d", length);
+	DMESG_DEBUG("[I] Read Message:%d\n", length);
 	//printk("Data:");
 
 
 	if( buf[0] == 'r' )
 	{
 		int datasize = buf[1];
-		DMESG_DEBUG("Contained Data Size:%d", datasize);
+		DMESG_DEBUG("Contained Data Size:%d\n", datasize);
 		if(datasize >= read_results.buffer_length)
 		{
-			DMESG_ERR("Buffer Overflow");
-			DMESG_ERR("¥tbuffer_len:%d datasize:%d",read_results.buffer_length, datasize);
+			DMESG_ERR("Buffer Overflow\n");
+			DMESG_ERR("¥tbuffer_len:%d datasize:%d\n",read_results.buffer_length, datasize);
 			return;
 		}
 
 		read_results.datasize = datasize;
 
-		print_hex_dump(KERN_DEBUG, "Contained Data:", KERN_CONT, 16, 1, (const u8*)&(buf[2]), datasize, true);
+		DMESG_DEBUG_DUMP("Contained Data: ", (const u8*)&(buf[2]), datasize, true);
+		//print_hex_dump(KERN_DEBUG, "Contained Data:", KERN_CONT, 16, 1, (const u8*)&(buf[2]), datasize, true);
 
 		for(int i = 0 ; i < read_results.datasize; ++i)
 		{
@@ -255,11 +256,11 @@ void report_in_handler(unsigned char *buf, int length)
 		read_results.ready_to_return = 1; 
 	}
 	else {
-		DMESG_DEBUG("NOT 'r' of reported buf in report_in_handler.");;
-		DMESG_DEBUG("¥t data: %02x", buf[0]);
+		DMESG_DEBUG("NOT 'r' of reported buf in report_in_handler.\n");;
+		DMESG_DEBUG("¥t data: %02x\n", buf[0]);
 	}
 
-	DMESG_DEBUG("Report Handled");
+	DMESG_DEBUG("Report Handled.\n");
 }
 
 /** HID-INデータ完了通知 **/
@@ -271,8 +272,8 @@ static void urb_in_complete(struct urb* urb)
 
 	DMESG_DEBUG("urb_in_complete: actual_length: %d", urb->actual_length);
 	if(urb->actual_length > 64) {
-                DMESG_DEBUG("Longer packet received(len:%d):", urb->actual_length);
-		print_hex_dump(KERN_DEBUG, "     received:", DUMP_PREFIX_NONE, 64, 1, (const u8*)(urb->transfer_buffer), urb->actual_length, true);
+                DMESG_INFO("Longer packet received(len:%d):\n", urb->actual_length);
+		print_hex_dump(KERN_INFO, "     received:", DUMP_PREFIX_NONE, 64, 1, (const u8*)(urb->transfer_buffer), urb->actual_length, true);
 	}
 
 	/* 1) エラー／切断ステータスは再投入せずに即終了 */
@@ -322,14 +323,20 @@ static void urb_in_complete(struct urb* urb)
 	}
 	else {
 		//print_hex_dump(KERN_DEBUG, "Received Data:", DUMP_PREFIX_NONE, 16, 1, (const u8*)(urb->transfer_buffer), urb->actual_length, true);
-                DMESG_DEBUG("Bin_buf(before cpy): len=%d", pDev->received_len);
-		if(pDev->received_len > 0)
-			print_hex_dump(KERN_DEBUG, " data:", DUMP_PREFIX_NONE, 64, 1, (const u8*)(pDev->bin_buf), pDev->received_len, true);
+		DMESG_DEBUG_DUMP("Received Data: ", (const u8*)(urb->transfer_buffer), urb->actual_length, true);
+                //DMESG_DEBUG("Bin_buf(before cpy): len=%d", pDev->received_len);
+		if(pDev->received_len > 0) {
+			DMESG_DEBUG_DUMP("Bin_buf(before %d cpy) contained:", (const u8*)(pDev->bin_buf), pDev->received_len, true, urb->actual_length);
+			//print_hex_dump(KERN_DEBUG, " data:", DUMP_PREFIX_NONE, 8, 1, (const u8*)(pDev->bin_buf), pDev->received_len, true);
+		}
+		else {
+			DMESG_DEBUG("length received so far: %d", pDev->received_len);
+		}
 		memcpy(pDev->bin_buf + pDev->received_len,
 			urb->transfer_buffer, urb->actual_length);
 		pDev->received_len += urb->actual_length;
-                DMESG_DEBUG("Bin_buf(after %d cpy): ", urb->actual_length);
-		print_hex_dump(KERN_DEBUG, "     Bin_buf(after):", DUMP_PREFIX_NONE, 64, 1, (const u8*)(pDev->bin_buf), pDev->received_len, true);
+		DMESG_DEBUG_DUMP( "Bin_buf(after %d cpy) contained:", (const u8*)(pDev->bin_buf), pDev->received_len, true, urb->actual_length);
+		//print_hex_dump(KERN_DEBUG, "     Bin_buf(after):", DUMP_PREFIX_NONE, 8, 1, (const u8*)(pDev->bin_buf), pDev->received_len, true);
 	}
 
 	if (pDev->expected_len == 0 && pDev->received_len >= 2)
@@ -339,10 +346,13 @@ static void urb_in_complete(struct urb* urb)
 		clear_read_results(&read_results);
 		report_in_handler(pDev->bin_buf, pDev->expected_len);
 
-		if (read_results.datasize) {
-		        atomic_set(&beuato_data_ready, 1);
-		        wake_up_interruptible(&beuato_waitq);
+		if (read_results.datasize == 0) {
+			DMESG_DEBUG("read_results.datasize == 0.???");
 		}
+		atomic_set(&beuato_data_ready, 1);
+		wake_up_interruptible(&beuato_waitq);
+		DMESG_DEBUG("wake up read system call.\n");
+
 		pDev->received_len = 0;
 		pDev->expected_len = 0;
 	}
@@ -363,7 +373,7 @@ static void urb_in_complete(struct urb* urb)
 		break;
 	}
 	*/
-	DMESG_DEBUG("urb resubmitted");
+	DMESG_DEBUG("urb_in callback successfully done.\n");
 }
 
 
@@ -813,7 +823,7 @@ void skel_disconnect(struct usb_interface* ip)
 		//usb_unanchor_urb(pDev->int_in_urb);
 		usb_free_urb(pDev->int_in_urb);
 		pDev->int_in_urb=NULL;
-		DMESG_INFO("Free Urb");
+		DMESG_INFO("Free Urb\n");
 	}
 
 	// dispose interrupt in buffer
@@ -821,7 +831,7 @@ void skel_disconnect(struct usb_interface* ip)
 	pDev->int_in_buffer = NULL;
 	//kfree(read_results.buffer);
 	free_read_results(&read_results);
-	DMESG_INFO("Free Buffer");
+	DMESG_INFO("Free Buffer\n");
 
 
 	usb_deregister_dev(ip, &skel_class);
@@ -836,7 +846,7 @@ void skel_disconnect(struct usb_interface* ip)
 static int build_line(char *dst)
 {
     if(!read_results.ready_to_return)
-    	DMESG_INFO("once used read_results are reused! WRONG.");
+    	DMESG_INFO("once used read_results are reused! WRONG.\n");
 
     int len = sprintf(dst, "r %x ", read_results.datasize);
 
@@ -888,15 +898,20 @@ ssize_t skel_read(struct file *file, char __user *buf,
 	//char line_buf[MAX_PROC_TEXT_SIZE];
 	//size_t len;
 
-	if(wait_event_interruptible(beuato_waitq, atomic_read(&beuato_data_ready)))
+	if(wait_event_interruptible(beuato_waitq, atomic_read(&beuato_data_ready))) {
+		DMESG_INFO("wait_event failed.\n");
 		return -ERESTARTSYS;
+	}
 	line_len = build_line(line_buf);
 	atomic_set(&beuato_data_ready, 0);
-	if(count < (size_t)line_len)
+	if(count < (size_t)line_len) {
+		DMESG_INFO("read() requests %d bytes but should return more byte length %d.\n",count, line_len);
 		return -EINVAL;
-	if(copy_to_user(buf, line_buf, line_len))
+	}
+	if(copy_to_user(buf, line_buf, line_len)) {
+		DMESG_INFO("copy_to_user failed.\n");
 		return -EFAULT;
-
+	}
 	return line_len;
 }
 
@@ -987,7 +1002,7 @@ long skel_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
 int skel_flush(struct file *file, fl_owner_t id)
 {
-	DMESG_INFO("Flush called but no effect on current implement.");
+	DMESG_INFO("Flush called but no effect on current implement.\n");
 /*
 	// このコメントを外すとハングアップを誘う。flushでデバイス状態クリアは危険。disconnectでやるべき。
 	DMESG_INFO("Flush rest buffer at fd closed");
