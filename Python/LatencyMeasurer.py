@@ -8,14 +8,14 @@ class LatencyMeasurer:
     """
     # クラス変数として統計情報を保持
     stats = {}
-    
+
     def __init__(self, func: Callable):
         """
         デコレータの初期化
         """
         self.func = func
         functools.update_wrapper(self, func)  # メタデータのコピー
-        
+
         # この関数の統計情報を初期化
         func_name = func.__name__
         if func_name not in self.stats:
@@ -24,11 +24,14 @@ class LatencyMeasurer:
                 'count': 0,   # 実行回数
             }
     
-    def __call__(self, *args, **kwargs) -> tuple:
+    def __call__(self, *args, **kwargs):
         """
         関数呼び出し時の処理
         """
         func_name = self.func.__name__
+
+        # return_latency フラグを取り出し（原関数には渡さない）
+        return_latency = kwargs.pop('return_latency', False)
         
         # 時間計測開始
         start_time = time.time()
@@ -44,8 +47,12 @@ class LatencyMeasurer:
         self.stats[func_name]['times'].append(elapsed_ms)
         self.stats[func_name]['count'] += 1
         
-        # 結果と実行時間を返す
-        return result, {'latency_ms': elapsed_ms}
+        # フラグに応じて戻り値を切り替え
+        if return_latency:
+            return result, elapsed_ms
+        else:
+            return result
+        #return result, {'latency_ms': elapsed_ms}
     
     @classmethod
     def print_stats(cls, function_name: str = None) -> Dict:

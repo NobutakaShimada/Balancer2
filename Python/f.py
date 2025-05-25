@@ -5,69 +5,68 @@ import fcntl
 from LatencyMeasurer import LatencyMeasurer as ld
 from BeuatoMemMap import memory_map, TYPE_FMT
 
-
 DEVICE_PATH = "/dev/BeuatoCtrl0"
 CHUNK_DATA_SIZE = 62           # ドライバから一度に取れるデータ長
-CHUNK_READ_SIZE = 256  # ヘッダ('r'+len)を含めた総バッファ
+CHUNK_READ_SIZE = 256         # ヘッダ('r'+len)を含めた総バッファ
 
+
+@ld
 def read_all_memory(dev):
+    """fd 上のデバイスから 0 〜 total_size バイトをチャンク読み出しして返す"""
     # memory_map の最大アドレス＋長さから全体サイズを計算
     max_addr = max(addr + length for addr, length, _ in memory_map.values())
-    # 62 バイト区切りで丸め
     total_size = ((max_addr + CHUNK_DATA_SIZE - 1) // CHUNK_DATA_SIZE) * CHUNK_DATA_SIZE
 
     buf = bytearray(total_size)
-
     for offset in range(0, total_size, CHUNK_DATA_SIZE):
-        # コマンド組み立て & 送信
-        cmd = f"r {offset:x} {CHUNK_DATA_SIZE:x} ".encode("ascii")
-        print(f"command: {cmd}")
+        # コマンド: 'r {addr} {len} '
+        cmd = f"r {offset} {CHUNK_DATA_SIZE} ".encode("ascii")
         dev.write(cmd)
-        print("command write done")
 
-        # 64 バイト読み込み
+        # 256 バイトまで受け取り
         data = dev.read(CHUNK_READ_SIZE)
-        print("data read done")
-        #if len(data) != CHUNK_READ_SIZE:
-        #    raise IOError(f"Short read: expected {CHUNK_READ_SIZE} bytes, got {len(data)}")
-
-        # ヘッダを剥がしてデータ部だけ取り出し
-        data_len = data[1]  # data[0] == b"r"
+        if len(data) < 2 or data[0:1] != b"r":
+            raise IOError(f"Invalid header: {data!r}")
+        data_len = data[1]
         chunk = data[2:2 + data_len]
-        buf[offset:offset + data_len] = chunk
+        buf[offset:offset + len(chunk)] = chunk
 
     return buf
 
-def parse_and_dump(buf):
-    for name, (addr, length, typ) in memory_map.items():
+@ld
+def parse_and_dump(buf, memory_map):
+    for name, entry in memory_map.items():
+        addr, length, typ = entry
+        #print(f'{name}: {addr}, {length}, {typ}')
         raw = buf[addr:addr + length]
         if typ == "c":
-            # 文字列ならヌル終端除去して ASCII デコード
             val = raw.rstrip(b"\x00").decode("ascii", errors="ignore")
         else:
             fmt = TYPE_FMT.get(typ)
             if fmt is None:
                 raise ValueError(f"Unknown type code: {typ}")
             val = struct.unpack_from(fmt, raw)[0]
-        print(f"{name:20s} = {val}")
-    print("-" * 40)
+        #print(f"{name:20s} = {val}")
+    #print("-" * 40)
 
-def main(loop_interval=0.001):
-    # 元のコード通り、バッファリング無効／バイナリ読み書きで open
+
+def main():
+    # open with no buffering, binary read/write
     with open(DEVICE_PATH, mode="r+b", buffering=0) as dev:
-        # 必要ならデバッグ ioctl も踏襲
+        # optional debug ioctl
         DRIVER_DEBUG = 0
         fcntl.ioctl(dev, 0x40044200, struct.pack("I", DRIVER_DEBUG))
 
-        while True:
-            mem = read_all_memory(dev)
-            parse_and_dump(mem)
-            time.sleep(loop_interval)
+        try:
+            while True:
+                buf= read_all_memory(dev)
+                parse_and_dump(buf, memory_map)
+        except KeyboardInterrupt:
+            # 測定結果を取得
+            raw = ld.get_raw_data('read_all_memory')
+            times = raw.get('read_all_memory', [])
+            ld.print_stats()
+
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
