@@ -21,22 +21,20 @@ def read_all_memory(dev):
     total_size = 400 # 360 byte max
     buf = bytearray(total_size)
 
-    #import pdb; pdb.set_trace()
 
     # possible offset: 0:56, 56:62, 118:58, 176:56, 232:56, 288:56, 344:16
     avail_offsets = [(0,56),(56,62),(118,58),(176,56),(232,56), (344,16)]
     #for offset in range(0, total_size, CHUNK_DATA_SIZE):
     for (offset, length) in avail_offsets:
-        print(f"offset:{offset}, length:{length}")
+        #print(f"offset:{offset}, length:{length}")
         # コマンド: 'r {addr} {length} '
-        #cmd = f"r {offset} {CHUNK_DATA_SIZE} ".encode("ascii")
         cmd = f"r {offset:x} {length:x} ".encode("ascii")
-        print(cmd)
+        #print(cmd)
         dev.write(cmd)
 
         # 256 バイトまで受け取り
         data = dev.read(CHUNK_READ_SIZE)
-        print(f'offset:{offset} len:{data[1]}')
+        #print(f'offset:{offset} len:{data[1]}')
         actual_len = len(data)-2
         if actual_len < 0 or data[0:1] != b"r":
             raise IOError(f"Invalid header: {data!r}")
@@ -49,8 +47,12 @@ def read_all_memory(dev):
     return buf
 
 @ld
-def parse_and_dump(buf, memory_map):
-    for name, entry in memory_map.items():
+def parse_and_dump_all(buf):
+    parse_and_dump(buf, memory_map.keys())
+
+def parse_and_dump(buf, names):
+    for name in names:
+        entry = memory_map[name]
         addr, length, typ = entry
         #print(f'{name}: {addr}, {length}, {typ}')
         raw = buf[addr:addr + length]
@@ -76,10 +78,12 @@ def main():
         fcntl.ioctl(dev, IOCTL_DEBUG, struct.pack("I", DRIVER_DEBUG))
         #fcntl.ioctl(dev, IOCTL_READ_MODE, struct.pack("I", 1)) # binary
 
+        queries = ['GYRO_DATA', 'BODY_ANGLE', 'WHEEL_ANGLE_L']
         try:
             while True:
                 buf= read_all_memory(dev)
-                parse_and_dump(buf, memory_map)
+                #parse_and_dump_all(buf)
+                parse_and_dump(buf, queries)
         except KeyboardInterrupt:
             # 測定結果を取得
             raw = ld.get_raw_data('read_all_memory')
