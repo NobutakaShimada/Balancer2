@@ -12,16 +12,7 @@ from datetime import datetime
 
 from allmemquery import read_all_memory
 from BeuatoMemMap import memory_map
-
-# 型コード → struct.unpack 用フォーマット
-TYPE_FMT = {
-    "us": "<H",   # unsigned short
-    "uc": "<B",   # unsigned char
-    "s":  "<h",   # short
-    "d":  "<d",   # double
-    "ll": "<q",   # long long
-    "ull":"<Q",   # unsigned long long
-}
+from BeuatoMemMap import TYPE_FMT
 
 # 更新間隔（ms）
 UPDATE_INTERVAL = 10
@@ -396,17 +387,17 @@ class MemoryViewerApp:
         numeric_count = 0
         for name, (addr, length, typ) in memory_map.items():
             raw = mem[addr:addr+length]
-            if typ == "c":
-                val = raw.rstrip(b"\x00").decode("ascii", errors="ignore")
+            #if typ == "c":
+            #    val = raw.rstrip(b"\x00").decode("ascii", errors="ignore")
+            #else:
+            fmt = TYPE_FMT.get(typ)
+            if fmt:
+                val = struct.unpack_from(fmt, raw)[0]
+                if isinstance(val, (int, float)):
+                    numeric_count += 1
             else:
-                fmt = TYPE_FMT.get(typ)
-                if fmt:
-                    val = struct.unpack_from(fmt, raw)[0]
-                    if isinstance(val, (int, float)):
-                        numeric_count += 1
-                else:
-                    val = "N/A"
-            
+                val = "N/A"
+
             data[name] = val
             # テーブルセルを更新
             self.tree.set(name, 'value', val)

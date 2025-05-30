@@ -70,9 +70,9 @@ memory_map = {
 TYPE_FMT = {
     "us": "<H",   # unsigned short
     "uc": "<B",   # unsigned char
+    "c":  "<b",   # signed char
     "s":  "<h",   # short
     "d":  "<d",   # double
     "ll": "<q",   # long long
     "ull":"<Q",   # unsigned long long
-    # "c" は文字列扱いで後述
 }
