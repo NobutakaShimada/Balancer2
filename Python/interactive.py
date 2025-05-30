@@ -23,12 +23,15 @@ def make_command(var_name: str, com: str) -> bytes:
     b_cmd = make_command_from_addr(addr, length, com)
     return b_cmd, length, vartype
 
-def make_command_from_addr(addr, length, com: str) -> bytes:
+def make_read_command_from_addr(addr, length, com: str) -> bytes:
     addr_hex = format(addr, 'x')
     len_hex = format(length, 'x')
     cmd = f"{com} {addr_hex} {len_hex} "
     return cmd.encode('ascii')
 
+def make_command_from_str(str) -> bytes:
+    cmd = str
+    return cmd.encode('ascii')
 
 import struct
 from typing import Tuple, Union
@@ -72,7 +75,7 @@ def parse_beuato_ascii(line: Union[str, bytes]) -> Tuple[bytes, int]:
 
 
 
-def send_and_receive_command_only(command, length):
+def send_and_receive_command_only(command):
     dev.write(command)
 
     res = dev.read(256)
@@ -123,7 +126,7 @@ def responce_decode(payload, size, vartype):
     return val
 
 def send_and_receive_command(command, length, vartype):
-    res = send_and_receive_command_only(command, length)
+    res = send_and_receive_command_only(command)
 
     payload, size = parse_beuato_ascii(res)
     if Debug: print(f"payload:{payload} size:{size}")
@@ -148,16 +151,27 @@ if __name__ == '__main__':
 
 
         while True:
-            addr, length = map(int, input("addr, length = ").split())
-            print(f'addr: {addr}, length: {length}')
+            print("----------------------------")
+            mode = input("mode: r(ead) / w(rite) / s(tring) : ")
+            if mode == 'r':
+                addr, length = map(int, input("addr, length = ").split())
+                print(f'addr: {addr}, length: {length}')
+                command = make_read_command_from_addr(addr, length, "r")
+            elif mode == 'w':
+                print("write mode not yet implemented.")
+                continue
+            elif mode == 's':
+                s = input("command string: ")
+                command = make_command_from_str(s)
+            else :
+                print( 'mode is either "r" or "w"' )
+                continue
             try:
-                print("----------------------------")
-
                 #addr = 0x0
                 #length = 2
-                command = make_command_from_addr(addr, length, "r")
+
                 print(command)
-                res = send_and_receive_command_only(command, length)
+                res = send_and_receive_command_only(command)
                 payload, size = parse_beuato_ascii(res)
                 print(f"payload:{payload} size:{size}")
 

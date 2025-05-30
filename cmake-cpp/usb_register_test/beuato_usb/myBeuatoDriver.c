@@ -85,6 +85,8 @@ struct usb_class_driver skel_class = {
  **/
 
 struct user_read_result read_results = {
+	.command = 0,
+	.addr = 0,
 	.buffer = NULL,
 	.buffer_length = 0,
 	.datasize = 0,
@@ -98,6 +100,8 @@ static size_t line_pos=0, line_len=0;
 
 static int init_read_results(struct user_read_result *r)
 {
+	r->command = 0;
+	r->addr = 0;
 	if(!r->buffer) {
 		r->buffer = kmalloc(MAX_IN_TEXT_SIZE, GFP_KERNEL);
 		if(!r->buffer) {
@@ -115,6 +119,8 @@ static int free_read_results(struct user_read_result *r)
 	if(r->buffer) {
 		kfree(r->buffer);
 	}
+	r->command = 0;
+	r->addr = 0;
 	r->buffer = NULL;
 	r->buffer_length = 0;
 	DMESG_DEBUG("read_results freeed.");
@@ -125,6 +131,8 @@ inline void clear_read_results(struct user_read_result *r)
 {
 	if(r->ready_to_return)
 		DMESG_DEBUG("unsent data remains in read_results but cleard.");
+	r->command = 0;
+	r->addr = 0;
 	r->datasize=0;
 	r->ready_to_return=0;
 	DMESG_DEBUG("read_results cleared (not freeed).");
@@ -228,13 +236,23 @@ int skel_release(struct inode *inode, struct file *file)
 /* データの解釈 */
 void report_in_handler(unsigned char *buf, int length)
 {
-	DMESG_DEBUG("[I] Read Message:%d\n", length);
-	//printk("Data:");
+	if( buf[0] == 'r' || buf[0] == 'w') {
+		const u8* data;
+		int datasize;
+		char command = buf[0];
+		int addr = 0;
+	        if( buf[0] == 'r' ) {
+			DMESG_DEBUG("[I] <Read> Message:%d\n", length);
+			datasize = buf[1];
+			data = (const u8*)&buf[2];
+		}
+	        else if( buf[0] == 'w' )	{
+			DMESG_DEBUG("[I] <Write> Message:%d\n", length);
+			addr = buf[1];
+			datasize = buf[2];
+			data = (const u8*)&buf[3];
+		}
 
-
-	if( buf[0] == 'r' )
-	{
-		int datasize = buf[1];
 		DMESG_DEBUG("Contained Data Size:%d\n", datasize);
 		if(datasize >= read_results.buffer_length)
 		{
@@ -243,20 +261,22 @@ void report_in_handler(unsigned char *buf, int length)
 			return;
 		}
 
+		read_results.command = command;
+		read_results.addr = addr;
 		read_results.datasize = datasize;
 
-		DMESG_DEBUG_DUMP("Contained Data: ", (const u8*)&(buf[2]), datasize, true);
+		DMESG_DEBUG_DUMP("Contained Data: ", data, datasize, true);
 		//print_hex_dump(KERN_DEBUG, "Contained Data:", KERN_CONT, 16, 1, (const u8*)&(buf[2]), datasize, true);
 
 		for(int i = 0 ; i < read_results.datasize; ++i)
 		{
 			//printk(KERN_CONT "%x ", buf[i+2]);
-			read_results.buffer[i] = buf[i+2];
+			read_results.buffer[i] = data[i];
 		}
-		read_results.ready_to_return = 1; 
+		read_results.ready_to_return = 1;
 	}
 	else {
-		DMESG_DEBUG("NOT 'r' of reported buf in report_in_handler.\n");;
+		DMESG_DEBUG("NOT 'r/w' of reported buf in report_in_handler.\n");
 		DMESG_DEBUG("¥t data: %02x\n", buf[0]);
 	}
 
@@ -291,8 +311,6 @@ static void urb_in_complete(struct urb* urb)
 	    DMESG_DEBUG("urb error %d\n", urb->status);
 	    return;
 	}
-
-	DMESG_DEBUG("MultiTX Check: actual_length:%d expected_length:%d", urb->actual_length, 2+pDev->bin_buf[1])
 
 	/* 2) 長さ０なら再投入だけ */
 	if (urb->actual_length == 0) {
@@ -339,8 +357,20 @@ static void urb_in_complete(struct urb* urb)
 		//print_hex_dump(KERN_DEBUG, "     Bin_buf(after):", DUMP_PREFIX_NONE, 8, 1, (const u8*)(pDev->bin_buf), pDev->received_len, true);
 	}
 
-	if (pDev->expected_len == 0 && pDev->received_len >= 2)
-		pDev->expected_len = pDev->bin_buf[1] + 2;
+	if (pDev->expected_len == 0) {
+		if(pDev->bin_buf[0] == 'r') {
+			// read : 'r'+<len>+<data>...
+			if(pDev->received_len >= 2)
+				pDev->expected_len = pDev->bin_buf[1] + 2;
+		}
+		else if(pDev->bin_buf[0] == 'w') {
+			// write: 'w'+<addr>+<len>+<data>...
+			if(pDev->received_len >= 3)
+				pDev->expected_len = pDev->bin_buf[2] + 3;
+		}
+	}
+
+	DMESG_DEBUG("MultiTX Check: actual_length:%d expected_length:%d", urb->actual_length, pDev->expected_len);
 
 	if (pDev->received_len >= pDev->expected_len) {
 		clear_read_results(&read_results);
@@ -356,7 +386,9 @@ static void urb_in_complete(struct urb* urb)
 		pDev->received_len = 0;
 		pDev->expected_len = 0;
 	}
-
+	else {
+		DMESG_DEBUG("Following packet expected: expected_len:%d received_len:%d\n", pDev->expected_len, pDev->received_len);
+	}
 	/* 4) 最後にまとめて再投入 */
 	run_read(pDev);
 	/*
@@ -495,11 +527,21 @@ void report_out_handler(u8 *buf, int length)
 	switch (buf[0])
 	{
 		case 'r':
-			DMESG_DEBUG("[O] Read Message");
+			DMESG_DEBUG("[O] Read Message: ");
 			//printk("Data:");
 			for(int i = 0 ; i < length; i ++)
 			{
 				//printk(KERN_CONT "%x ", buf[i]);
+				DMESG_DEBUG("%x ", buf[i]);
+			}
+			break;
+		case 'w':
+			DMESG_DEBUG("[O] Write Message: ");
+			//printk("Data:");
+			for(int i = 0 ; i < length; i ++)
+			{
+				//printk(KERN_CONT "%x ", buf[i]);
+				DMESG_DEBUG("%x ", buf[i]);
 			}
 			break;
 		default:
@@ -567,14 +609,17 @@ int parse_user_command(char* raw_text,  size_t count, struct user_command* comma
 	if(raw_text[0] == 'r') 
 	{
 		command->command_state = STATE_READ;
+		DMESG_DEBUG("Read command receieved.\n");
 	}
 	else if(raw_text[0] == 'w')
 	{
 		command->command_state = STATE_WRITE;
+		DMESG_DEBUG("Write command receieved.\n");
 	}
 	else
 	{
 		command->command_state = STATE_INVALID;
+		DMESG_DEBUG("Invalid command receieved.\n");
 		return RETVAL_PARSE_INVALID;
 	}
 
@@ -609,6 +654,13 @@ int parse_user_command(char* raw_text,  size_t count, struct user_command* comma
 				case 1:
 					kstrtol(temporary_text, 16, &read_parameter->datasize);	
 					break;
+				default:
+					if( command->command_state == STATE_WRITE) {
+						long val; 
+						kstrtol(temporary_text, 16, &val);
+						read_parameter->senddata[i-2] = (char)val;	
+					}
+					break;
 			}
 		}
 
@@ -622,9 +674,9 @@ static const int RETVAL_FORMAT_INVALID = -1;
 
 int format_buffer_command(const struct user_command* command, char** buffer, int buffer_size)
 {
+	char* transmit_buff = *buffer;
 	if(command->command_state == STATE_READ)
 	{
-		char* transmit_buff = *buffer;
 		long address = command->read_parameters.address;
 		long datasize = command->read_parameters.datasize;
 
@@ -638,16 +690,27 @@ int format_buffer_command(const struct user_command* command, char** buffer, int
 		char* transmit_buff = *buffer;
 		long address = command->read_parameters.address;
 		long datasize = command->read_parameters.datasize;
+		char* senddata = command->read_parameters.senddata;
 
-		transmit_buff[0] = 'w';
-		transmit_buff[1] = address & 0xFF;
-		transmit_buff[2] = (address & 0xFF00) >> 8;
-		transmit_buff[3] = datasize;
+		int i=0;
+		transmit_buff[i++] = 'w';
+		transmit_buff[i++] = address & 0xFF;
+		transmit_buff[i++] = (address & 0xFF00) >> 8;
+		transmit_buff[i++] = datasize;
+		if(datasize > sizeof(senddata) || datasize > sizeof(*transmit_buff)-4) {
+			DMESG_INFO("transmit_buff overflow. datasize: %d / senddata: %d / transmit_buff: %d\n",
+				datasize, sizeof(senddata), sizeof(transmit_buff));
+			return RETVAL_FORMAT_INVALID;
+		}
+		for(int j=0; j<datasize; j++ ) {
+			transmit_buff[i+j] = senddata[j];
+		}
 	}
 	else
 	{
 		return RETVAL_FORMAT_INVALID;
 	}
+	DMESG_DEBUG_DUMP("Constructed command: ", transmit_buff, 16, true);
 
 	return RETVAL_FUNC_OK;
 }
@@ -678,25 +741,26 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 
 	long address = command.read_parameters.address;
 	long datasize = command.read_parameters.datasize;
+        char* senddata = command.read_parameters.senddata;
 
 	struct urb* urb_out; // urb header for send
 	urb_out = usb_alloc_urb(0, GFP_KERNEL);
 	if(!urb_out) 
 	{
-		DMESG_ERR("Memory allocation failed");
+		DMESG_ERR("Memory allocation failed.\n");
 		return -ENOMEM;
 	}
 
-	char* transmit_buff; transmit_buff = kmalloc(pDev->int_out_buffer_length, GFP_KERNEL); 
+	char* transmit_buff = kmalloc(pDev->int_out_buffer_length, GFP_KERNEL); 
 	if(!transmit_buff) {
-		DMESG_ERR("transmit_buff alloc failed.");
+		DMESG_ERR("transmit_buff alloc failed.\n");
 		usb_free_urb(urb_out);
 		return -ENOMEM;
 	}
 	memset(transmit_buff, 0, pDev->int_out_buffer_length);
 	if (format_buffer_command(&command, &transmit_buff, pDev->int_out_buffer_length ) < 0)
 	{
-		DMESG_ERR("Format failed");
+		DMESG_ERR("Format failed.\n");
 		kfree(transmit_buff);
 		usb_free_urb(urb_out);
 		return -EINVAL;
@@ -886,24 +950,29 @@ static int build_line_binary(char *dst)
 
     /* データ長を取得 */
     datasize = read_results.datasize;
+
     if (datasize < 0)
         datasize = 0;
     if (datasize > MAX_IN_TEXT_SIZE)
         datasize = MAX_IN_TEXT_SIZE;
 
-    /* ヘッダ: 'r' + uint8_t length */
-    dst[0] = 'r';
-    dst[1] = (u8)datasize;
+    /* READヘッダ:  'r' + uint8_t length */
+    /* WRITEヘッダ: 'w' + uint8_t addr + uint8_t length */
+    int pt = 0;
+    dst[pt++] = (u8)read_results.command;
+    if(read_results.command == 'w')
+            dst[pt++] = (u8)read_results.addr;
+    dst[pt++] = (u8)datasize;
 
     /* データ本体をコピー */
     if (datasize > 0)
-        memcpy(dst + 2, read_results.buffer, datasize);
+        memcpy(dst+pt, read_results.buffer, datasize);
 
     /* 返却済みフラグをクリア */
     read_results.ready_to_return = 0;
 
     /* トータル長を返す */
-    return datasize + 2;
+    return pt+datasize;
 }
 
 

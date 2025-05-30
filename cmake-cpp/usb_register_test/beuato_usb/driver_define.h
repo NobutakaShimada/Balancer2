@@ -50,10 +50,13 @@ struct user_read_parameter
 {
     long address;
     long datasize;
+    char senddata[256];
 } ;
 
 struct user_read_result 
 {
+    volatile unsigned char command;
+    volatile unsigned int addr;
     volatile unsigned long datasize;
     volatile unsigned char* buffer;
     volatile unsigned int buffer_length;

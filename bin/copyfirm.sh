@@ -24,6 +24,21 @@ cleanup() {
 }
 trap cleanup ERR
 
+# 既存のマウント状態をチェック
+echo "マウント状態をチェック中..."
+if mount | grep -q "^${DEVICE} "; then
+  # mountコマンドの出力から空白を含むパスを正しく抽出
+  CURRENT_MOUNT=$(mount | grep "^${DEVICE} " | sed 's/^[^ ]* on \(.*\) type.*$/\1/')
+  # エスケープされた空白を元に戻す（\040 → 空白）
+  CURRENT_MOUNT=$(echo "$CURRENT_MOUNT" | sed 's/\\040/ /g')
+  echo "  → ${DEVICE} は既に '${CURRENT_MOUNT}' にマウント済み"
+  echo "  → アンマウント実行: '${CURRENT_MOUNT}'"
+  umount "$CURRENT_MOUNT"
+  echo "  → アンマウント完了"
+else
+  echo "  → ${DEVICE} はマウントされていません"
+fi
+
 # マウント
 echo "マウント: ${DEVICE} → ${MNT}"
 mount -t msdos "$DEVICE" "$MNT"
@@ -46,3 +61,4 @@ MOUNTED=0
 echo "  → アンマウント完了"
 
 echo "firmware ${FW} copied into Balancer2."
+
