@@ -568,6 +568,10 @@ int parse_user_command(char* raw_text,  size_t count, struct user_command* comma
 	{
 		command->command_state = STATE_READ;
 	}
+	else if(raw_text[0] == 'w')
+	{
+		command->command_state = STATE_WRITE;
+	}
 	else
 	{
 		command->command_state = STATE_INVALID;
@@ -585,14 +589,17 @@ int parse_user_command(char* raw_text,  size_t count, struct user_command* comma
 			return RETVAL_PARSE_FINISHED;
 		}
 
-		if( command->command_state == STATE_READ ) 
+		if( command->command_state == STATE_READ ||
+		    command->command_state == STATE_WRITE )
 		{
 			struct user_read_parameter* read_parameter = &command->read_parameters;
 
 			memset(temporary_text, 0, MAX_RAW_TEXT_SIZE);
 			memcpy(temporary_text, raw_text + offset + 1, next_space - offset - 1);	
 
-			DMESG_DEBUG("argument(%d,%d):%s", offset, next_space, temporary_text);
+			DMESG_DEBUG("command: '%c' argument(%d,%d):%s\n",
+				raw_text[0],
+				offset, next_space, temporary_text);
 
 			switch(i)
 			{
@@ -626,7 +633,18 @@ int format_buffer_command(const struct user_command* command, char** buffer, int
 		transmit_buff[2] = (address & 0xFF00) >> 8;
 		transmit_buff[3] = datasize;
 	}
-	else 
+	else if(command->command_state == STATE_WRITE)
+	{
+		char* transmit_buff = *buffer;
+		long address = command->read_parameters.address;
+		long datasize = command->read_parameters.datasize;
+
+		transmit_buff[0] = 'w';
+		transmit_buff[1] = address & 0xFF;
+		transmit_buff[2] = (address & 0xFF00) >> 8;
+		transmit_buff[3] = datasize;
+	}
+	else
 	{
 		return RETVAL_FORMAT_INVALID;
 	}
@@ -669,8 +687,8 @@ ssize_t skel_write(struct file *file, const char __user *buff, size_t count, lof
 		return -ENOMEM;
 	}
 
-	char* transmit_buff; transmit_buff = kmalloc(pDev->int_out_buffer_length, 
-	GFP_KERNEL); if(!transmit_buff) {
+	char* transmit_buff; transmit_buff = kmalloc(pDev->int_out_buffer_length, GFP_KERNEL); 
+	if(!transmit_buff) {
 		DMESG_ERR("transmit_buff alloc failed.");
 		usb_free_urb(urb_out);
 		return -ENOMEM;

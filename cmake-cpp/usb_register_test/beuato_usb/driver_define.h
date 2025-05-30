@@ -42,6 +42,7 @@ struct usb_skel {
 enum command_state 
 {
     STATE_READ,
+    STATE_WRITE,
     STATE_INVALID
 };
 
