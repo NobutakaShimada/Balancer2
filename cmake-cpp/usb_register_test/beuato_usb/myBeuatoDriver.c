@@ -527,8 +527,9 @@ void report_out_handler(u8 *buf, int length)
 	switch (buf[0])
 	{
 		case 'r':
-			DMESG_DEBUG("[O] Read Message: ");
+			DMESG_DEBUG("[O] Read Message: \n");
 			//printk("Data:");
+			DMESG_DEBUG("length: %d\n", length);
 			for(int i = 0 ; i < length; i ++)
 			{
 				//printk(KERN_CONT "%x ", buf[i]);
@@ -536,8 +537,9 @@ void report_out_handler(u8 *buf, int length)
 			}
 			break;
 		case 'w':
-			DMESG_DEBUG("[O] Write Message: ");
+			DMESG_DEBUG("[O] Write Message: \n");
 			//printk("Data:");
+			DMESG_DEBUG("length: %d\n", length);
 			for(int i = 0 ; i < length; i ++)
 			{
 				//printk(KERN_CONT "%x ", buf[i]);
@@ -545,9 +547,9 @@ void report_out_handler(u8 *buf, int length)
 			}
 			break;
 		default:
-			DMESG_DEBUG("Other Message:%c", buf[0]);
-			DMESG_DEBUG("length:%d", length);
-			DMESG_DEBUG("buf:%s", buf);
+			DMESG_DEBUG("Other Message:%c\n", buf[0]);
+			DMESG_DEBUG("length: %d\n", length);
+			DMESG_DEBUG("buf: %s\n", buf);
 	}
 
 	DMESG_DEBUG("Report Handled");
@@ -589,7 +591,8 @@ loff_t seek_space(const char* buff_from_user, size_t count, loff_t pos)
 		}
 	}
 
-	return count-1;
+	//return count-1;
+	return count;
 }
 
 static const int MAX_RAW_TEXT_SIZE = 64;
@@ -602,10 +605,11 @@ int parse_user_command(char* raw_text,  size_t count, struct user_command* comma
 	char temporary_text[MAX_RAW_TEXT_SIZE];
 	loff_t offset = 0;
 	loff_t next_space = 0;
-	const int MAX_ARGUMENT_LOOP = 10;
+	const int MAX_ARGUMENT_LOOP = 16;
 
 	memset(command, 0, sizeof(struct user_command));
 
+        DMESG_DEBUG("Raw text: %s", raw_text);
 	if(raw_text[0] == 'r') 
 	{
 		command->command_state = STATE_READ;
@@ -1121,6 +1125,11 @@ long skel_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 		if( copy_from_user(&val, (int __user *)arg, sizeof(int)))
 			return -EFAULT;
 		atomic_set(&beuato_dbg, val ? 1 : 0);
+		if( val ) {
+			DMESG_INFO("Driver DEBUG LOG ON.\n");
+		} else {
+			DMESG_INFO("Driver DEBUG LOG OFF.\n");
+		}
 		return 0;
 	case BEUATO_IOC_SET_MODE:
         	if (copy_from_user(&mode, (int __user *)arg, sizeof(int)))
@@ -1128,6 +1137,11 @@ long skel_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	        if (mode != BEUATO_MODE_ASCII && mode != BEUATO_MODE_BINARY)
 	            return -EINVAL;
 	        pDev->mode = mode;
+		if( mode == BEUATO_MODE_ASCII ) {
+			DMESG_INFO("ASCII Mode ON.\n");
+		} else if( mode == BEUATO_MODE_BINARY ) {
+			 DMESG_INFO("BINARY Mode ON.\n");
+		}
 	        return 0;
 
 	default:

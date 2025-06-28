@@ -2,7 +2,12 @@ import time
 import functools
 #import latency_decorator as ld
 from LatencyMeasurer import LatencyMeasurer as ld
-from BeuatoMemMap import memory_map
+from BeuatoMemMap import memory_map, TYPE_FMT
+import ast
+
+# automatic string to numerical
+convert = lambda s: ast.literal_eval(s) if s.replace('.','').replace('-','').replace('e','').replace('E','').replace('+','').isdigit() else s
+
 
 IOCTL_DEBUG = 0x40044200
 IOCTL_READ_MODE = 0x40044201
@@ -22,6 +27,17 @@ def make_command(var_name: str, com: str) -> bytes:
     # addr を 16 進文字列に（0xなし、小文字）
     b_cmd = make_command_from_addr(addr, length, com)
     return b_cmd, length, vartype
+
+def make_write_command(name, data, com: str) -> bytes:
+    try:
+        addr, length, vartype = memory_map[name]
+    except KeyError:
+        raise ValueError(f"Unknown variable: {var_name!r}")
+    addr_hex = format(addr, 'x')
+    len_hex = format(length, 'x')
+    bdata = struct.pack(TYPE_FMT[vartype], convert(data))
+    cmd = f"{com} {addr_hex} {len_hex} {bdata.hex(' ')}"
+    return cmd.encode('ascii')
 
 def make_read_command_from_addr(addr, length, com: str) -> bytes:
     addr_hex = format(addr, 'x')
@@ -154,12 +170,22 @@ if __name__ == '__main__':
             print("----------------------------")
             mode = input("mode: r(ead) / w(rite) / s(tring) : ")
             if mode == 'r':
+                name = input("name = ")
+                print(name)
+                addr, length, vartype = memory_map[name]
+                print(f'name: {name}, addr: {addr}, length: {length}, type: {vartype}')
+                command = make_read_command_from_addr(addr, length, "r")
+            elif mode == 'ra':
                 addr, length = map(int, input("addr, length = ").split())
                 print(f'addr: {addr}, length: {length}')
                 command = make_read_command_from_addr(addr, length, "r")
             elif mode == 'w':
-                print("write mode not yet implemented.")
-                continue
+                #print("write mode not yet implemented.")
+                name, data = input("name, data: ").split()
+                addr, length, vartype = memory_map[name]
+                print(f'name: {name}, addr: {addr}, length: {length}, data: {data}, type: {vartype}')
+                command = make_write_command(name, data, "w")
+                print(f"command: {command}")
             elif mode == 's':
                 s = input("command string: ")
                 command = make_command_from_str(s)
@@ -170,7 +196,6 @@ if __name__ == '__main__':
                 #addr = 0x0
                 #length = 2
 
-                print(command)
                 res = send_and_receive_command_only(command)
                 payload, size = parse_beuato_ascii(res)
                 print(f"payload:{payload} size:{size}")

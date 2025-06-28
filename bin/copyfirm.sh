@@ -46,13 +46,13 @@ MOUNTED=1
 echo "  → OK"
 
 # dd書き込み
-echo "dd書き込み: ${FW} → ${MNT}"
+echo "dd ファームウェア書き込み: ${FW} → ${MNT}"
 dd if="$FW" of="$MNT/$FILE" \
    bs=1024 \
    conv=notrunc,fsync \
    oflag=direct \
    status=progress
-echo "  → dd OK"
+echo "  → ddファームウェア書き込み OK"
 
 # 正常終了前のアンマウント
 echo "アンマウント: ${MNT}"

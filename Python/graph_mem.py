@@ -23,6 +23,11 @@ WINDOW_SIZE = GRAPH_POINTS  # 表示点数と同じに設定
 # デバッグモード
 DEBUG_MODE = False  # True にするとデバッグ情報を出力
 
+# driver debug log
+IOCTL_DEBUG = 0x40044200
+IOCTL_READ_MODE = 0x40044201
+
+
 class MemoryViewerApp:
     def __init__(self, root):
         self.root = root
@@ -39,6 +44,14 @@ class MemoryViewerApp:
             self.dev = open(self.device_path, "r+b", buffering=0)
             if DEBUG_MODE:
                 print("デバイスオープン成功")
+            DRIVER_DEBUG = 0 # 0: no debug 1: debug
+            import fcntl
+            fcntl.ioctl(self.dev, IOCTL_DEBUG, struct.pack("I",DRIVER_DEBUG)) # debug dmesg
+            if DRIVER_DEBUG:
+                print("driver debug log on.")
+            else :
+                print("driver debug log off.")
+
         except Exception as e:
             print(f"デバイスオープンエラー: {e}")
             self.dev = None

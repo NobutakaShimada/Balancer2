@@ -66,7 +66,7 @@ memory_map = {
     "GAIN_OPTION6": [352, 8, "d"]
 }
 
-# 型コード → struct.unpack 用フォーマット
+# 型コード → struct.unpack/pack 用フォーマット
 TYPE_FMT = {
     "us": "<H",   # unsigned short
     "uc": "<B",   # unsigned char
