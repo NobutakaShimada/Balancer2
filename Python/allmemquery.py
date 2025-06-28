@@ -23,7 +23,7 @@ def read_all_memory(dev):
 
 
     # possible offset: 0:56, 56:62, 118:58, 176:56, 232:56, 288:56, 344:16
-    avail_offsets = [(0,56),(56,62),(118,58),(176,56),(232,56), (344,16)]
+    avail_offsets = [(0,56),(56,62),(118,58),(176,56),(232,56),(288,56),(344,16)]
     #for offset in range(0, total_size, CHUNK_DATA_SIZE):
     for (offset, length) in avail_offsets:
         #print(f"offset:{offset}, length:{length}")

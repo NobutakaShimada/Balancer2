@@ -825,7 +825,7 @@ int skel_probe(struct usb_interface* ip, const struct usb_device_id* pID)
 	pDev->udev = usb_get_dev(interface_to_usbdev(ip));		// USBデバイスの存在チェック
 	pDev->ip = ip;
 	pDev->mode = BEUATO_MODE_BINARY;
-	DMESG_DEBUG("return mode: %d\n", pDev->mode)
+	DMESG_INFO("return mode: %d\n", pDev->mode)
 	// エンドポイントの取得
 	// https://wiki.bit-hive.com/north/pg/usb%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90
 	struct usb_host_interface* pHostIf = ip->cur_altsetting;
@@ -1029,11 +1029,11 @@ ssize_t skel_read(struct file *file, char __user *buf,
 	}
 	if (pDev->mode == BEUATO_MODE_BINARY) {
 		line_len = build_line_binary(line_buf);
-		DMESG_DEBUG("respond binary mode.\n");
+		DMESG_INFO("respond binary mode.\n");
 	}
 	else {
 		line_len = build_line_ascii(line_buf);
-		DMESG_DEBUG("respond ascii mode.\n");
+		DMESG_INFO("respond ascii mode.\n");
 	}
 
 	atomic_set(&beuato_data_ready, 0);
