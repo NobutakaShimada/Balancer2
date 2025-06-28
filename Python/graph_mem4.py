@@ -198,7 +198,20 @@ class MemoryViewerApp:
                   background=[('selected', ''), ('active', '')],
                   foreground=[('selected', 'black'), ('active', 'black')])
         
-        self.tree = ttk.Treeview(root, columns=('value',), show='tree headings', height=30, style="Custom.Treeview")
+        # メインのPanedWindow（左右分割）
+        main_paned = ttk.PanedWindow(root, orient='horizontal')
+        main_paned.pack(fill='both', expand=True, padx=5, pady=5)
+
+        # 左ペイン（変数リスト用フレーム）
+        left_frame = ttk.Frame(main_paned)
+        main_paned.add(left_frame, weight=1)
+
+        # 右ペイン（グラフ用フレーム）
+        right_frame = ttk.Frame(main_paned)
+        main_paned.add(right_frame, weight=3)
+
+        #self.tree = ttk.Treeview(root, columns=('value',), show='tree headings', height=30, style="Custom.Treeview")
+        self.tree = ttk.Treeview(left_frame, columns=('value',), show='tree headings', style="Custom.Treeview")
         self.tree.heading('#0', text='Field')
         self.tree.column('#0', width=200, anchor='w')
         self.tree.heading('value', text='Value')
@@ -208,14 +221,17 @@ class MemoryViewerApp:
         # フィールドを追加
         for name in memory_map:
             self.tree.insert('', 'end', iid=name, text=name, values=('',))
-        
+
+        # ツリーを左フレームに配置
+        self.tree.pack(in_=left_frame, fill='both', expand=True)
+
         # イベントバインド
         self.tree.bind('<Button-1>', self._on_tree_click)
 
-        # 右側全体のフレーム
-        right_frame = ttk.Frame(root)
-        right_frame.pack(side='right', fill='both', expand=True, padx=5, pady=5)
-        
+
+
+
+
         # コントロールボタン
         control_frame = ttk.Frame(right_frame)
         control_frame.pack(side='top', fill='x', pady=(0, 5))
