@@ -9,6 +9,7 @@ from collections import deque
 import matplotlib.colors as mcolors
 import csv
 from datetime import datetime
+import ast
 
 from allmemquery import read_all_memory
 from BeuatoMemMap import memory_map
@@ -23,126 +24,244 @@ WINDOW_SIZE = GRAPH_POINTS  # 表示点数と同じに設定
 # デバッグモード
 DEBUG_MODE = False  # True にするとデバッグ情報を出力
 
+def print_debug(*args, **kwargs):
+    """デバッグモードの時のみ出力する関数"""
+    if DEBUG_MODE:
+        print(*args, **kwargs)
+
+
 # driver debug log
 IOCTL_DEBUG = 0x40044200
 IOCTL_READ_MODE = 0x40044201
 
+# fontsize
+DEFAULT_FONTSIZE = 12
+
+
+# automatic string to numerical conversion (from interactive.py)
+convert = lambda s: ast.literal_eval(s) if s.replace('.','').replace('-','').replace('e','').replace('E','').replace('+','').isdigit() else s
+
+# 仕様書に基づく読み取り専用変数のリスト（「R」のみの変数）
+READONLY_VARIABLES = {
+    "Product_ID",           # プロダクトID
+    "Version",              # ファームウェアバージョン  
+    "MODE",                 # モード
+    "M_CURRENT_L",          # モータ電流測定値
+    "M_CURRENT_R", 
+    "T_CURRENT_L",          # モータ電流指令値
+    "T_CURRENT_R",
+    "CURRENT_OFFSET_L",     # 電流オフセット
+    "CURRENT_OFFSET_R",
+    "BODY_ANGULAR_SPD",     # 本体角速度
+    "BODY_ANGLE",           # 本体角度
+    "BODY_ANGULAR_SPD_OFFSET", # 本体角速度オフセット
+    "WHEEL_ANGULAR_SPD_L",  # ホイール角速度
+    "WHEEL_ANGULAR_SPD_R",
+    "WHEEL_ANGLE_L",        # ホイール角度
+    "WHEEL_ANGLE_R",
+    "ENC_L",                # エンコーダ
+    "ENC_R",
+    "GYRO_DATA",            # ジャイロ
+    "ADC_C_LA",             # ADC（電流）
+    "ADC_C_LB",
+    "ADC_C_RA",
+    "ADC_C_RB",
+    "PAD_BTN",              # VS-C3
+    "PAD_AN_RX",
+    "PAD_AN_RY", 
+    "PAD_AN_LX",
+    "PAD_AN_LY",
+    # 実装上書き込み不可
+    "GAIN_OPTION6"          # ファームウェア未実装
+}
+
+def make_write_command(name, data) -> bytes:
+    """
+    変数名と書き込みデータから書き込みコマンドを生成
+    allmemquery.pyと同じASCII形式
+    """
+    try:
+        addr, length, vartype = memory_map[name]
+    except KeyError:
+        raise ValueError(f"Unknown variable: {name!r}")
+    
+    print_debug(f"Debug: {name} - addr={addr} (0x{addr:x}), length={length}, vartype={vartype}")
+    
+    # データをバイナリ形式に変換
+    try:
+        converted_data = convert(str(data))
+        bdata = struct.pack(TYPE_FMT[vartype], converted_data)
+        print_debug(f"Debug: converted_data={converted_data}, bdata={bdata.hex()}")
+    except (ValueError, struct.error) as e:
+        raise ValueError(f"Invalid data format for {vartype}: {data}")
+    
+    # ASCII形式でコマンド生成（allmemquery.pyと同じパターン）
+    # "w {addr} {length} {data_hex} "
+    addr_hex = format(addr, 'x')
+    length_hex = format(length, 'x')
+    data_hex = ' '.join(f'{b:02x}' for b in bdata)
+    cmd = f"w {addr_hex} {length_hex} {data_hex} "
+    
+    print_debug(f"Debug: ASCII command = '{cmd}'")
+    return cmd.encode('ascii')
+
+def send_write_command(dev, command):
+    """
+    書き込みコマンドを送信
+    allmemquery.pyと同じパターンでバイナリ応答を期待
+    """
+    try:
+        print_debug(f"Debug: Sending command: {command}")
+        dev.write(command)
+        
+        # バイナリ形式で応答を読み取り
+        response = dev.read(256)
+        print_debug(f"Debug: Write response raw: {response}")
+        print_debug(f"Debug: Write response hex: {response.hex() if response else 'None'}")
+        
+        # バイナリ応答の解析（ドライバのbuild_line_binary形式）
+        if response and len(response) >= 3:
+            if response[0:1] == b'w':  # 書き込み応答
+                # 応答フォーマット: 'w' + addr_low + addr_high + length + data...
+                addr_low = response[1]
+                addr_high = response[2] if len(response) > 2 else 0
+                response_len = response[3] if len(response) > 3 else 0
+                
+                addr = addr_low + (addr_high << 8)
+                print_debug(f"Debug: Write response - command='w', addr=0x{addr:x}({addr}), length={response_len}")
+                
+                if len(response) >= 4 + response_len:
+                    data_part = response[4:4+response_len] if response_len > 0 else b''
+                    print_debug(f"Debug: Response data: {data_part.hex() if data_part else 'none'}")
+                    print_debug("Debug: 書き込み成功と判定")
+                    return True
+                else:
+                    print_debug(f"Debug: データ部分不足 - 期待{response_len}, 実際{len(response)-4}")
+                    # データが不足でも、レスポンス自体があれば成功とみなす
+                    if response_len == 0:
+                        print_debug("Debug: データ長0だが応答ありのため成功と判定")
+                        return True
+                    return False
+            else:
+                print_debug(f"Debug: Unexpected response command: {response[0]:02x}")
+                return False
+        else:
+            print_debug("Debug: No response or too short")
+            return False
+            
+    except Exception as e:
+        print(f"Write command failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
 
 class MemoryViewerApp:
     def __init__(self, root):
+        # 最初に全ての必要な属性を初期化
+        self.editing_item = None
+        self.edit_entry = None
+        self.original_value = None
+        self.editing_start_time = 0
+        self.selected_fields = set()
+        self.is_recording = False
+        self.recorded_data = []
+        self.recording_start_time = None
+        self.write_queue = []
+        self.colors = list(mcolors.TABLEAU_COLORS.values())
+        
         self.root = root
         self.device_path = "/dev/BeuatoCtrl0"
         root.title("Memory Map Viewer")
-        
-        # 初期ウィンドウサイズを調整（グラフ領域拡大に合わせて）
-        root.geometry("1200x800")  # 幅を1200に拡大
+        root.geometry("1200x800")
 
-        # デバイスをオープン (バイナリ、ノンバッファ)
-        if DEBUG_MODE:
-            print("デバイスをオープン中...")
+        # デバイスをオープン
         try:
             self.dev = open(self.device_path, "r+b", buffering=0)
-            if DEBUG_MODE:
-                print("デバイスオープン成功")
-            DRIVER_DEBUG = 0 # 0: no debug 1: debug
+            DRIVER_DEBUG = 0
             import fcntl
-            fcntl.ioctl(self.dev, IOCTL_DEBUG, struct.pack("I",DRIVER_DEBUG)) # debug dmesg
-            if DRIVER_DEBUG:
-                print("driver debug log on.")
-            else :
-                print("driver debug log off.")
-
+            fcntl.ioctl(self.dev, IOCTL_DEBUG, struct.pack("I", DRIVER_DEBUG))
+            
+            # BINARY readモードに設定
+            BEUATO_MODE_BINARY = 1
+            fcntl.ioctl(self.dev, IOCTL_READ_MODE, struct.pack("I", BEUATO_MODE_BINARY))
+            print("Driver set to BINARY read mode.")
         except Exception as e:
             print(f"デバイスオープンエラー: {e}")
             self.dev = None
 
-        # 選択状態管理
-        self.selected_fields = set()  # 選択されたフィールド名のセット
-        
-        # 記録モード関連
-        self.is_recording = False
-        self.recorded_data = []  # 記録データ: [{'timestamp': datetime, 'field1': val1, 'field2': val2, ...}, ...]
-        self.recording_start_time = None
-        
-        # プロット用の色リスト（複数グラフ用）
-        self.colors = list(mcolors.TABLEAU_COLORS.values())
-
         # 左側：メモリマップのテーブル
-        # カスタムスタイルで選択時の背景色を無効化
         style = ttk.Style()
-        
-        # 新しいカスタムスタイルを作成
         style.element_create("Custom.Treeheading.border", "from", "default")
         style.layout("Custom.Treeview", [
             ('Custom.Treeview.treearea', {'sticky': 'nswe'})
         ])
-        
-        # 選択時の色を完全に無効化
         style.configure("Custom.Treeview", 
                        selectbackground='',
-                       selectforeground='black')
+                       selectforeground='black',
+                       font=('', DEFAULT_FONTSIZE, 'normal'))
         style.map("Custom.Treeview",
                   background=[('selected', ''), ('active', '')],
                   foreground=[('selected', 'black'), ('active', 'black')])
         
-        self.tree = ttk.Treeview(root, columns=('value',), show='tree headings', height=30, style="Custom.Treeview")
+        # メインのPanedWindow（左右分割）
+        main_paned = ttk.PanedWindow(root, orient='horizontal')
+        main_paned.pack(fill='both', expand=True, padx=5, pady=5)
+        root.after(100, lambda: main_paned.sashpos(0,350))
+
+        # 左ペイン（変数リスト用フレーム）
+        left_frame = ttk.Frame(main_paned)
+        main_paned.add(left_frame, weight=1)
+
+        # 右ペイン（グラフ用フレーム）
+        right_frame = ttk.Frame(main_paned)
+        main_paned.add(right_frame, weight=40)
+
+        #self.tree = ttk.Treeview(root, columns=('value',), show='tree headings', height=30, style="Custom.Treeview")
+        self.tree = ttk.Treeview(left_frame, columns=('value',), show='tree headings', style="Custom.Treeview")
         self.tree.heading('#0', text='Field')
         self.tree.column('#0', width=200, anchor='w')
         self.tree.heading('value', text='Value')
-        self.tree.column('value', width=120, anchor='e')
-        self.tree.pack(side='left', fill='y', padx=5, pady=5)
+        self.tree.column('value', width=100, anchor='e')
+        #self.tree.pack(side='left', fill='both', padx=2, pady=5)
 
-        # フィールドを追加（クリックイベントをバインド）
+        # フィールドを追加
         for name in memory_map:
             self.tree.insert('', 'end', iid=name, text=name, values=('',))
-        
-        # ツリーのクリックイベントをバインド（シンプルに）
+
+        # ツリーを左フレームに配置
+        self.tree.pack(in_=left_frame, fill='both', expand=True)
+
+        # イベントバインド
         self.tree.bind('<Button-1>', self._on_tree_click)
 
-        # 右側全体のフレーム
-        right_frame = ttk.Frame(root)
-        right_frame.pack(side='right', fill='both', expand=True, padx=5, pady=5)
-        
-        # 右側上部：記録コントロールボタン
+
+
+
+
+        # コントロールボタン
         control_frame = ttk.Frame(right_frame)
         control_frame.pack(side='top', fill='x', pady=(0, 5))
         
-        # 記録開始/停止ボタン
         self.record_button = ttk.Button(control_frame, text="記録開始", command=self._toggle_recording)
         self.record_button.pack(side='left', padx=5)
         
-        # 保存ボタン
         self.save_button = ttk.Button(control_frame, text="CSV保存", command=self._save_csv, state='disabled')
         self.save_button.pack(side='left', padx=5)
         
-        # 記録状態表示ラベル
         self.status_label = ttk.Label(control_frame, text="記録停止中", foreground='red')
         self.status_label.pack(side='left', padx=10)
         
-        # 記録データ数表示
         self.data_count_label = ttk.Label(control_frame, text="データ数: 0")
         self.data_count_label.pack(side='left', padx=10)
 
-        # 右側下部：Matplotlib プロット領域
-        if DEBUG_MODE:
-            print("Matplotlib初期化開始...")
+        # Matplotlib プロット領域
         try:
-            self.fig, self.ax = plt.subplots(figsize=(12, 8))  # 高さを少し調整
-            if DEBUG_MODE:
-                print("matplotlib図作成完了")
-            
+            self.fig, self.ax = plt.subplots(figsize=(12, 8))
             self.canvas = FigureCanvasTkAgg(self.fig, master=right_frame)
-            if DEBUG_MODE:
-                print("matplotlib canvas作成完了")
-            
             self.canvas.get_tk_widget().pack(side='top', fill='both', expand=True)
-            if DEBUG_MODE:
-                print("matplotlib widget配置完了")
-            
         except Exception as e:
             print(f"Matplotlib初期化エラー: {e}")
-            import traceback
-            traceback.print_exc()
 
         # 時系列データ保持用
         self.series = {name: deque(maxlen=WINDOW_SIZE) for name in memory_map}
@@ -153,151 +272,244 @@ class MemoryViewerApp:
         self.ax.set_ylabel("Value")
         self.canvas.draw()
 
+        # 初期表示でRead Only変数を視覚化
+        self._update_tree_colors()
+
         # 定期更新開始
         root.after(0, self.update)
 
     def _on_tree_click(self, event):
         """ツリーアイテムクリック時の処理"""
-        if DEBUG_MODE:
-            print(f"=== ツリークリック イベント発生 ===")
+        print_debug("=== ツリークリック イベント発生 ===")
         
+        # 編集中の場合、編集を終了してから新しいクリックを処理
+        if self.editing_item:
+            # 編集開始から十分時間が経過している場合は終了
+            if hasattr(self, 'editing_start_time') and time.time() - self.editing_start_time > 0.2:
+                print_debug("既存の編集を終了（時間経過）")
+                self._end_edit(commit=False)
+            else:
+                print_debug("編集開始直後のため、クリックを無視")
+                return
+        
+        region = self.tree.identify_region(event.x, event.y)
         item = self.tree.identify('item', event.x, event.y)
-        if DEBUG_MODE:
-            print(f"クリックされたアイテム: {item}")
+        
+        print_debug(f"クリック位置: region={region}, item={item}, x={event.x}, y={event.y}")
         
         if item and item in memory_map:
-            if DEBUG_MODE:
-                print(f"有効なフィールド: {item}")
-            # トグル処理
-            if item in self.selected_fields:
-                # 選択解除
-                self.selected_fields.remove(item)
-                if DEBUG_MODE:
-                    print(f"選択解除: {item}")
-            else:
-                # 選択追加
-                self.selected_fields.add(item)
-                if DEBUG_MODE:
-                    print(f"選択追加: {item}")
+            field_column_width = 200
+            print_debug(f"フィールド名列の幅: {field_column_width}, クリックX座標: {event.x}")
             
-            if DEBUG_MODE:
-                print(f"現在の選択フィールド: {self.selected_fields}")
-            
-            # 選択状態の視覚的表示を更新
-            self._update_tree_colors()
-            
-            # 選択状態が変わったときに即座に再描画
-            if DEBUG_MODE:
-                print("プロット更新を実行...")
-            self._update_plot()
-        else:
-            if DEBUG_MODE:
-                print(f"無効なアイテムまたはフィールド外: {item}")
+            if event.x > field_column_width:  # Value列
+                print_debug("数値表示領域クリック")
+                self._on_value_click(item)
+            else:  # Field名列
+                print_debug("フィールド名領域クリック")
+                self._on_field_click(item)
         
-        # 標準選択を強制的にクリア（保険として）
         self.root.after_idle(lambda: self.tree.selection_remove(self.tree.selection()))
+        print_debug("=== ツリークリック 処理完了 ===\n")
+
+    def _on_field_click(self, item):
+        """フィールド名クリック時の処理（グラフ選択）"""
+        if item in self.selected_fields:
+            self.selected_fields.remove(item)
+        else:
+            self.selected_fields.add(item)
         
-        if DEBUG_MODE:
-            print("=== ツリークリック 処理完了 ===\n")
+        self._update_tree_colors()
+        self._update_plot()
+
+    def _on_value_click(self, item):
+        """数値表示領域クリック時の処理（インライン編集）"""
+        print_debug(f"=== _on_value_click 開始: {item} ===")
+        
+        if not self.dev:
+            messagebox.showerror("エラー", "デバイスが接続されていません")
+            return
+            
+        # 読み取り専用変数のチェック
+        if item in READONLY_VARIABLES:
+            print_debug(f"{item} は読み取り専用です")
+            messagebox.showinfo("読み取り専用", f"{item} は読み取り専用のため編集できません。\n\n仕様書で「R」(Read Only)に指定されている変数です。")
+            return
+        
+        print_debug(f"{item} は書き込み可能です")
+        
+        if self.editing_item:
+            print_debug(f"既存の編集を終了: {self.editing_item}")
+            self._end_edit(commit=False)
+        
+        print_debug(f"編集開始: {item}")
+        self._start_edit(item)
+
+    def _start_edit(self, item):
+        """インライン編集開始"""
+        print_debug(f"=== _start_edit 開始: {item} ===")
+        
+        self.editing_item = item
+        self.editing_start_time = time.time()
+        
+        current_value = self.tree.item(item)['values'][0]
+        self.original_value = str(current_value)
+        print_debug(f"現在の値: {current_value}")
+        
+        # 基本的なEntryウィジェット作成
+        try:
+            self.edit_entry = tk.Entry(self.tree, relief='solid', borderwidth=2)
+            print_debug("基本Entryウィジェット作成完了")
+        except Exception as e:
+            print_debug(f"Entry作成エラー: {e}")
+            return
+        
+        self.edit_entry.insert(0, self.original_value)
+        self.edit_entry.select_range(0, tk.END)
+        
+        bbox = self.tree.bbox(item, 'value')
+        print_debug(f"bbox: {bbox}")
+        
+        if bbox:
+            x, y, width, height = bbox
+            print_debug(f"配置位置: x={x}, y={y}, width={width}, height={height}")
+            
+            self.edit_entry.place(in_=self.tree, x=x, y=y, width=width, height=height)
+            
+            # イベントバインド
+            self.edit_entry.bind('<Return>', lambda e: self._end_edit(commit=True))
+            self.edit_entry.bind('<Escape>', lambda e: self._end_edit(commit=False))
+            self.edit_entry.bind('<Button-3>', lambda e: self._end_edit(commit=False))
+            
+            # フォーカス設定を遅延実行
+            self.root.after(10, self._delayed_focus)
+            print_debug(f"Entryウィジェット配置完了")
+        else:
+            print_debug("bbox取得失敗")
+            self._end_edit(commit=False)
+
+    def _delayed_focus(self):
+        """遅延フォーカス設定"""
+        if self.edit_entry:
+            self.edit_entry.focus_set()
+            self.edit_entry.select_range(0, tk.END)
+            print_debug("遅延フォーカス設定完了 - 編集可能状態")
+
+    def _end_edit(self, commit=False):
+        """インライン編集終了"""
+        if not self.editing_item or not self.edit_entry:
+            return
+            
+        print_debug(f"編集終了: {self.editing_item}, commit={commit}")
+        
+        if commit:
+            new_value = self.edit_entry.get().strip()
+            if new_value != self.original_value:
+                try:
+                    converted_data = convert(new_value)
+                    addr, length, vartype = memory_map[self.editing_item]
+                    struct.pack(TYPE_FMT[vartype], converted_data)
+                    
+                    self.write_queue.append((self.editing_item, new_value))
+                    print_debug(f"書き込みキューに追加: {self.editing_item} = {new_value}")
+                        
+                except (ValueError, struct.error) as e:
+                    print(f"値の検証エラー: {e}")
+                    messagebox.showerror("入力エラー", f"無効な値です: {str(e)}")
+                except Exception as e:
+                    print(f"予期しないエラー: {e}")
+                    messagebox.showerror("エラー", f"値の検証中にエラーが発生しました: {str(e)}")
+        
+        if self.edit_entry:
+            self.edit_entry.destroy()
+            self.edit_entry = None
+        
+        self.editing_item = None
+        self.original_value = None
+
+    def _process_write_command(self, variable_name, value):
+        """書き込みコマンドを処理"""
+        try:
+            command = make_write_command(variable_name, value)
+            success = send_write_command(self.dev, command)
+            
+            if success:
+                print_debug(f"書き込み成功: {variable_name} = {value}")
+                return True
+            else:
+                print_debug(f"書き込み失敗: {variable_name} = {value}")
+                return False
+                    
+        except Exception as e:
+            print(f"書き込み処理エラー: {variable_name} = {value}, エラー: {str(e)}")
+            return False
 
     def _update_tree_colors(self):
-        """ツリーの選択状態を視覚的に表示"""
-        # 全てのアイテムに対して選択状態をチェック
+        """ツリーの選択状態と読み取り専用状態を視覚的に表示"""
+        print_debug(f"Debug: _update_tree_colors called, readonly_variables count={len(READONLY_VARIABLES)}")
+        
         for item in self.tree.get_children():
             if item in self.selected_fields:
-                # 選択されている場合は背景色を変更
+                # 選択されている場合（グラフ表示対象）
                 self.tree.item(item, tags=('selected',))
+                print_debug(f"Debug: {item} -> selected")
+            elif item in READONLY_VARIABLES:
+                # 読み取り専用の場合
+                self.tree.item(item, tags=('readonly',))
+                print_debug(f"Debug: {item} -> readonly")
             else:
-                # 選択されていない場合はタグをクリア（白背景に戻る）
-                self.tree.item(item, tags=())
+                # 書き込み可能な場合
+                self.tree.item(item, tags=('writable',))
+                print_debug(f"Debug: {item} -> writable")
         
-        # 選択された項目のスタイルを設定
-        self.tree.tag_configure('selected', background='lightblue')
+        # 各タグのスタイルを設定
+        self.tree.tag_configure('selected', background='pink', font=('',DEFAULT_FONTSIZE,'bold')) # pink with bold
+        self.tree.tag_configure('readonly', background='lightblue', foreground='black')  # 薄いグレー背景、グレー文字
+        self.tree.tag_configure('writable', background='white', foreground='black')       # 通常表示
         
-        # 強制的にツリーを更新
         self.tree.update_idletasks()
-        
-        if DEBUG_MODE:
-            print(f"色更新完了: 選択中={self.selected_fields}")
+        print_debug("Debug: Tree colors updated")
 
     def _update_plot(self):
         """プロットを更新"""
-        if DEBUG_MODE:
-            print("=== _update_plot() 関数開始 ===")
-            print(f"選択フィールド: {self.selected_fields}")
-        
-        # 最小限のテスト描画
         self.ax.clear()
         
         if not self.selected_fields:
-            if DEBUG_MODE:
-                print("選択フィールドなし")
             self.ax.set_title("Select fields from left panel")
             self.ax.set_xlabel("Sample")
             self.ax.set_ylabel("Value")
             self.canvas.draw()
-            if DEBUG_MODE:
-                print("初期状態描画完了")
             return
-        
-        if DEBUG_MODE:
-            print("選択フィールドあり - グラフ描画開始")
         
         plot_count = 0
         colors = ['blue', 'red', 'green', 'orange', 'purple', 'brown', 'pink', 'gray']
         
         for i, field_name in enumerate(self.selected_fields):
-            if DEBUG_MODE:
-                print(f"処理中: {field_name}")
             if field_name in self.series:
                 data_queue = self.series[field_name]
-                if DEBUG_MODE:
-                    print(f"  データ数: {len(data_queue)}")
-                
                 if len(data_queue) > 0:
                     y_data = list(data_queue)
                     x_data = list(range(len(y_data)))
                     color = colors[i % len(colors)]
                     
-                    if DEBUG_MODE:
-                        print(f"  プロット: {len(y_data)} ポイント, 色: {color}")
-                        print(f"  Y範囲: {min(y_data):.6f} ~ {max(y_data):.6f}")
-                    
                     self.ax.plot(x_data, y_data, color=color, label=field_name, 
                                linewidth=2, marker='o', markersize=3)
                     plot_count += 1
-                else:
-                    if DEBUG_MODE:
-                        print(f"  データなし")
-            else:
-                if DEBUG_MODE:
-                    print(f"  シリーズに存在しません")
         
         if plot_count > 0:
             self.ax.legend()
-            # 時間幅を計算して表示
             time_span_ms = GRAPH_POINTS * UPDATE_INTERVAL
             if time_span_ms >= 1000:
                 time_span_str = f"{time_span_ms/1000:.1f}s"
             else:
                 time_span_str = f"{time_span_ms}ms"
             self.ax.set_title(f"Plotting {plot_count} fields ({time_span_str} span)")
-            if DEBUG_MODE:
-                print(f"グラフ作成完了: {plot_count} 系列")
-        else:
-            self.ax.set_title("Waiting for data...")
-            if DEBUG_MODE:
-                print("データ待ち状態")
-        
-        # X軸を時間表示に変更
-        if plot_count > 0:
-            # 最新の時刻を0として、過去にさかのぼる表示
+            
+            # X軸を時間表示に変更
             max_samples = max(len(self.series[field]) for field in self.selected_fields if field in self.series)
             if max_samples > 0:
-                # X軸の目盛りを時間（秒）で表示
                 x_ticks = []
                 x_labels = []
-                for i in range(0, max_samples, max(1, max_samples//5)):  # 5つの目盛り
+                for i in range(0, max_samples, max(1, max_samples//5)):
                     time_ago_ms = (max_samples - i) * UPDATE_INTERVAL
                     if time_ago_ms >= 1000:
                         x_labels.append(f"-{time_ago_ms/1000:.1f}s")
@@ -306,38 +518,29 @@ class MemoryViewerApp:
                     x_ticks.append(i)
                 self.ax.set_xticks(x_ticks)
                 self.ax.set_xticklabels(x_labels)
+        else:
+            self.ax.set_title("Waiting for data...")
         
         self.ax.set_xlabel("Time (ago)")
         self.ax.set_ylabel("Value")
         self.ax.grid(True, alpha=0.3)
-        
-        if DEBUG_MODE:
-            print("canvas.draw() 実行")
         self.canvas.draw()
-        if DEBUG_MODE:
-            print("=== _update_plot() 関数終了 ===\n")
 
     def _toggle_recording(self):
         """記録の開始/停止を切り替え"""
         if not self.is_recording:
-            # 記録開始
             self.is_recording = True
             self.recording_start_time = datetime.now()
             self.recorded_data.clear()
             self.record_button.config(text="記録停止")
             self.status_label.config(text="記録中", foreground='green')
             self.save_button.config(state='disabled')
-            if DEBUG_MODE:
-                print(f"記録開始: {self.recording_start_time}")
         else:
-            # 記録停止
             self.is_recording = False
             self.record_button.config(text="記録開始")
             self.status_label.config(text="記録停止中", foreground='red')
             if self.recorded_data:
                 self.save_button.config(state='normal')
-            if DEBUG_MODE:
-                print(f"記録停止: データ数 {len(self.recorded_data)}")
 
     def _save_csv(self):
         """CSVファイルに記録データを保存"""
@@ -345,7 +548,6 @@ class MemoryViewerApp:
             messagebox.showwarning("警告", "保存するデータがありません。")
             return
         
-        # ファイルダイアログでファイル名を取得
         filename = filedialog.asksaveasfilename(
             defaultextension=".csv",
             filetypes=[("CSV files", "*.csv"), ("All files", "*.*")],
@@ -356,21 +558,14 @@ class MemoryViewerApp:
             return
         
         try:
-            # CSVファイルに保存
             with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
                 if self.recorded_data:
-                    # ヘッダーを作成（タイムスタンプ + 全フィールド名）
                     fieldnames = ['timestamp'] + list(memory_map.keys())
                     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                    
-                    # ヘッダー行を書き込み
                     writer.writeheader()
                     
-                    # データ行を書き込み
                     for record in self.recorded_data:
-                        # タイムスタンプを文字列に変換
                         row = {'timestamp': record['timestamp'].strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}
-                        # 各フィールドの値を追加
                         for field_name in memory_map.keys():
                             row[field_name] = record.get(field_name, '')
                         writer.writerow(row)
@@ -382,14 +577,17 @@ class MemoryViewerApp:
 
     def update(self):
         """定期更新処理"""
-        if DEBUG_MODE:
-            print("=== update() 開始 ===")
+        # 書き込みキューの処理
+        if self.write_queue:
+            variable_name, value = self.write_queue.pop(0)
+            success = self._process_write_command(variable_name, value)
+            if not success:
+                self.root.after_idle(
+                    lambda: messagebox.showerror("書き込みエラー", f"{variable_name} への書き込みに失敗しました")
+                )
         
         try:
-            # 全メモリを一括読み出し
             mem = read_all_memory(self.dev)
-            if DEBUG_MODE:
-                print(f"メモリ読み出し完了: {len(mem)} bytes")
         except Exception as e:
             print(f"メモリ読み出しエラー: {e}")
             self.root.after(UPDATE_INTERVAL, self.update)
@@ -397,81 +595,52 @@ class MemoryViewerApp:
         
         # デコードしてテーブル更新
         data = {}
-        numeric_count = 0
         for name, (addr, length, typ) in memory_map.items():
             raw = mem[addr:addr+length]
-            #if typ == "c":
-            #    val = raw.rstrip(b"\x00").decode("ascii", errors="ignore")
-            #else:
             fmt = TYPE_FMT.get(typ)
             if fmt:
                 val = struct.unpack_from(fmt, raw)[0]
-                if isinstance(val, (int, float)):
-                    numeric_count += 1
             else:
                 val = "N/A"
 
             data[name] = val
-            # テーブルセルを更新
             self.tree.set(name, 'value', val)
 
-        if DEBUG_MODE:
-            print(f"データデコード完了: {len(data)} フィールド, {numeric_count} 数値フィールド")
-
-        # 記録モード中の場合、データを記録
+        # 記録モード
         if self.is_recording:
             record = {
                 'timestamp': datetime.now(),
-                **data  # 全フィールドのデータを追加
+                **data
             }
             self.recorded_data.append(record)
-            # データ数表示を更新
             self.data_count_label.config(text=f"データ数: {len(self.recorded_data)}")
 
-        # 全フィールドの時系列データを更新
-        added_count = 0
+        # 時系列データ更新
         for field_name in memory_map.keys():
             if field_name in data:
                 val = data[field_name]
-                # 数値データのみプロット対象
                 if isinstance(val, (int, float)):
                     self.series[field_name].append(val)
-                    added_count += 1
-                    if DEBUG_MODE and field_name in self.selected_fields:
-                        print(f"選択フィールドにデータ追加: {field_name}={val}")
 
-        if DEBUG_MODE:
-            print(f"時系列データ追加完了: {added_count} フィールド")
-            print(f"現在の選択フィールド: {self.selected_fields}")
-
-        # プロット更新（選択されたフィールドがある場合のみ）
+        # プロット更新
         if self.selected_fields:
-            if DEBUG_MODE:
-                print("*** プロット更新を実行開始 ***")
             try:
-                if DEBUG_MODE:
-                    print("_update_plot() 呼び出し直前")
-                result = self._update_plot()
-                if DEBUG_MODE:
-                    print(f"_update_plot() 呼び出し完了, 戻り値: {result}")
+                self._update_plot()
             except Exception as e:
-                print(f"プロット更新でエラー発生: {e}")
-                print(f"エラータイプ: {type(e)}")
-                import traceback
-                traceback.print_exc()
-        else:
-            if DEBUG_MODE:
-                print("選択フィールドなし、プロット更新スキップ")
+                print(f"プロット更新エラー: {e}")
 
-        # 次回更新予約
         self.root.after(UPDATE_INTERVAL, self.update)
-        if DEBUG_MODE:
-            print("=== update() 終了 ===\n")
 
     def on_close(self):
+        self.root.after_cancel(self.root.tk.call('after', 'info'))
+        self.root.after(50, self._delayed_close)
+
+    def _delayed_close(self):
         """終了時にデバイスをクローズ"""
         try:
-            self.dev.close()
+            if hasattr(self, 'dev') and self.dev:
+                self.dev.close()
+                self.dev = None
         except:
             pass
         self.root.quit()
