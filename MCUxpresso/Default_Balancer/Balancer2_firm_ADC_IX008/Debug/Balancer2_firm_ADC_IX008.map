@@ -1,0 +1,1189 @@
+Archive member included to satisfy reference by file (symbol)
+
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+                              ./src/control.o (ClearCurrentVariables)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                              ./src/control.o (ClearEncVariables)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o) (GPIOSetDir)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+                              ./src/control.o (ClearGyroVariables)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o) (I2CMasterBuffer)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+                              ./src/cr_startup_lpc13.o (SystemInit)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+                              ./src/main.o (UARTInit)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o) (getCnt)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o) (SystickSyncCnt)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o) (ADCInit)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o) (FLASH_WRITE_MEMMAP)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o) (LogProc)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o) (Constmemmap)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o) (PADProc)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o) (USBInit)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o) (USB_ResetCore)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o) (USB_StringDescriptor)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o) (USB_Connect)
+/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o) (HID_GetIdle)
+/Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+                              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o) (memset)
+/Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+                              ./src/control.o (__aeabi_ldivmod)
+/Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
+                              /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o) (__aeabi_idiv0)
+/Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                              ./src/control.o (__aeabi_dmul)
+/Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+                              /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o) (__aeabi_lowlevel_memset)
+
+Allocating common symbols
+Common symbol       size              file
+
+USB_AltSetting      0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+I2CReadLength       0x4               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+I2CSlaveBuffer      0xc               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+CurrentValue        0x70              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+StatValue           0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+EP0Buf              0x40              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+USB_InPutData       0x40              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+intteruptflag       0x20              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+USB_EndPointMask    0x4               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+USB_DeviceAddress   0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+newL                0x8               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+USB_EndPointStall   0x4               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+UARTBuffer          0x40              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+command             0x14              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+iBuzzerPitch        0x4               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+current_old_p       0x10              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+newR                0x8               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+bBuzzerFlag         0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+I2CMode             0x4               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+current_i           0x10              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+I2CMasterBuffer     0xc               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+USB_EndPointHalt    0x4               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+srcbuf              0x1000            /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+UARTStatus          0x4               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+HID_IdleTime        0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+SystickModeCnt      0x8               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+I2CWriteLength      0x4               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+USB_Configuration   0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+result              0x10              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+SystickWaitCnt      0x8               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ADCValue            0x20              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+SetupPacket         0x8               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+USB_NumInterfaces   0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+USB_OutPutData      0x40              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+bSendUSBdata        0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+SystickSyncCnt      0x8               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ENCSPDValue         0x50              /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+isUSB_data_sending  0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+HID_Protocol        0x1               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+EP0Data             0x8               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+USB_DeviceStatus    0x2               /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 ./src/control.o
+ .data          0x00000000        0x0 ./src/control.o
+ .text.VS_C3Control
+                0x00000000       0x7c ./src/control.o
+ .text.isWhleeOverSpeed
+                0x00000000       0xcc ./src/control.o
+ .text          0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .data          0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .bss           0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .text.SysTick_Handler
+                0x00000000        0x2 ./src/cr_startup_lpc13.o
+ .text          0x00000000        0x0 ./src/main.o
+ .data          0x00000000        0x0 ./src/main.o
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .text.GPIOInit
+                0x00000000       0x34 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .text.GPIOGetValue
+                0x00000000       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .text.GPIOSetInterrupt
+                0x00000000      0x1ec /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .text.GPIOIntEnable
+                0x00000000       0x78 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .text.GPIOIntDisable
+                0x00000000       0x80 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .text.GPIOIntStatus
+                0x00000000       0x88 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .text.GPIOIntClear
+                0x00000000       0x78 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .text.SystemCoreClockUpdate
+                0x00000000      0x1a4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .text.UARTSend
+                0x00000000       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .text.UARTReadByte
+                0x00000000       0x34 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .text.UartSendByte
+                0x00000000       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .text.UARTTrace
+                0x00000000       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .rodata.str1.4
+                0x00000000        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.clearBuffer
+                0x00000000       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.initBuffer
+                0x00000000       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.getNowData
+                0x00000000       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.Sort_double
+                0x00000000       0x84 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.getLPFValue
+                0x00000000       0xb8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.htoa     0x00000000       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.atoi     0x00000000       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.strrev   0x00000000       0x34 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.itoa     0x00000000       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.atoh     0x00000000       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text.AtoH2inv
+                0x00000000       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .rodata        0x00000000       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .text.BuzzerSet
+                0x00000000       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .text.BuzzerStart
+                0x00000000       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .text.BuzzerStop
+                0x00000000       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .text.isBuzzer
+                0x00000000        0xc /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .text.ADCBurstRead
+                0x00000000       0x34 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .text.FLASH_ReadPage
+                0x00000000       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text.setLogEnable
+                0x00000000       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text.setLogDisable
+                0x00000000       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text.setLogFlag
+                0x00000000       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text.clearLogFlagAll
+                0x00000000       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text.isLogEnable
+                0x00000000       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text.isLogRecoding
+                0x00000000       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text.LogStart
+                0x00000000       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text.LogStop  0x00000000       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .text.USB_EndPoint2
+                0x00000000        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .text.USB_EndPoint3
+                0x00000000        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_Suspend
+                0x00000000        0xc /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_Resume
+                0x00000000        0xc /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_WakeUp
+                0x00000000       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_ClearEPBuf
+                0x00000000       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .text.USB_GetFrame
+                0x00000000       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .text          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .data          0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .bss           0x00000000        0x0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .text          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .data          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .bss           0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .text          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+ .data          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+ .bss           0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+ .text          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
+ .data          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
+ .bss           0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
+ .text          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .data          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .bss           0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_drsub
+                0x00000000       0x18 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dneg
+                0x00000000        0xe /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2f
+                0x00000000       0x58 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2uiz
+                0x00000000       0x34 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2lz
+                0x00000000       0x74 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2ulz
+                0x00000000       0x54 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_ul2d
+                0x00000000        0x8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpeq
+                0x00000000       0x30 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmple
+                0x00000000       0x54 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpge
+                0x00000000       0x5a /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpun
+                0x00000000       0x1a /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_cdcmple
+                0x00000000       0x2c /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text.__aeabi_cdrcmple
+                0x00000000       0x14 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .text          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+ .data          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+ .bss           0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memcpy
+                0x00000000       0x34 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memmove
+                0x00000000       0x1c /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memclr
+                0x00000000        0x8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memset
+                0x00000000        0xa /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+MFlash32         0x00000000         0x00007000         xr
+FlashMap         0x00007000         0x00001000         xr
+RamLoc8          0x10000000         0x00002000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD ./src/control.o
+LOAD ./src/cr_startup_lpc13.o
+LOAD ./src/main.o
+LOAD /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a
+START GROUP
+LOAD /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_semihost.a
+LOAD /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a
+LOAD /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a
+END GROUP
+                0x00007000                        __top_MFlash32 = 0x7000
+                0x00008000                        __top_FlashMap = 0x8000
+                0x10002000                        __top_RamLoc8 = 0x10002000
+
+.text           0x00000000     0x43ac
+ *(.isr_vector)
+ .isr_vector    0x00000000      0x124 ./src/cr_startup_lpc13.o
+                0x00000000                g_pfnVectors
+ *(.text*)
+ .text.ClearVariables
+                0x00000124       0x24 ./src/control.o
+                0x00000124                ClearVariables
+ .text.calibrarion
+                0x00000148      0x100 ./src/control.o
+                0x00000148                calibrarion
+ .text.Control  0x00000248      0x2e8 ./src/control.o
+                0x00000248                Control
+ .text.NMI_Handler
+                0x00000530        0x2 ./src/cr_startup_lpc13.o
+                0x00000530                NMI_Handler
+ .text.HardFault_Handler
+                0x00000532        0x2 ./src/cr_startup_lpc13.o
+                0x00000532                HardFault_Handler
+ .text.MemManage_Handler
+                0x00000534        0x2 ./src/cr_startup_lpc13.o
+                0x00000534                MemManage_Handler
+ .text.BusFault_Handler
+                0x00000536        0x2 ./src/cr_startup_lpc13.o
+                0x00000536                BusFault_Handler
+ .text.UsageFault_Handler
+                0x00000538        0x2 ./src/cr_startup_lpc13.o
+                0x00000538                UsageFault_Handler
+ .text.SVCall_Handler
+                0x0000053a        0x2 ./src/cr_startup_lpc13.o
+                0x0000053a                SVCall_Handler
+ .text.DebugMon_Handler
+                0x0000053c        0x2 ./src/cr_startup_lpc13.o
+                0x0000053c                DebugMon_Handler
+ .text.PendSV_Handler
+                0x0000053e        0x2 ./src/cr_startup_lpc13.o
+                0x0000053e                PendSV_Handler
+ .text.IntDefaultHandler
+                0x00000540        0x2 ./src/cr_startup_lpc13.o
+                0x00000540                FMC_IRQHandler
+                0x00000540                TIMER32_1_IRQHandler
+                0x00000540                PIOINT1_IRQHandler
+                0x00000540                SSP_IRQHandler
+                0x00000540                TIMER16_1_IRQHandler
+                0x00000540                USB_FIQHandler
+                0x00000540                PIOINT2_IRQHandler
+                0x00000540                BOD_IRQHandler
+                0x00000540                WAKEUP_IRQHandler
+                0x00000540                PIOINT0_IRQHandler
+                0x00000540                WDT_IRQHandler
+                0x00000540                PIOINT3_IRQHandler
+                0x00000540                TIMER16_0_IRQHandler
+ *fill*         0x00000542        0x2 
+ .text.Reset_Handler
+                0x00000544       0x64 ./src/cr_startup_lpc13.o
+                0x00000544                Reset_Handler
+                0x00000544                ResetISR
+ .text.setAD_UserArea
+                0x000005a8       0x34 ./src/main.o
+                0x000005a8                setAD_UserArea
+ .text.LedBlink
+                0x000005dc       0x58 ./src/main.o
+                0x000005dc                LedBlink
+ .text.main     0x00000634       0xde ./src/main.o
+                0x00000634                main
+ *fill*         0x00000712        0x2 
+ .text.ClearCurrentVariables
+                0x00000714       0x64 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+                0x00000714                ClearCurrentVariables
+ .text.getCurrent
+                0x00000778       0x6c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+                0x00000778                getCurrent
+ .text.CurrentControlDisable
+                0x000007e4       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+                0x000007e4                CurrentControlDisable
+ .text.CurrentControlEnable
+                0x000007f4       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+                0x000007f4                CurrentControlEnable
+ .text.MTRCurrentControlProc
+                0x00000804      0x234 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+                0x00000804                MTRCurrentControlProc
+ .text.InitEncoder
+                0x00000a38       0x94 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                0x00000a38                InitEncoder
+ .text.ClearEncVariables
+                0x00000acc       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                0x00000acc                ClearEncVariables
+ *fill*         0x00000af4        0x4 
+ .text.EncProc  0x00000af8      0x188 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                0x00000af8                EncProc
+ .text.IntEncoder
+                0x00000c80       0x90 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                0x00000c80                IntEncoder
+ .text.SysTick_Handler
+                0x00000d10       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                0x00000d10                SysTick_Handler
+ .text.GPIOSetDir
+                0x00000d54       0xf0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+                0x00000d54                GPIOSetDir
+ .text.GPIOSetValue
+                0x00000e44       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+                0x00000e44                GPIOSetValue
+ .text.GPIOGetValueBit
+                0x00000ea4       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+                0x00000ea4                GPIOGetValueBit
+ .text.ClearGyroVariables
+                0x00000f04       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+                0x00000f04                ClearGyroVariables
+ .text.SetI2CGain
+                0x00000f20       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+                0x00000f20                SetI2CGain
+ .text.getGyroI2C
+                0x00000f90       0x50 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+                0x00000f90                getGyroI2C
+ .text.GyroProc
+                0x00000fe0       0xe8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+                0x00000fe0                GyroProc
+ .text.I2C_IRQHandler
+                0x000010c8      0x230 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+                0x000010c8                I2C_IRQHandler
+ .text.I2CStart
+                0x000012f8       0x50 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+                0x000012f8                I2CStart
+ .text.I2CStop  0x00001348       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+                0x00001348                I2CStop
+ .text.I2CInit  0x00001364       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+                0x00001364                I2CInit
+ .text.I2CEngine
+                0x000013d4       0x34 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+                0x000013d4                I2CEngine
+ .text.SystemInit
+                0x00001408       0xec /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+                0x00001408                SystemInit
+ .text.UART_IRQHandler
+                0x000014f4       0xd4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+                0x000014f4                UART_IRQHandler
+ .text.UARTInit
+                0x000015c8       0xd8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+                0x000015c8                UARTInit
+ .text.getCnt   0x000016a0       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+                0x000016a0                getCnt
+ .text.Sync     0x000016b0       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x000016b0                Sync
+ .text.getSW    0x000016e0       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x000016e0                getSW
+ .text.Wait     0x000016f4       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x000016f4                Wait
+ .text.getIX008
+                0x00001738       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001738                getIX008
+ .text.CycleProc
+                0x00001798       0x4c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001798                CycleProc
+ .text.setLED   0x000017e4       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x000017e4                setLED
+ .text.InitMemmap
+                0x00001808      0x1b8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001808                InitMemmap
+ .text.SetMotorPwm
+                0x000019c0      0x100 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x000019c0                SetMotorPwm
+ .text.Timer16Init
+                0x00001ac0       0x7c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001ac0                Timer16Init
+ .text.Timer32Init
+                0x00001b3c       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001b3c                Timer32Init
+ .text.TIMER32_0_IRQHandler
+                0x00001b78       0x90 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001b78                TIMER32_0_IRQHandler
+ .text.DisableIntterupt
+                0x00001c08       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001c08                DisableIntterupt
+ .text.Init     0x00001c44      0x100 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001c44                Init
+ .text.Balancer2Init
+                0x00001d44       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001d44                Balancer2Init
+ .text.EnableIntterupt
+                0x00001d64       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001d64                EnableIntterupt
+ .text.ADCInit  0x00001d84       0xa0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+                0x00001d84                ADCInit
+ .text.ADCRead  0x00001e24       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+                0x00001e24                ADCRead
+ .text.ADC_IRQHandler
+                0x00001e48      0x164 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+                0x00001e48                ADC_IRQHandler
+ .text.call_IAP
+                0x00001fac       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .text.FLASH_ProgramPage
+                0x00001fd8       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+                0x00001fd8                FLASH_ProgramPage
+ .text.FLASH_ErasePage
+                0x00002020       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+                0x00002020                FLASH_ErasePage
+ .text.FLASH_WRITE_MEMMAP
+                0x00002050       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+                0x00002050                FLASH_WRITE_MEMMAP
+ .text.FLASH_READ_MEMMAP
+                0x00002098       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+                0x00002098                FLASH_READ_MEMMAP
+ .text.LogProc  0x000020b4      0x178 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+                0x000020b4                LogProc
+ .text.PadWait  0x0000222c       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+                0x0000222c                PadWait
+ .text.Ds2rw    0x0000223c       0x8c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+                0x0000223c                Ds2rw
+ .text.Ds2Com   0x000022c8       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+                0x000022c8                Ds2Com
+ .text.PS_Set_AN
+                0x0000230c       0xa0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+                0x0000230c                PS_Set_AN
+ .text.updatePAD
+                0x000023ac       0xb8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+                0x000023ac                updatePAD
+ .text.PADProc  0x00002464        0x8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+                0x00002464                PADProc
+ .text.USBInit  0x0000246c       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+                0x0000246c                USBInit
+ .text.USB_Reset_Event
+                0x000024dc        0x8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+                0x000024dc                USB_Reset_Event
+ .text.SetUSBSendData
+                0x000024e4       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+                0x000024e4                SetUSBSendData
+ .text.InUSBDataProcces
+                0x00002524      0x19c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+                0x00002524                InUSBDataProcces
+ .text.USB_EndPoint1
+                0x000026c0       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+                0x000026c0                USB_EndPoint1
+ .text.USB_ResetCore
+                0x000026d8       0x4c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x000026d8                USB_ResetCore
+ .text.USB_SetupStage
+                0x00002724       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002724                USB_SetupStage
+ .text.USB_DataInStage
+                0x00002738       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002738                USB_DataInStage
+ .text.USB_DataOutStage
+                0x00002790       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002790                USB_DataOutStage
+ .text.USB_StatusInStage
+                0x000027cc       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x000027cc                USB_StatusInStage
+ .text.USB_StatusOutStage
+                0x000027dc       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x000027dc                USB_StatusOutStage
+ .text.USB_ReqGetStatus
+                0x000027f0       0xf4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x000027f0                USB_ReqGetStatus
+ .text.USB_ReqSetClrFeature
+                0x000028e4      0x130 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x000028e4                USB_ReqSetClrFeature
+ .text.USB_ReqSetAddress
+                0x00002a14       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002a14                USB_ReqSetAddress
+ .text.USB_ReqGetDescriptor
+                0x00002a50      0x174 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002a50                USB_ReqGetDescriptor
+ .text.USB_ReqGetConfiguration
+                0x00002bc4       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002bc4                USB_ReqGetConfiguration
+ .text.UsbAddPtr
+                0x00002bfc       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002bfc                UsbAddPtr
+ .text.USB_ReqSetConfiguration
+                0x00002c20      0x254 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002c20                USB_ReqSetConfiguration
+ .text.USB_ReqGetInterface
+                0x00002e74       0x68 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002e74                USB_ReqGetInterface
+ .text.USB_ReqSetInterface
+                0x00002edc      0x1b8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002edc                USB_ReqSetInterface
+ .text.USB_EndPoint0
+                0x00003094      0x32c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x00003094                USB_EndPoint0
+ .text.delay    0x000033c0       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000033c0                delay
+ .text.EPAdr    0x000033ec       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000033ec                EPAdr
+ .text.WrCmd    0x0000341c       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x0000341c                WrCmd
+ .text.WrCmdDat
+                0x00003474       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003474                WrCmdDat
+ .text.WrCmdEP  0x00003490       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003490                WrCmdEP
+ .text.RdCmdDat
+                0x000034bc       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000034bc                RdCmdDat
+ .text.USB_Connect
+                0x000034f4       0x5c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000034f4                USB_Connect
+ .text.USB_Reset
+                0x00003550       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003550                USB_Reset
+ .text.USB_WakeUpCfg
+                0x00003574       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003574                USB_WakeUpCfg
+ .text.USB_SetAddress
+                0x00003588       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003588                USB_SetAddress
+ .text.USB_Configure
+                0x000035c4       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000035c4                USB_Configure
+ .text.USB_ConfigEP
+                0x000035f4       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000035f4                USB_ConfigEP
+ .text.USB_DirCtrlEP
+                0x00003608       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003608                USB_DirCtrlEP
+ .text.USB_EnableEP
+                0x0000361c       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x0000361c                USB_EnableEP
+ .text.USB_DisableEP
+                0x00003648       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003648                USB_DisableEP
+ .text.USB_ResetEP
+                0x00003674       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003674                USB_ResetEP
+ .text.USB_SetStallEP
+                0x000036a0       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000036a0                USB_SetStallEP
+ .text.USB_ClrStallEP
+                0x000036cc       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000036cc                USB_ClrStallEP
+ .text.USB_ReadEP
+                0x000036f8       0x80 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000036f8                USB_ReadEP
+ .text.USB_WriteEP
+                0x00003778       0xa8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003778                USB_WriteEP
+ .text.USB_IRQHandler
+                0x00003820      0x134 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003820                USB_IRQHandler
+ .text.HID_GetIdle
+                0x00003954       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x00003954                HID_GetIdle
+ .text.HID_SetIdle
+                0x00003980       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x00003980                HID_SetIdle
+ .text.HID_GetProtocol
+                0x000039a8       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x000039a8                HID_GetProtocol
+ .text.HID_SetProtocol
+                0x000039c8       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x000039c8                HID_SetProtocol
+ .text.memset   0x000039ec        0x4 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+                0x000039ec                memset
+ .text.__aeabi_division_ldivmod
+                0x000039f0       0x26 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+                0x000039f0                __aeabi_ldivmod
+ .text.__aeabi_division_uldivmod
+                0x00003a16      0x174 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+                0x00003a16                __aeabi_uldivmod
+                0x00003a1a                __bhs_ldivmod1
+ .text.__aeabi_division_idiv0
+                0x00003b8a        0x2 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
+                0x00003b8a                __aeabi_idiv0
+ .text.__aeabi_dmul
+                0x00003b8c       0xfc /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00003b8c                __aeabi_dmul
+ .text.__aeabi_ddiv
+                0x00003c88      0x134 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00003c88                __aeabi_ddiv
+ .text.__aeabi_dsub
+                0x00003dbc      0x1b4 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00003dbc                __aeabi_dsub
+ .text.__aeabi_dadd
+                0x00003f70      0x118 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00003f70                __aeabi_dadd
+ .text.__aeabi_d2iz
+                0x00004088       0x42 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004088                __aeabi_d2iz
+ .text.__bhs_ui2d
+                0x000040ca       0x46 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x000040ca                __bhs_ui2d
+ .text.__bhs_ul2d
+                0x00004110       0x8a /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004110                __bhs_ul2d
+ .text.__aeabi_i2d
+                0x0000419a       0x10 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x0000419a                __aeabi_i2d
+ .text.__aeabi_ui2d
+                0x000041aa        0x8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x000041aa                __aeabi_ui2d
+ .text.__aeabi_l2d
+                0x000041b2       0x1c /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x000041b2                __aeabi_l2d
+ .text.__aeabi_dcmplt
+                0x000041ce       0x56 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x000041ce                __aeabi_dcmplt
+ .text.__aeabi_dcmpgt
+                0x00004224       0x56 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004224                __aeabi_dcmpgt
+ .text.__aeabi_memset_lowlevel
+                0x0000427a       0x32 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+                0x0000427a                __aeabi_lowlevel_memset
+ *(.rodata*)
+ .rodata        0x000042ac       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                0x000042ac                enctbl
+ .rodata        0x000042bc        0x8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .rodata        0x000042c4       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .rodata        0x00004300       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+                0x00004300                USB_P_EP
+ .rodata        0x00004314       0x98 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+                0x00004314                USB_StringDescriptor
+                0x0000434c                USB_ConfigDescriptor
+                0x00004378                USB_DeviceDescriptor
+                0x0000438a                HID_ReportDescSize
+                0x0000438c                HID_ReportDescriptor
+
+.glue_7         0x000043ac        0x0
+ .glue_7        0x000043ac        0x0 linker stubs
+
+.glue_7t        0x000043ac        0x0
+ .glue_7t       0x000043ac        0x0 linker stubs
+
+.vfp11_veneer   0x000043ac        0x0
+ .vfp11_veneer  0x000043ac        0x0 linker stubs
+
+.v4_bx          0x000043ac        0x0
+ .v4_bx         0x000043ac        0x0 linker stubs
+
+.iplt           0x000043ac        0x0
+ .iplt          0x000043ac        0x0 ./src/control.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x000043ac                        __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000043ac                        __exidx_end = .
+                0x000043ac                        _etext = .
+
+.cmap           0x00007000      0x160
+ *(.Const_Map*)
+ .Const_Map     0x00007000      0x160 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+                0x00007000                Constmemmap
+
+.rel.dyn        0x00007160        0x0
+ .rel.iplt      0x00007160        0x0 ./src/control.o
+
+.data           0x10000000       0x10 load address 0x000043ac
+                0x10000000                        _data = .
+ *(vtable)
+ *(.data*)
+ .data          0x10000000        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+                0x10000000                SystemCoreClock
+ .data          0x10000004        0x1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+                0x10000004                UARTTxEmpty
+ *fill*         0x10000005        0x3 
+ .data          0x10000008        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+                0x10000008                iap_entry
+ .data          0x1000000c        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+                0x1000000c                databuffer
+                0x10000010                        _edata = .
+
+.igot.plt       0x10000010        0x0 load address 0x000043bc
+ .igot.plt      0x10000010        0x0 ./src/control.o
+
+.bss            0x10000010     0x164e load address 0x000043bc
+                0x10000010                        _bss = .
+ *(.bss*)
+ .bss           0x10000010      0x1a0 ./src/control.o
+                0x10000020                memmap
+ .bss           0x100001b0      0x16c ./src/main.o
+ .bss           0x1000031c        0x2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+                0x1000031c                current_cnt
+ .bss           0x1000031e        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                0x1000031e                enc_cnt
+ *fill*         0x10000322        0x6 
+ .bss           0x10000328       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+                0x10000328                i2cgain
+                0x10000330                gyro_old_p
+                0x10000338                gyro_old_AngureSpd
+ .bss           0x10000340       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+                0x10000340                WrIndex
+                0x10000344                I2CMasterState
+                0x10000348                RdIndex
+                0x1000034c                I2CCount
+                0x10000350                I2CSlaveState
+ .bss           0x10000354        0xc /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+                0x10000354                UARTWriteCount
+                0x10000358                UARTReadCount
+                0x1000035c                UARTBuffCount
+ .bss           0x10000360        0x2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x10000361                EncFlag
+ *fill*         0x10000362        0x2 
+ .bss           0x10000364        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+                0x10000364                ADCIntDone
+ .bss           0x10000368        0x8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+                0x10000368                logmode
+                0x1000036c                logtimer
+ .bss           0x10000370        0x1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ *fill*         0x10000371        0x3 
+ .bss           0x10000374        0x4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x10000374                systicktemp
+ *(COMMON)
+ COMMON         0x10000378      0x112 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+                0x10000378                CurrentValue
+                0x100003e8                USB_InPutData
+                0x10000428                current_old_p
+                0x10000438                current_i
+                0x10000448                USB_OutPutData
+                0x10000488                bSendUSBdata
+                0x10000489                isUSB_data_sending
+ *fill*         0x1000048a        0x6 
+ COMMON         0x10000490       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+                0x10000490                newL
+                0x10000498                newR
+                0x100004a0                ENCSPDValue
+ COMMON         0x100004f0       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+                0x100004f0                I2CReadLength
+                0x100004f4                I2CSlaveBuffer
+                0x10000500                StatValue
+                0x10000504                I2CMode
+                0x10000508                I2CMasterBuffer
+                0x10000514                I2CWriteLength
+ COMMON         0x10000518       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+                0x10000518                UARTBuffer
+                0x10000558                UARTStatus
+ *fill*         0x1000055c        0x4 
+ COMMON         0x10000560       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x10000560                intteruptflag
+                0x10000580                iBuzzerPitch
+                0x10000584                bBuzzerFlag
+                0x10000588                SystickModeCnt
+                0x10000590                SystickWaitCnt
+                0x10000598                SystickSyncCnt
+ COMMON         0x100005a0       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+                0x100005a0                ADCValue
+ COMMON         0x100005c0     0x1024 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+                0x100005c0                command
+                0x100005d4                srcbuf
+                0x100015d4                result
+ *fill*         0x100015e4        0x4 
+ COMMON         0x100015e8       0x72 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+                0x100015e8                USB_AltSetting
+                0x100015f0                EP0Buf
+                0x10001630                USB_EndPointMask
+                0x10001634                USB_DeviceAddress
+                0x10001638                USB_EndPointStall
+                0x1000163c                USB_EndPointHalt
+                0x10001640                USB_Configuration
+                0x10001644                SetupPacket
+                0x1000164c                USB_NumInterfaces
+                0x10001650                EP0Data
+                0x10001658                USB_DeviceStatus
+ *fill*         0x1000165a        0x2 
+ COMMON         0x1000165c        0x2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x1000165c                HID_IdleTime
+                0x1000165d                HID_Protocol
+                0x1000165e                        _ebss = .
+
+.cr_heap        0x1000165e        0x0 load address 0x000043bc
+                0x1000165e                        end = .
+                0x1000165e                        _pvHeapStart = .
+                0x10002000                        _vRamTop = __top_RamLoc8
+                0x10002000                        _vStackTop = (_vRamTop - 0x0)
+OUTPUT(Balancer2_firm_ADC_IX008.axf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000    0x10728
+ .debug_info    0x00000000      0x9c2 ./src/control.o
+ .debug_info    0x000009c2      0x200 ./src/cr_startup_lpc13.o
+ .debug_info    0x00000bc2      0x96f ./src/main.o
+ .debug_info    0x00001531      0x76a /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .debug_info    0x00001c9b      0xcd9 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .debug_info    0x00002974      0xb5a /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .debug_info    0x000034ce      0x651 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .debug_info    0x00003b1f      0xbe4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .debug_info    0x00004703      0x4be /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_info    0x00004bc1     0x11da /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .debug_info    0x00005d9b      0x545 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .debug_info    0x000062e0     0x1859 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_info    0x00007b39      0xfda /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .debug_info    0x00008b13      0x8cb /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .debug_info    0x000093de      0x69e /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .debug_info    0x00009a7c      0x4bb /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .debug_info    0x00009f37      0xb0c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .debug_info    0x0000aa43     0x1302 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_info    0x0000bd45      0xc93 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_info    0x0000c9d8      0x5bd /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .debug_info    0x0000cf95      0xe91 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_info    0x0000de26      0x6d5 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_info    0x0000e4fb       0xfc /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_info    0x0000e5f7     0x2131 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+
+.debug_abbrev   0x00000000     0x31b4
+ .debug_abbrev  0x00000000      0x178 ./src/control.o
+ .debug_abbrev  0x00000178      0x119 ./src/cr_startup_lpc13.o
+ .debug_abbrev  0x00000291      0x24d ./src/main.o
+ .debug_abbrev  0x000004de      0x1e1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .debug_abbrev  0x000006bf      0x2e6 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .debug_abbrev  0x000009a5      0x232 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .debug_abbrev  0x00000bd7      0x1a6 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .debug_abbrev  0x00000d7d      0x1f1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .debug_abbrev  0x00000f6e       0xf8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_abbrev  0x00001066      0x285 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .debug_abbrev  0x000012eb      0x1f5 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .debug_abbrev  0x000014e0      0x46c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_abbrev  0x0000194c      0x228 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .debug_abbrev  0x00001b74      0x247 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .debug_abbrev  0x00001dbb      0x1b3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .debug_abbrev  0x00001f6e       0xc7 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .debug_abbrev  0x00002035      0x228 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .debug_abbrev  0x0000225d      0x2f1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_abbrev  0x0000254e      0x2de /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_abbrev  0x0000282c       0xd4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .debug_abbrev  0x00002900      0x318 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_abbrev  0x00002c18      0x17c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_abbrev  0x00002d94       0xa8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_abbrev  0x00002e3c      0x378 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+
+.debug_loc      0x00000000     0x5f2b
+ .debug_loc     0x00000000      0x10a ./src/control.o
+ .debug_loc     0x0000010a       0x31 ./src/cr_startup_lpc13.o
+ .debug_loc     0x0000013b       0xac ./src/main.o
+ .debug_loc     0x000001e7      0x17b /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .debug_loc     0x00000362      0x11e /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .debug_loc     0x00000480      0xabb /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .debug_loc     0x00000f3b       0x81 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .debug_loc     0x00000fbc       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .debug_loc     0x00000ffc      0x1cd /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_loc     0x000011c9      0x214 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .debug_loc     0x000013dd      0x782 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .debug_loc     0x00001b5f      0x255 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_loc     0x00001db4      0x13c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .debug_loc     0x00001ef0      0x284 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .debug_loc     0x00002174      0x150 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .debug_loc     0x000022c4      0x1a7 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .debug_loc     0x0000246b      0x293 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_loc     0x000026fe      0x5a3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_loc     0x00002ca1      0x611 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_loc     0x000032b2       0x81 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_loc     0x00003333     0x2bf8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+
+.debug_aranges  0x00000000      0x838
+ .debug_aranges
+                0x00000000       0x40 ./src/control.o
+ .debug_aranges
+                0x00000040       0x70 ./src/cr_startup_lpc13.o
+ .debug_aranges
+                0x000000b0       0x30 ./src/main.o
+ .debug_aranges
+                0x000000e0       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .debug_aranges
+                0x00000120       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .debug_aranges
+                0x00000160       0x68 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .debug_aranges
+                0x000001c8       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .debug_aranges
+                0x00000200       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .debug_aranges
+                0x00000240       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_aranges
+                0x00000268       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .debug_aranges
+                0x000002b0       0x78 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .debug_aranges
+                0x00000328       0xb0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_aranges
+                0x000003d8       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .debug_aranges
+                0x00000410       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .debug_aranges
+                0x00000458       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .debug_aranges
+                0x000004b8       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .debug_aranges
+                0x000004d0       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .debug_aranges
+                0x00000518       0x50 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_aranges
+                0x00000568       0x98 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_aranges
+                0x00000600       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .debug_aranges
+                0x00000618       0xe8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_aranges
+                0x00000700       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_aranges
+                0x00000738       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_aranges
+                0x00000758       0xe0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+
+.debug_ranges   0x00000000      0x860
+ .debug_ranges  0x00000000       0x30 ./src/control.o
+ .debug_ranges  0x00000030       0x60 ./src/cr_startup_lpc13.o
+ .debug_ranges  0x00000090       0x20 ./src/main.o
+ .debug_ranges  0x000000b0       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .debug_ranges  0x000000e0       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .debug_ranges  0x00000110       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .debug_ranges  0x00000168       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .debug_ranges  0x00000190       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .debug_ranges  0x000001c0       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_ranges  0x000001d8       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .debug_ranges  0x00000210       0x80 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .debug_ranges  0x00000290       0xa0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_ranges  0x00000330       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .debug_ranges  0x00000358       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .debug_ranges  0x00000390       0x50 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .debug_ranges  0x000003e0       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .debug_ranges  0x00000418       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_ranges  0x00000458       0x88 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_ranges  0x000004e0       0xd8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_ranges  0x000005b8       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_ranges  0x000005e0       0x10 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_ranges  0x000005f0      0x270 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+
+.debug_line     0x00000000     0x4f4b
+ .debug_line    0x00000000      0x453 ./src/control.o
+ .debug_line    0x00000453      0x1f0 ./src/cr_startup_lpc13.o
+ .debug_line    0x00000643      0x32d ./src/main.o
+ .debug_line    0x00000970      0x1e3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .debug_line    0x00000b53      0x21d /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .debug_line    0x00000d70      0x23c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .debug_line    0x00000fac      0x19f /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .debug_line    0x0000114b      0x196 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .debug_line    0x000012e1      0x18c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_line    0x0000146d      0x22e /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .debug_line    0x0000169b      0x204 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .debug_line    0x0000189f      0x416 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_line    0x00001cb5      0x1e6 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .debug_line    0x00001e9b      0x195 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .debug_line    0x00002030      0x21b /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .debug_line    0x0000224b       0x93 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .debug_line    0x000022de      0x209 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .debug_line    0x000024e7      0x2e8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_line    0x000027cf      0x477 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_line    0x00002c46      0x13c /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .debug_line    0x00002d82      0x43e /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_line    0x000031c0      0x19a /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_line    0x0000335a       0xb3 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_line    0x0000340d     0x1b3e /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+
+.debug_str      0x00000000     0x2764
+ .debug_str     0x00000000     0x2764 ./src/control.o
+                                0x6da (size before relaxing)
+ .debug_str     0x00002764      0x2aa ./src/cr_startup_lpc13.o
+ .debug_str     0x00002764      0x66c ./src/main.o
+ .debug_str     0x00002764      0x622 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .debug_str     0x00002764      0xad2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .debug_str     0x00002764      0x916 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .debug_str     0x00002764      0x5ef /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .debug_str     0x00002764      0xaf1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .debug_str     0x00002764      0x495 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_str     0x00002764      0xeb2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .debug_str     0x00002764      0x262 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .debug_str     0x00002764     0x10df /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_str     0x00002764      0xdf1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .debug_str     0x00002764      0x5dd /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .debug_str     0x00002764      0x5da /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .debug_str     0x00002764      0x504 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .debug_str     0x00002764      0x6bf /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .debug_str     0x00002764      0xf06 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_str     0x00002764      0x776 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_str     0x00002764      0x5b9 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .debug_str     0x00002764      0x7b3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_str     0x00002764      0x640 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_str     0x00002764      0x180 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_str     0x00002764      0x374 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+
+.comment        0x00000000       0xb4
+ .comment       0x00000000       0xb4 ./src/control.o
+                                 0x45 (size before relaxing)
+ .comment       0x000000b4       0x45 ./src/cr_startup_lpc13.o
+ .comment       0x000000b4       0x45 ./src/main.o
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .comment       0x000000b4       0x45 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .comment       0x000000b4       0x45 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+
+.ARM.attributes
+                0x00000000       0x2b
+ .ARM.attributes
+                0x00000000       0x2d ./src/control.o
+ .ARM.attributes
+                0x0000002d       0x2d ./src/cr_startup_lpc13.o
+ .ARM.attributes
+                0x0000005a       0x2d ./src/main.o
+ .ARM.attributes
+                0x00000087       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .ARM.attributes
+                0x000000ba       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .ARM.attributes
+                0x000000ed       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .ARM.attributes
+                0x00000120       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .ARM.attributes
+                0x00000153       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .ARM.attributes
+                0x00000186       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .ARM.attributes
+                0x000001b9       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .ARM.attributes
+                0x000001ec       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .ARM.attributes
+                0x0000021f       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .ARM.attributes
+                0x00000252       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .ARM.attributes
+                0x00000285       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .ARM.attributes
+                0x000002b8       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .ARM.attributes
+                0x000002eb       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(mot.o)
+ .ARM.attributes
+                0x0000031e       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .ARM.attributes
+                0x00000351       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .ARM.attributes
+                0x00000384       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .ARM.attributes
+                0x000003b7       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .ARM.attributes
+                0x000003ea       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .ARM.attributes
+                0x0000041d       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .ARM.attributes
+                0x00000450       0x2d /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .ARM.attributes
+                0x0000047d       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+ .ARM.attributes
+                0x00000498       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
+ .ARM.attributes
+                0x000004b3       0x2d /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .ARM.attributes
+                0x000004e0       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+
+.debug_frame    0x00000000     0x13bc
+ .debug_frame   0x00000000       0xc4 ./src/control.o
+ .debug_frame   0x000000c4       0xc8 ./src/cr_startup_lpc13.o
+ .debug_frame   0x0000018c       0x5c ./src/main.o
+ .debug_frame   0x000001e8       0x94 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(current.o)
+ .debug_frame   0x0000027c       0x90 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(enc.o)
+ .debug_frame   0x0000030c       0xd4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gpio.o)
+ .debug_frame   0x000003e0       0x78 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(gyro.o)
+ .debug_frame   0x00000458       0x74 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(i2c.o)
+ .debug_frame   0x000004cc       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_frame   0x000004fc       0x88 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(uart.o)
+ .debug_frame   0x00000584      0x144 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(util.o)
+ .debug_frame   0x000006c8      0x1b4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_frame   0x0000087c       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(adc.o)
+ .debug_frame   0x000008d4       0xb0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(flash.o)
+ .debug_frame   0x00000984       0xc0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(log.o)
+ .debug_frame   0x00000a44       0xb0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(pad.o)
+ .debug_frame   0x00000af4       0xb0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_frame   0x00000ba4      0x1d8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_frame   0x00000d7c      0x318 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_frame   0x00001094       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_ADC_IX008/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_frame   0x00001104       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_frame   0x00001124      0x298 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
