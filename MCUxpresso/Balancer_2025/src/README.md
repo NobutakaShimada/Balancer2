@@ -1,7 +1,7 @@
-# 立命館大学情報理工学部　実世界情報コース　実世界情報実験３　倒立振子系の制御
+# 立命館大学大学院情報理工学研究科　知能機械特論　倒立振子系の制御
 
 ## プログラム内容
-- `bb2_control.ipynb` Python3 (Jupyter)による倒立振子のシミュレーションプログラム（2020年以降）。
+- `bb2_control.ipynb` Python3 (Jupyter)による倒立振子のシミュレーションプログラム（2020年以降）。[Google Colab](https://colab.research.google.com/drive/1dfHT3Tn5mHuN4kQoALb1uVZLmnndbQBl?usp=sharing)
 - `control.c` ビュートバランサー本体に書き込むためのプログラム
 - `bb2_control_text.m` Python3 (Jupyter)による倒立振子のシミュレーションプログラム（2019年）。
 
