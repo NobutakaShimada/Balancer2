@@ -1,0 +1,11 @@
+../src/cr_startup_lpc13.c:281:6:NMI_Handler	0	static
+../src/cr_startup_lpc13.c:288:6:HardFault_Handler	0	static
+../src/cr_startup_lpc13.c:295:6:MemManage_Handler	0	static
+../src/cr_startup_lpc13.c:302:6:BusFault_Handler	0	static
+../src/cr_startup_lpc13.c:309:6:UsageFault_Handler	0	static
+../src/cr_startup_lpc13.c:316:6:SVCall_Handler	0	static
+../src/cr_startup_lpc13.c:323:6:DebugMon_Handler	0	static
+../src/cr_startup_lpc13.c:330:6:PendSV_Handler	0	static
+../src/cr_startup_lpc13.c:337:6:SysTick_Handler	0	static
+../src/cr_startup_lpc13.c:351:13:IntDefaultHandler	0	static
+../src/cr_startup_lpc13.c:225:1:Reset_Handler	8	static

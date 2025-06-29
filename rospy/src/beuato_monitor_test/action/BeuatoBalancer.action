@@ -1,0 +1,13 @@
+# Goal
+bool is_capture_mode
+uint32 sampling_number
+---
+# Result
+uint32 sampling_number
+bool is_suspend_for_error
+int32 errorcode
+---
+# Feedback
+int16 ad_gyro
+float32 time
+float32 predicted_period

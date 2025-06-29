@@ -1,0 +1,9 @@
+
+.vscode/*
+devel/*
+build/*
+*.pyc
+*.cmake
+*.make
+*.stamp
+*.cmake.develspace.in

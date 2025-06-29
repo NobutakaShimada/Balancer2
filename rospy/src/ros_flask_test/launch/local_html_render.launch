@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="ros_flask_test" type="flask_server.py" 
+          name="flask_server" respawn="true" output="screen">
+        <param name="flask_root_path" value="" />
+    </node>
+</launch>

@@ -1,0 +1,3 @@
+Defaults	secure_path = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/balance/Balancer2/bin"
+balance ALL=(root) NOPASSWD: /home/balance/Balancer2/bin/copyfirm.sh
+

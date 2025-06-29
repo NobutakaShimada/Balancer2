@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="beuato_monitor_test" type="beuato_client_controller.py" 
+          name="beuato_client_controller" respawn="true" output="screen">
+        <param name="flask_root_path" value="$(find beuato_monitor_test)/scripts/" />
+    </node>
+</launch>
