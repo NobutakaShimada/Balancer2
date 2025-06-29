@@ -9,8 +9,6 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/subdir.mk
--include objects.mk
-
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
@@ -40,10 +38,10 @@ all:
 main-build: Balancer2_firm_Simple.axf
 
 # Tool invocations
-Balancer2_firm_Simple.axf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+Balancer2_firm_Simple.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"F:/BeuatoBalancer/Balancer2/MCUxpresso/Balancer2_firm_Simple/lib" -Xlinker --gc-sections -Xlinker -Map=Balancer2_firm_Simple.map -mcpu=cortex-m3 -mthumb -T "Balancer2_Debug.ld" -o "Balancer2_firm_Simple.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"/Users/shimadalocal/src/Balancer2/MCUxpresso/Default_Balancer/Balancer2_firm_Simple/lib" -Xlinker --gc-sections -Xlinker -Map=Balancer2_firm_Simple.map -mcpu=cortex-m3 -mthumb -T "Balancer2_Debug.ld" -o "Balancer2_firm_Simple.axf" $(OBJS) $(USER_OBJS) $(LIBS) -lBalancer2_lib
 	@echo 'Finished building target: $@'
 	@echo ' '
 

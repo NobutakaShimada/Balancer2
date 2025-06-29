@@ -33,7 +33,7 @@ int main (void)
 	}
 	ClearVariables();						//制御用変数の初期化
 
-	memmap.values.USER_ARIA8 = 100;  // Control()で使われるモーターゲインを外から変更できるように
+	memmap.values.GAIN_OPTION5 = 100;  // Control()で使われるモーターゲインを外から変更できるように
 
 	//メインループ
 	while(1){

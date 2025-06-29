@@ -60,48 +60,46 @@ unsigned char calibrarion(){
 
 double Control_PID(const double x[])
 {
+	// USB経由で変数参照できるようにセット
+	memmap.values.USER_ARIA1 = x[0];
+	memmap.values.USER_ARIA2 = x[1];
+	memmap.values.USER_ARIA3 = x[2];
+	memmap.values.USER_ARIA4 = x[3];
+
+	static double integ1=0.0;
+
+	if (first_call) {
+		integ1 = 0.0; // 積分項をリセット
+		first_call = 0;
+	}
 	double u=0.;
+	double KP1 = memmap.values.GAIN_OPTION1; // P gain 100以上ないと反応しないがすぐ振動し出す
+	double KI1 = memmap.values.GAIN_OPTION2; // I gain 基本は０
+	double KD1 = memmap.values.GAIN_OPTION3; // D gain Pに応じてきめる
+
+	double TS = 0.002;  // MAIN_CYCLE 500Hz
+
+	double e1 = -x[1];
+	integ1 += e1 * TS;
+	u = KP1*(e1) + KI1*integ1 + KD1*(-x[2]);
+
 	return u;
 }
 
 double Control_Feedback(const double x[])
 {
+	// USB経由で変数参照できるようにセット
+	memmap.values.USER_ARIA1 = x[0];
+	memmap.values.USER_ARIA2 = x[1];
+	memmap.values.USER_ARIA3 = x[2];
+	memmap.values.USER_ARIA4 = x[3];
 	// Pythonで最適制御のゲインを計算し代入する
 	double K[4] = {0.0, 0.0, 0.0, 0.0};
 
-	// pole place
-	K[0] = 0.29814475;
-	K[1] = 12.70135219;
-	K[2] = 0.11637412;
-	K[3] = 2.01665043;
+	// pole place K[4]の計算結果を貼り込む
 
+	// LQR　K[4]の計算結果を貼り込む
 
-	// Q=(10,10,1,1) R=10
-	//K[0] = 1.;
-	//K[1] = 76.3478;
-	//K[2] = 0.65244;
-	//K[3] = 12.6179;
-	// Q=(10,1000,1,1) R=10
-	//K[0] = 1.;
-	//K[1] = 77.2384;
-	//K[2] = 0.65538;
-	//K[3] = 12.665833;
-	// Q=(10,100,1,1) R=10
-	//K[0] = 1.;
-	//K[1] = 76.4294;
-	//K[2] = 0.652712;
-	//K[3] = 12.621626;
-	// Q=(10,100,1,1) R=100
-	//K[0] = 0.316;
-	//K[1] = 25.4954;
-	//K[2] = 0.20871034;
-	//K[3] = 4.1605286;
-
-	// θ-ψ + cd^2
-	//K[0] =  1.;
-	//K[1] = 77.40876787;
-	//K[2] = 0.65243195;
-	//K[3] = 13.27076764;
 
 	// 最適制御による状態フィードバック制御
 	double u = 0.0, uu[4];
@@ -111,12 +109,12 @@ double Control_Feedback(const double x[])
 		u += uu[i];
 	}
 	// USB経由で変数参照できるようにセット
-	memmap.values.USER_ARIA1 = uu[0];
-	memmap.values.USER_ARIA2 = uu[1];
-	memmap.values.USER_ARIA3 = uu[2];
-	memmap.values.USER_ARIA4 = uu[3];
+	memmap.values.USER_ARIA5 = uu[0];
+	memmap.values.USER_ARIA6 = uu[1];
+	memmap.values.USER_ARIA7 = uu[2];
+	memmap.values.USER_ARIA8 = uu[3];
 
-	memmap.values.USER_ARIA5 = MAIN_CYCLE;
+	//memmap.values.USER_ARIA5 = MAIN_CYCLE;
 
 	return u;
 }
@@ -135,6 +133,11 @@ double Control_Adaptive(const double x[])
 	 *   θ̂̇ = −γ (Bᵀ P e) x             (e = x − x_m)
 	 *   ẋ_m = A_c x_m                 (continuous Euler update)
 	 *--------------------------------------------------------------*/
+	// USB経由で変数参照できるようにセット
+	memmap.values.USER_ARIA1 = x[0];
+	memmap.values.USER_ARIA2 = x[1];
+	memmap.values.USER_ARIA3 = x[2];
+	memmap.values.USER_ARIA4 = x[3];
 
 	double u=0;
 	int N=4;                /* state dimension */
@@ -142,25 +145,12 @@ double Control_Adaptive(const double x[])
 	double TS=0.002;        /* sampling period [s] 500Hzらしい(MAIN_CYCLEマクロ)*/
 
 	/* -------- Auto‑generated C declarations -------- */
-	const double Ac[4][4] = {
-	    { 0.0000000000e+00, 0.0000000000e+00, 1.0000000000e+00, 0.0000000000e+00 },
-	    { 0.0000000000e+00, 0.0000000000e+00, 0.0000000000e+00, 1.0000000000e+00 },
-	    { 9.7325766501e+02, 7.5458843233e+04, 6.3681485010e+02, 1.3044311454e+04 },
-	    { -7.5998295233e+01, -5.8561185200e+03, -4.9726649658e+01, -1.0185847681e+03 }
-	};
+	// ここに Ac[4][4], B[4], K[4], P[4][4]の計算結果を貼り込む。
+	const double Ac[4][4];
+	const double B[4];
+	const double K[4];
+	const double P[4][4];
 
-	const double B[4] = { 0.0000000000e+00, 0.0000000000e+00, -9.7325766501e+02, 7.5998295233e+01 };
-
-	const double K[4] = { 1.0000000000e+00, 7.7978431519e+01, 6.5431270913e-01, 1.3402731787e+01 };
-
-	const double P[4][4] = {
-	    { 2.0150485660e+00, 4.5356567803e+01, 6.0440922331e-01, 7.7468304727e+00 },
-	    { 4.5356567803e+01, 3.0975234181e+03, 4.0168126721e+01, 5.1758530277e+02 },
-	    { 6.0440922331e-01, 4.0168126721e+01, 5.2381364134e-01, 6.7303290492e+00 },
-	    { 7.7468304727e+00, 5.1758530277e+02, 6.7303290492e+00, 8.6699307089e+01 }
-	};
-
-	//double gamma = 5.00e-02;
 	double gamma = memmap.values.GAIN_OPTION1; // 実行中に外から変更可能
 
 	/* --- static memories ------------------------------------- */
@@ -210,9 +200,9 @@ double Control_Adaptive(const double x[])
 		xm[i] += dxm[i] * TS;
 
 	// USB経由で変数参照できるようにセット
-	memmap.values.USER_ARIA1 = u;
-	memmap.values.USER_ARIA2 = u_k;
-	memmap.values.USER_ARIA3 = u_t;
+	memmap.values.USER_ARIA5 = u;
+	memmap.values.USER_ARIA6 = u_k;
+	memmap.values.USER_ARIA7 = u_t;
 
 	return u;
 }
@@ -231,9 +221,9 @@ void Control(){
 
 	double u;
 
-	// u = Control_PID(x);
-	//u = Control_Feedback(x);
-	u = Control_Adaptive(x);
+	//u = Control_PID(x);
+	u = Control_Feedback(x);
+	// u = Control_Adaptive(x);
 
 	outL += u;
 	outR += u;
@@ -255,7 +245,7 @@ void Control(){
 	//電流指令値設定
 	//memmap.values.T_CURRENT_L = (short)outL*1000;
 	//memmap.values.T_CURRENT_R = (short)outR*1000;
-	double gain = memmap.values.USER_ARIA8;
+	double gain = memmap.values.GAIN_OPTION5;
 	memmap.values.T_CURRENT_L = (short)(outL*gain);
 	memmap.values.T_CURRENT_R = (short)(outR*gain);
 
