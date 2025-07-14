@@ -4,7 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/modprobe /home/balance/Balancer2/cmake-cpp/usb_register_test/beuato_usb/myBeuatoDriver.ko
+ExecStart=/sbin/insmod /home/balance/Balancer2/cmake-cpp/usb_register_test/beuato_usb/myBeuatoDriver.ko
 ExecStop=/sbin/rmmod /home/balance/Balancer2/cmake-cpp/usb_register_test/beuato_usb/myBeuatoDriver.ko
 RemainAfterExit=yes
 
