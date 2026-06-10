@@ -243,24 +243,18 @@ class MemoryViewerApp:
         self.recording_start_time = None
         self.write_queue = []
         self.colors = list(DEFAULT_COLORS)
+        self.last_connect_attempt = 0
+        self.default_values = {}
+        self.current_values = {}
+        self.default_values_captured = False
         
         self.root = root
         self.device_path = "/dev/BeuatoCtrl0"
         root.title("Memory Map Viewer")
         root.geometry("1200x800")
 
-        # デバイスをオープン
-        try:
-            self.dev = open_beuato_device(self.device_path, read_mode=BEUATO_MODE_BINARY)
-            DRIVER_DEBUG = 0
-            set_beuato_debug(self.dev, DRIVER_DEBUG)
-            
-            # BINARY readモードに設定
-            set_beuato_read_mode(self.dev, BEUATO_MODE_BINARY)
-            print("Driver set to BINARY read mode.")
-        except Exception as e:
-            print(f"デバイスオープンエラー: {e}")
-            self.dev = None
+        self.dev = None
+        self._connect_device(force=True)
 
         # 左側：メモリマップのテーブル
         style = ttk.Style()
@@ -289,23 +283,72 @@ class MemoryViewerApp:
         right_frame = ttk.Frame(main_paned)
         main_paned.add(right_frame, weight=40)
 
+        left_control_frame = ttk.Frame(left_frame)
+        left_control_frame.pack(side='top', fill='x', pady=(0, 4))
+
+        self.reset_all_button = tk.Button(
+            left_control_frame,
+            text="全てリセット",
+            command=self._reset_all_to_defaults,
+            state='disabled',
+            relief='raised',
+            borderwidth=2,
+            padx=8,
+            pady=2,
+        )
+        self.reset_all_button.pack(side='left', padx=2)
+
+        self.set_default_button = tk.Button(
+            left_control_frame,
+            text="現在値をデフォルトに設定",
+            command=self._set_current_values_as_defaults,
+            state='disabled',
+            relief='raised',
+            borderwidth=2,
+            padx=8,
+            pady=2,
+        )
+        self.set_default_button.pack(side='left', padx=2)
+
         #self.tree = ttk.Treeview(root, columns=('value',), show='tree headings', height=30, style="Custom.Treeview")
-        self.tree = ttk.Treeview(left_frame, columns=('value',), show='tree headings', style="Custom.Treeview")
+        self.tree = ttk.Treeview(left_frame, columns=('value', 'reset'), show='tree headings', style="Custom.Treeview")
         self.tree.heading('#0', text='Field')
         self.tree.column('#0', width=200, anchor='w')
         self.tree.heading('value', text='Value')
         self.tree.column('value', width=100, anchor='e')
+        self.tree.heading('reset', text='')
+        self.tree.column('reset', width=55, anchor='center', stretch=False)
         #self.tree.pack(side='left', fill='both', padx=2, pady=5)
 
         # フィールドを追加
         for name in memory_map:
-            self.tree.insert('', 'end', iid=name, text=name, values=('',))
+            self.tree.insert('', 'end', iid=name, text=name, values=('', ''))
 
         # ツリーを左フレームに配置
         self.tree.pack(in_=left_frame, fill='both', expand=True)
 
+        self.reset_buttons = {}
+        for name in memory_map:
+            if self._is_writable_variable(name):
+                button = tk.Button(
+                    self.tree,
+                    text="Reset",
+                    relief="raised",
+                    borderwidth=2,
+                    padx=4,
+                    pady=0,
+                    command=lambda item=name: self._reset_item_to_default(item),
+                )
+                button.place_forget()
+                self.reset_buttons[name] = button
+
         # イベントバインド
         self.tree.bind('<Button-1>', self._on_tree_click)
+        self.tree.bind('<Configure>', lambda e: self._position_reset_buttons())
+        self.tree.bind('<Expose>', lambda e: self._position_reset_buttons())
+        self.tree.bind('<MouseWheel>', lambda e: self.root.after_idle(self._position_reset_buttons))
+        self.tree.bind('<Button-4>', lambda e: self.root.after_idle(self._position_reset_buttons))
+        self.tree.bind('<Button-5>', lambda e: self.root.after_idle(self._position_reset_buttons))
 
 
 
@@ -364,6 +407,38 @@ class MemoryViewerApp:
         # 定期更新開始
         root.after(0, self.update)
 
+    def _connect_device(self, force=False):
+        now = time.monotonic()
+        if self.dev is not None:
+            return True
+        if not force and now - self.last_connect_attempt < 1.0:
+            return False
+
+        self.last_connect_attempt = now
+        try:
+            self.dev = open_beuato_device(self.device_path, read_mode=BEUATO_MODE_BINARY)
+            set_beuato_debug(self.dev, 0)
+            set_beuato_read_mode(self.dev, BEUATO_MODE_BINARY)
+            print("Driver set to BINARY read mode.")
+            if hasattr(self, "status_label") and not self.is_recording:
+                self.status_label.config(text="接続済み", foreground="green")
+            return True
+        except Exception as e:
+            print(f"デバイスオープンエラー: {e}")
+            self.dev = None
+            if hasattr(self, "status_label") and not self.is_recording:
+                self.status_label.config(text="未接続", foreground="red")
+            return False
+
+    def _disconnect_device(self):
+        if self.dev is None:
+            return
+        try:
+            self.dev.close()
+        except Exception:
+            pass
+        self.dev = None
+
     def _on_tree_click(self, event):
         """ツリーアイテムクリック時の処理"""
         print_debug("=== ツリークリック イベント発生 ===")
@@ -384,18 +459,41 @@ class MemoryViewerApp:
         print_debug(f"クリック位置: region={region}, item={item}, x={event.x}, y={event.y}")
         
         if item and item in memory_map:
-            field_column_width = 200
-            print_debug(f"フィールド名列の幅: {field_column_width}, クリックX座標: {event.x}")
+            column = self.tree.identify_column(event.x)
+            print_debug(f"クリック列: {column}")
             
-            if event.x > field_column_width:  # Value列
+            if column == '#2':
+                print_debug("リセット列クリック")
+                self._reset_item_to_default(item)
+            elif column == '#1':
                 print_debug("数値表示領域クリック")
                 self._on_value_click(item)
-            else:  # Field名列
+            else:
                 print_debug("フィールド名領域クリック")
                 self._on_field_click(item)
         
         self.root.after_idle(lambda: self.tree.selection_remove(self.tree.selection()))
         print_debug("=== ツリークリック 処理完了 ===\n")
+
+    def _position_reset_buttons(self):
+        """Reset列に各行の実ボタンを重ねて配置する"""
+        if not hasattr(self, "reset_buttons"):
+            return
+
+        for item, button in self.reset_buttons.items():
+            bbox = self.tree.bbox(item, 'reset')
+            if not bbox:
+                button.place_forget()
+                continue
+
+            x, y, width, height = bbox
+            button.place(
+                in_=self.tree,
+                x=x + 3,
+                y=y + 1,
+                width=max(1, width - 6),
+                height=max(1, height - 2),
+            )
 
     def _on_field_click(self, item):
         """フィールド名クリック時の処理（グラフ選択）"""
@@ -528,6 +626,66 @@ class MemoryViewerApp:
         except Exception as e:
             print(f"書き込み処理エラー: {variable_name} = {value}, エラー: {str(e)}")
             return False
+
+    def _is_writable_variable(self, variable_name):
+        return variable_name in memory_map and variable_name not in READONLY_VARIABLES
+
+    def _capture_default_values(self, data):
+        """最初に読めたメモリマップ値をリセット用デフォルトとして保存"""
+        if self.default_values_captured:
+            return
+
+        self.default_values = dict(data)
+        self.default_values_captured = True
+        self.reset_all_button.config(state='normal')
+        self.set_default_button.config(state='normal')
+        print("起動時デフォルト値を記録しました。")
+
+    def _set_current_values_as_defaults(self):
+        """現在表示されている値を以後のリセット先として保存"""
+        if not self.current_values:
+            messagebox.showinfo("未準備", "まだ現在値を読み込めていません。")
+            return
+
+        self.default_values = dict(self.current_values)
+        self.default_values_captured = True
+        self.reset_all_button.config(state='normal')
+        self.set_default_button.config(state='normal')
+        print("現在値をリセット用デフォルトとして記録しました。")
+
+    def _queue_default_write(self, variable_name):
+        if not self.default_values_captured:
+            messagebox.showinfo("未準備", "まだ起動時デフォルト値を読み込めていません。")
+            return False
+        if not self._is_writable_variable(variable_name):
+            return False
+        if variable_name not in self.default_values:
+            return False
+
+        self.write_queue.append((variable_name, repr(self.default_values[variable_name])))
+        return True
+
+    def _reset_item_to_default(self, variable_name):
+        """指定項目を起動時デフォルト値へ戻す"""
+        if not self._is_writable_variable(variable_name):
+            return
+        if self._queue_default_write(variable_name):
+            print_debug(f"リセットキューに追加: {variable_name} -> {self.default_values[variable_name]!r}")
+
+    def _reset_all_to_defaults(self):
+        """書き込み可能な全項目を起動時デフォルト値へ戻す"""
+        if self.editing_item:
+            self._end_edit(commit=False)
+
+        queued = 0
+        for variable_name in memory_map:
+            if self._queue_default_write(variable_name):
+                queued += 1
+
+        if queued == 0:
+            messagebox.showinfo("リセット", "リセット対象がありません。")
+        else:
+            print(f"{queued}項目を起動時デフォルト値へ戻します。")
 
     def _update_tree_colors(self):
         """ツリーの選択状態と読み取り専用状態を視覚的に表示"""
@@ -698,6 +856,10 @@ class MemoryViewerApp:
 
     def update(self):
         """定期更新処理"""
+        if not self._connect_device():
+            self.root.after(UPDATE_INTERVAL, self.update)
+            return
+
         # 書き込みキューの処理
         if self.write_queue:
             variable_name, value = self.write_queue.pop(0)
@@ -711,6 +873,9 @@ class MemoryViewerApp:
             mem = read_all_memory(self.dev)
         except Exception as e:
             print(f"メモリ読み出しエラー: {e}")
+            self._disconnect_device()
+            if not self.is_recording:
+                self.status_label.config(text="再接続待ち", foreground="red")
             self.root.after(UPDATE_INTERVAL, self.update)
             return
         
@@ -726,6 +891,9 @@ class MemoryViewerApp:
 
             data[name] = val
             self.tree.set(name, 'value', val)
+
+        self.current_values = dict(data)
+        self._capture_default_values(data)
 
         # 記録モード
         if self.is_recording:
@@ -750,6 +918,7 @@ class MemoryViewerApp:
             except Exception as e:
                 print(f"プロット更新エラー: {e}")
 
+        self._position_reset_buttons()
         self.root.after(UPDATE_INTERVAL, self.update)
 
     def on_close(self):
@@ -758,12 +927,7 @@ class MemoryViewerApp:
 
     def _delayed_close(self):
         """終了時にデバイスをクローズ"""
-        try:
-            if hasattr(self, 'dev') and self.dev:
-                self.dev.close()
-                self.dev = None
-        except:
-            pass
+        self._disconnect_device()
         self.root.quit()
 
 
