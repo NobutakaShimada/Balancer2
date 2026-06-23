@@ -100,6 +100,11 @@ double Control_Feedback(const double x[])
 
 	// LQR　K[4]の計算結果を貼り込む
 
+	// インタラクティブにゲイン入力 上でKの値を直接入力したときは下をコメントアウトすること
+	K[0] = memmap.values.GAIN_OPTION1;
+	K[1] = memmap.values.GAIN_OPTION2;
+	K[2] = memmap.values.GAIN_OPTION3;
+	K[3] = memmap.values.GAIN_OPTION4;
 
 	// 最適制御による状態フィードバック制御
 	double u = 0.0, uu[4];
