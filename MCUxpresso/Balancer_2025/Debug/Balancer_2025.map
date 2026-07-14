@@ -101,10 +101,11 @@ Discarded input sections
 
  .text          0x00000000        0x0 ./src/control.o
  .data          0x00000000        0x0 ./src/control.o
- .text.Control_PID
-                0x00000000       0xec ./src/control.o
  .text.Control_Feedback
                 0x00000000       0xb8 ./src/control.o
+ .text.Control_Adaptive
+                0x00000000      0x2d4 ./src/control.o
+ .rodata        0x00000000      0x140 ./src/control.o
  .text          0x00000000        0x0 ./src/cr_startup_lpc13.o
  .data          0x00000000        0x0 ./src/cr_startup_lpc13.o
  .bss           0x00000000        0x0 ./src/cr_startup_lpc13.o
@@ -240,6 +241,19 @@ Discarded input sections
  .text          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
  .data          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
  .bss           0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .text.memcpy   0x00000000        0x4 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .debug_info    0x00000000      0x12b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .debug_abbrev  0x00000000       0xb6 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .debug_loc     0x00000000       0x81 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .debug_aranges
+                0x00000000       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .debug_ranges  0x00000000       0x10 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .debug_line    0x00000000      0x10b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .debug_str     0x00000000      0x1b7 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .comment       0x00000000       0x45 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .debug_frame   0x00000000       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+ .ARM.attributes
+                0x00000000       0x2d /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
  .text          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
  .data          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
  .bss           0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
@@ -281,6 +295,8 @@ Discarded input sections
  .text          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
  .data          0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
  .bss           0x00000000        0x0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+ .text.__aeabi_memcpy
+                0x00000000       0x34 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
  .text.__aeabi_memmove
                 0x00000000       0x1c /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
  .text.__aeabi_memclr
@@ -311,7 +327,7 @@ END GROUP
                 0x00008000                        __top_FlashMap = 0x8000
                 0x10002000                        __top_RamLoc8 = 0x10002000
 
-.text           0x00000000     0x4778
+.text           0x00000000     0x443c
  *(.isr_vector)
  .isr_vector    0x00000000      0x124 ./src/cr_startup_lpc13.o
                 0x00000000                g_pfnVectors
@@ -322,454 +338,446 @@ END GROUP
  .text.calibrarion
                 0x00000148       0xf0 ./src/control.o
                 0x00000148                calibrarion
- .text.Control_Adaptive
-                0x00000238      0x2d4 ./src/control.o
-                0x00000238                Control_Adaptive
- *fill*         0x0000050c        0x4 
- .text.Control  0x00000510      0x138 ./src/control.o
-                0x00000510                Control
+ .text.Control_PID
+                0x00000238       0xec ./src/control.o
+                0x00000238                Control_PID
+ *fill*         0x00000324        0x4 
+ .text.Control  0x00000328      0x15c ./src/control.o
+                0x00000328                Control
+ *fill*         0x00000484        0x4 
  .text.VS_C3Control
-                0x00000648       0x7c ./src/control.o
-                0x00000648                VS_C3Control
- *fill*         0x000006c4        0x4 
+                0x00000488       0x7c ./src/control.o
+                0x00000488                VS_C3Control
+ *fill*         0x00000504        0x4 
  .text.isWhleeOverSpeed
-                0x000006c8       0xd8 ./src/control.o
-                0x000006c8                isWhleeOverSpeed
+                0x00000508       0xd8 ./src/control.o
+                0x00000508                isWhleeOverSpeed
  .text.NMI_Handler
-                0x000007a0        0x2 ./src/cr_startup_lpc13.o
-                0x000007a0                NMI_Handler
+                0x000005e0        0x2 ./src/cr_startup_lpc13.o
+                0x000005e0                NMI_Handler
  .text.HardFault_Handler
-                0x000007a2        0x2 ./src/cr_startup_lpc13.o
-                0x000007a2                HardFault_Handler
+                0x000005e2        0x2 ./src/cr_startup_lpc13.o
+                0x000005e2                HardFault_Handler
  .text.MemManage_Handler
-                0x000007a4        0x2 ./src/cr_startup_lpc13.o
-                0x000007a4                MemManage_Handler
+                0x000005e4        0x2 ./src/cr_startup_lpc13.o
+                0x000005e4                MemManage_Handler
  .text.BusFault_Handler
-                0x000007a6        0x2 ./src/cr_startup_lpc13.o
-                0x000007a6                BusFault_Handler
+                0x000005e6        0x2 ./src/cr_startup_lpc13.o
+                0x000005e6                BusFault_Handler
  .text.UsageFault_Handler
-                0x000007a8        0x2 ./src/cr_startup_lpc13.o
-                0x000007a8                UsageFault_Handler
+                0x000005e8        0x2 ./src/cr_startup_lpc13.o
+                0x000005e8                UsageFault_Handler
  .text.SVCall_Handler
-                0x000007aa        0x2 ./src/cr_startup_lpc13.o
-                0x000007aa                SVCall_Handler
+                0x000005ea        0x2 ./src/cr_startup_lpc13.o
+                0x000005ea                SVCall_Handler
  .text.DebugMon_Handler
-                0x000007ac        0x2 ./src/cr_startup_lpc13.o
-                0x000007ac                DebugMon_Handler
+                0x000005ec        0x2 ./src/cr_startup_lpc13.o
+                0x000005ec                DebugMon_Handler
  .text.PendSV_Handler
-                0x000007ae        0x2 ./src/cr_startup_lpc13.o
-                0x000007ae                PendSV_Handler
+                0x000005ee        0x2 ./src/cr_startup_lpc13.o
+                0x000005ee                PendSV_Handler
  .text.IntDefaultHandler
-                0x000007b0        0x2 ./src/cr_startup_lpc13.o
-                0x000007b0                FMC_IRQHandler
-                0x000007b0                TIMER32_1_IRQHandler
-                0x000007b0                PIOINT1_IRQHandler
-                0x000007b0                SSP_IRQHandler
-                0x000007b0                TIMER16_1_IRQHandler
-                0x000007b0                USB_FIQHandler
-                0x000007b0                PIOINT2_IRQHandler
-                0x000007b0                BOD_IRQHandler
-                0x000007b0                WAKEUP_IRQHandler
-                0x000007b0                PIOINT0_IRQHandler
-                0x000007b0                WDT_IRQHandler
-                0x000007b0                PIOINT3_IRQHandler
-                0x000007b0                TIMER16_0_IRQHandler
- *fill*         0x000007b2        0x2 
+                0x000005f0        0x2 ./src/cr_startup_lpc13.o
+                0x000005f0                FMC_IRQHandler
+                0x000005f0                TIMER32_1_IRQHandler
+                0x000005f0                PIOINT1_IRQHandler
+                0x000005f0                SSP_IRQHandler
+                0x000005f0                TIMER16_1_IRQHandler
+                0x000005f0                USB_FIQHandler
+                0x000005f0                PIOINT2_IRQHandler
+                0x000005f0                BOD_IRQHandler
+                0x000005f0                WAKEUP_IRQHandler
+                0x000005f0                PIOINT0_IRQHandler
+                0x000005f0                WDT_IRQHandler
+                0x000005f0                PIOINT3_IRQHandler
+                0x000005f0                TIMER16_0_IRQHandler
+ *fill*         0x000005f2        0x2 
  .text.Reset_Handler
-                0x000007b4       0x64 ./src/cr_startup_lpc13.o
-                0x000007b4                Reset_Handler
-                0x000007b4                ResetISR
+                0x000005f4       0x64 ./src/cr_startup_lpc13.o
+                0x000005f4                Reset_Handler
+                0x000005f4                ResetISR
  .text.LedBlink
-                0x00000818       0x50 ./src/main.o
-                0x00000818                LedBlink
- .text.main     0x00000868      0x130 ./src/main.o
-                0x00000868                main
- .text.ADCInit  0x00000998       0xa0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
-                0x00000998                ADCInit
- .text.ADCRead  0x00000a38       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
-                0x00000a38                ADCRead
+                0x00000658       0x50 ./src/main.o
+                0x00000658                LedBlink
+ .text.main     0x000006a8      0x130 ./src/main.o
+                0x000006a8                main
+ .text.ADCInit  0x000007d8       0xa0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
+                0x000007d8                ADCInit
+ .text.ADCRead  0x00000878       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
+                0x00000878                ADCRead
  .text.ADC_IRQHandler
-                0x00000a5c      0x164 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
-                0x00000a5c                ADC_IRQHandler
+                0x0000089c      0x164 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
+                0x0000089c                ADC_IRQHandler
  .text.ClearCurrentVariables
-                0x00000bc0       0x64 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
-                0x00000bc0                ClearCurrentVariables
+                0x00000a00       0x64 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+                0x00000a00                ClearCurrentVariables
  .text.getCurrent
-                0x00000c24       0x6c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
-                0x00000c24                getCurrent
+                0x00000a64       0x6c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+                0x00000a64                getCurrent
  .text.CurrentControlDisable
-                0x00000c90       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
-                0x00000c90                CurrentControlDisable
+                0x00000ad0       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+                0x00000ad0                CurrentControlDisable
  .text.CurrentControlEnable
-                0x00000ca0       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
-                0x00000ca0                CurrentControlEnable
+                0x00000ae0       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+                0x00000ae0                CurrentControlEnable
  .text.MTRCurrentControlProc
-                0x00000cb0      0x234 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
-                0x00000cb0                MTRCurrentControlProc
+                0x00000af0      0x234 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+                0x00000af0                MTRCurrentControlProc
  .text.InitEncoder
-                0x00000ee4       0x94 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
-                0x00000ee4                InitEncoder
+                0x00000d24       0x94 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+                0x00000d24                InitEncoder
  .text.ClearEncVariables
-                0x00000f78       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
-                0x00000f78                ClearEncVariables
- .text.EncProc  0x00000fa0      0x188 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
-                0x00000fa0                EncProc
+                0x00000db8       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+                0x00000db8                ClearEncVariables
+ .text.EncProc  0x00000de0      0x188 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+                0x00000de0                EncProc
  .text.IntEncoder
-                0x00001128       0x90 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
-                0x00001128                IntEncoder
+                0x00000f68       0x90 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+                0x00000f68                IntEncoder
  .text.SysTick_Handler
-                0x000011b8       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
-                0x000011b8                SysTick_Handler
+                0x00000ff8       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+                0x00000ff8                SysTick_Handler
  .text.GPIOSetDir
-                0x000011fc       0xf0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
-                0x000011fc                GPIOSetDir
+                0x0000103c       0xf0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
+                0x0000103c                GPIOSetDir
  .text.GPIOSetValue
-                0x000012ec       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
-                0x000012ec                GPIOSetValue
+                0x0000112c       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
+                0x0000112c                GPIOSetValue
  .text.GPIOGetValueBit
-                0x0000134c       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
-                0x0000134c                GPIOGetValueBit
+                0x0000118c       0x60 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
+                0x0000118c                GPIOGetValueBit
  .text.ClearGyroVariables
-                0x000013ac       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
-                0x000013ac                ClearGyroVariables
+                0x000011ec       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
+                0x000011ec                ClearGyroVariables
  .text.SetI2CGain
-                0x000013c8       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
-                0x000013c8                SetI2CGain
+                0x00001208       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
+                0x00001208                SetI2CGain
  .text.getGyroI2C
-                0x00001438       0x50 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
-                0x00001438                getGyroI2C
+                0x00001278       0x50 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
+                0x00001278                getGyroI2C
  .text.GyroProc
-                0x00001488       0xe8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
-                0x00001488                GyroProc
+                0x000012c8       0xe8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
+                0x000012c8                GyroProc
  .text.I2C_IRQHandler
-                0x00001570      0x230 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
-                0x00001570                I2C_IRQHandler
+                0x000013b0      0x230 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+                0x000013b0                I2C_IRQHandler
  .text.I2CStart
-                0x000017a0       0x50 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
-                0x000017a0                I2CStart
- .text.I2CStop  0x000017f0       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
-                0x000017f0                I2CStop
- .text.I2CInit  0x0000180c       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
-                0x0000180c                I2CInit
+                0x000015e0       0x50 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+                0x000015e0                I2CStart
+ .text.I2CStop  0x00001630       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+                0x00001630                I2CStop
+ .text.I2CInit  0x0000164c       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+                0x0000164c                I2CInit
  .text.I2CEngine
-                0x0000187c       0x34 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
-                0x0000187c                I2CEngine
+                0x000016bc       0x34 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+                0x000016bc                I2CEngine
  .text.isLogEnable
-                0x000018b0       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
-                0x000018b0                isLogEnable
+                0x000016f0       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
+                0x000016f0                isLogEnable
  .text.isLogRecoding
-                0x000018c0       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
-                0x000018c0                isLogRecoding
+                0x00001700       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
+                0x00001700                isLogRecoding
  .text.LogStart
-                0x000018d4       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
-                0x000018d4                LogStart
- .text.LogProc  0x000018e8      0x178 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
-                0x000018e8                LogProc
+                0x00001714       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
+                0x00001714                LogStart
+ .text.LogProc  0x00001728      0x178 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
+                0x00001728                LogProc
  .text.SystemInit
-                0x00001a60       0xec /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
-                0x00001a60                SystemInit
+                0x000018a0       0xec /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
+                0x000018a0                SystemInit
  .text.UART_IRQHandler
-                0x00001b4c       0xd4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
-                0x00001b4c                UART_IRQHandler
+                0x0000198c       0xd4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
+                0x0000198c                UART_IRQHandler
  .text.UARTInit
-                0x00001c20       0xd8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
-                0x00001c20                UARTInit
- .text.getCnt   0x00001cf8       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
-                0x00001cf8                getCnt
- .text.Sync     0x00001d08       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00001d08                Sync
- .text.getSW    0x00001d38       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00001d38                getSW
- .text.Wait     0x00001d4c       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00001d4c                Wait
+                0x00001a60       0xd8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
+                0x00001a60                UARTInit
+ .text.getCnt   0x00001b38       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
+                0x00001b38                getCnt
+ .text.Sync     0x00001b48       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001b48                Sync
+ .text.getSW    0x00001b78       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001b78                getSW
+ .text.Wait     0x00001b8c       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001b8c                Wait
  .text.CycleProc
-                0x00001d90       0x4c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00001d90                CycleProc
- .text.setLED   0x00001ddc       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00001ddc                setLED
+                0x00001bd0       0x4c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001bd0                CycleProc
+ .text.setLED   0x00001c1c       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001c1c                setLED
  .text.InitMemmap
-                0x00001e00      0x1b8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00001e00                InitMemmap
+                0x00001c40      0x1b8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001c40                InitMemmap
  .text.SetMotorPwm
-                0x00001fb8      0x100 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00001fb8                SetMotorPwm
+                0x00001df8      0x100 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001df8                SetMotorPwm
  .text.Timer16Init
-                0x000020b8       0x7c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x000020b8                Timer16Init
+                0x00001ef8       0x7c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001ef8                Timer16Init
  .text.Timer32Init
-                0x00002134       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00002134                Timer32Init
+                0x00001f74       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001f74                Timer32Init
  .text.TIMER32_0_IRQHandler
-                0x00002170       0x90 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00002170                TIMER32_0_IRQHandler
+                0x00001fb0       0x90 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00001fb0                TIMER32_0_IRQHandler
  .text.DisableIntterupt
-                0x00002200       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x00002200                DisableIntterupt
- .text.Init     0x0000223c      0x100 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x0000223c                Init
+                0x00002040       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x00002040                DisableIntterupt
+ .text.Init     0x0000207c      0x100 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x0000207c                Init
  .text.Balancer2Init
-                0x0000233c       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x0000233c                Balancer2Init
+                0x0000217c       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x0000217c                Balancer2Init
  .text.EnableIntterupt
-                0x0000235c       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
-                0x0000235c                EnableIntterupt
+                0x0000219c       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+                0x0000219c                EnableIntterupt
  .text.call_IAP
-                0x0000237c       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+                0x000021bc       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
  .text.FLASH_ProgramPage
-                0x000023a8       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
-                0x000023a8                FLASH_ProgramPage
+                0x000021e8       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+                0x000021e8                FLASH_ProgramPage
  .text.FLASH_ErasePage
-                0x000023f0       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
-                0x000023f0                FLASH_ErasePage
+                0x00002230       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+                0x00002230                FLASH_ErasePage
  .text.FLASH_WRITE_MEMMAP
-                0x00002420       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
-                0x00002420                FLASH_WRITE_MEMMAP
+                0x00002260       0x48 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+                0x00002260                FLASH_WRITE_MEMMAP
  .text.FLASH_READ_MEMMAP
-                0x00002468       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
-                0x00002468                FLASH_READ_MEMMAP
- .text.PadWait  0x00002484       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
-                0x00002484                PadWait
- .text.Ds2rw    0x00002494       0x8c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
-                0x00002494                Ds2rw
- .text.Ds2Com   0x00002520       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
-                0x00002520                Ds2Com
+                0x000022a8       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+                0x000022a8                FLASH_READ_MEMMAP
+ .text.PadWait  0x000022c4       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+                0x000022c4                PadWait
+ .text.Ds2rw    0x000022d4       0x8c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+                0x000022d4                Ds2rw
+ .text.Ds2Com   0x00002360       0x44 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+                0x00002360                Ds2Com
  .text.PS_Set_AN
-                0x00002564       0xa0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
-                0x00002564                PS_Set_AN
+                0x000023a4       0xa0 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+                0x000023a4                PS_Set_AN
  .text.updatePAD
-                0x00002604       0xb8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
-                0x00002604                updatePAD
- .text.PADProc  0x000026bc        0x8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
-                0x000026bc                PADProc
- .text.USBInit  0x000026c4       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
-                0x000026c4                USBInit
+                0x00002444       0xb8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+                0x00002444                updatePAD
+ .text.PADProc  0x000024fc        0x8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+                0x000024fc                PADProc
+ .text.USBInit  0x00002504       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+                0x00002504                USBInit
  .text.USB_Reset_Event
-                0x00002734        0x8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
-                0x00002734                USB_Reset_Event
+                0x00002574        0x8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+                0x00002574                USB_Reset_Event
  .text.SetUSBSendData
-                0x0000273c       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
-                0x0000273c                SetUSBSendData
+                0x0000257c       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+                0x0000257c                SetUSBSendData
  .text.InUSBDataProcces
-                0x0000277c      0x19c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
-                0x0000277c                InUSBDataProcces
+                0x000025bc      0x19c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+                0x000025bc                InUSBDataProcces
  .text.USB_EndPoint1
-                0x00002918       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
-                0x00002918                USB_EndPoint1
+                0x00002758       0x18 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+                0x00002758                USB_EndPoint1
  .text.USB_ResetCore
-                0x00002930       0x4c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002930                USB_ResetCore
+                0x00002770       0x4c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002770                USB_ResetCore
  .text.USB_SetupStage
-                0x0000297c       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x0000297c                USB_SetupStage
+                0x000027bc       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x000027bc                USB_SetupStage
  .text.USB_DataInStage
-                0x00002990       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002990                USB_DataInStage
+                0x000027d0       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x000027d0                USB_DataInStage
  .text.USB_DataOutStage
-                0x000029e8       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x000029e8                USB_DataOutStage
+                0x00002828       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002828                USB_DataOutStage
  .text.USB_StatusInStage
-                0x00002a24       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002a24                USB_StatusInStage
+                0x00002864       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002864                USB_StatusInStage
  .text.USB_StatusOutStage
-                0x00002a34       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002a34                USB_StatusOutStage
+                0x00002874       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002874                USB_StatusOutStage
  .text.USB_ReqGetStatus
-                0x00002a48       0xf4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002a48                USB_ReqGetStatus
+                0x00002888       0xf4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002888                USB_ReqGetStatus
  .text.USB_ReqSetClrFeature
-                0x00002b3c      0x130 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002b3c                USB_ReqSetClrFeature
+                0x0000297c      0x130 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x0000297c                USB_ReqSetClrFeature
  .text.USB_ReqSetAddress
-                0x00002c6c       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002c6c                USB_ReqSetAddress
+                0x00002aac       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002aac                USB_ReqSetAddress
  .text.USB_ReqGetDescriptor
-                0x00002ca8      0x174 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002ca8                USB_ReqGetDescriptor
+                0x00002ae8      0x174 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002ae8                USB_ReqGetDescriptor
  .text.USB_ReqGetConfiguration
-                0x00002e1c       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002e1c                USB_ReqGetConfiguration
+                0x00002c5c       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002c5c                USB_ReqGetConfiguration
  .text.UsbAddPtr
-                0x00002e54       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002e54                UsbAddPtr
+                0x00002c94       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002c94                UsbAddPtr
  .text.USB_ReqSetConfiguration
-                0x00002e78      0x254 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00002e78                USB_ReqSetConfiguration
+                0x00002cb8      0x254 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002cb8                USB_ReqSetConfiguration
  .text.USB_ReqGetInterface
-                0x000030cc       0x68 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x000030cc                USB_ReqGetInterface
+                0x00002f0c       0x68 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002f0c                USB_ReqGetInterface
  .text.USB_ReqSetInterface
-                0x00003134      0x1b8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x00003134                USB_ReqSetInterface
+                0x00002f74      0x1b8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x00002f74                USB_ReqSetInterface
  .text.USB_EndPoint0
-                0x000032ec      0x32c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
-                0x000032ec                USB_EndPoint0
- .text.delay    0x00003618       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003618                delay
- .text.EPAdr    0x00003644       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003644                EPAdr
- .text.WrCmd    0x00003674       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003674                WrCmd
+                0x0000312c      0x32c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+                0x0000312c                USB_EndPoint0
+ .text.delay    0x00003458       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003458                delay
+ .text.EPAdr    0x00003484       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003484                EPAdr
+ .text.WrCmd    0x000034b4       0x58 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000034b4                WrCmd
  .text.WrCmdDat
-                0x000036cc       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000036cc                WrCmdDat
- .text.WrCmdEP  0x000036e8       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000036e8                WrCmdEP
+                0x0000350c       0x1c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x0000350c                WrCmdDat
+ .text.WrCmdEP  0x00003528       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003528                WrCmdEP
  .text.RdCmdDat
-                0x00003714       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003714                RdCmdDat
+                0x00003554       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003554                RdCmdDat
  .text.USB_Connect
-                0x0000374c       0x5c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x0000374c                USB_Connect
+                0x0000358c       0x5c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x0000358c                USB_Connect
  .text.USB_Reset
-                0x000037a8       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000037a8                USB_Reset
+                0x000035e8       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000035e8                USB_Reset
  .text.USB_WakeUpCfg
-                0x000037cc       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000037cc                USB_WakeUpCfg
+                0x0000360c       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x0000360c                USB_WakeUpCfg
  .text.USB_SetAddress
-                0x000037e0       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000037e0                USB_SetAddress
+                0x00003620       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003620                USB_SetAddress
  .text.USB_Configure
-                0x0000381c       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x0000381c                USB_Configure
+                0x0000365c       0x30 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x0000365c                USB_Configure
  .text.USB_ConfigEP
-                0x0000384c       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x0000384c                USB_ConfigEP
+                0x0000368c       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x0000368c                USB_ConfigEP
  .text.USB_DirCtrlEP
-                0x00003860       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003860                USB_DirCtrlEP
+                0x000036a0       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000036a0                USB_DirCtrlEP
  .text.USB_EnableEP
-                0x00003874       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003874                USB_EnableEP
+                0x000036b4       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000036b4                USB_EnableEP
  .text.USB_DisableEP
-                0x000038a0       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000038a0                USB_DisableEP
+                0x000036e0       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000036e0                USB_DisableEP
  .text.USB_ResetEP
-                0x000038cc       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000038cc                USB_ResetEP
+                0x0000370c       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x0000370c                USB_ResetEP
  .text.USB_SetStallEP
-                0x000038f8       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000038f8                USB_SetStallEP
+                0x00003738       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003738                USB_SetStallEP
  .text.USB_ClrStallEP
-                0x00003924       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003924                USB_ClrStallEP
+                0x00003764       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003764                USB_ClrStallEP
  .text.USB_ReadEP
-                0x00003950       0x80 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003950                USB_ReadEP
+                0x00003790       0x80 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003790                USB_ReadEP
  .text.USB_WriteEP
-                0x000039d0       0xa8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x000039d0                USB_WriteEP
+                0x00003810       0xa8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x00003810                USB_WriteEP
  .text.USB_IRQHandler
-                0x00003a78      0x134 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
-                0x00003a78                USB_IRQHandler
+                0x000038b8      0x134 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+                0x000038b8                USB_IRQHandler
  .text.HID_GetIdle
-                0x00003bac       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
-                0x00003bac                HID_GetIdle
+                0x000039ec       0x2c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x000039ec                HID_GetIdle
  .text.HID_SetIdle
-                0x00003bd8       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
-                0x00003bd8                HID_SetIdle
+                0x00003a18       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x00003a18                HID_SetIdle
  .text.HID_GetProtocol
-                0x00003c00       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
-                0x00003c00                HID_GetProtocol
+                0x00003a40       0x20 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x00003a40                HID_GetProtocol
  .text.HID_SetProtocol
-                0x00003c20       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
-                0x00003c20                HID_SetProtocol
- .text.memcpy   0x00003c44        0x4 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
-                0x00003c44                memcpy
- .text.memset   0x00003c48        0x4 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
-                0x00003c48                memset
+                0x00003a60       0x24 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
+                0x00003a60                HID_SetProtocol
+ .text.memset   0x00003a84        0x4 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+                0x00003a84                memset
  .text.__aeabi_division_ldivmod
-                0x00003c4c       0x26 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
-                0x00003c4c                __aeabi_ldivmod
+                0x00003a88       0x26 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+                0x00003a88                __aeabi_ldivmod
  .text.__aeabi_division_uldivmod
-                0x00003c72      0x174 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
-                0x00003c72                __aeabi_uldivmod
-                0x00003c76                __bhs_ldivmod1
+                0x00003aae      0x174 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+                0x00003aae                __aeabi_uldivmod
+                0x00003ab2                __bhs_ldivmod1
  .text.__aeabi_division_idiv0
-                0x00003de6        0x2 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
-                0x00003de6                __aeabi_idiv0
+                0x00003c22        0x2 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
+                0x00003c22                __aeabi_idiv0
  .text.__aeabi_dmul
-                0x00003de8       0xfc /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x00003de8                __aeabi_dmul
+                0x00003c24       0xfc /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00003c24                __aeabi_dmul
  .text.__aeabi_ddiv
-                0x00003ee4      0x134 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x00003ee4                __aeabi_ddiv
+                0x00003d20      0x134 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00003d20                __aeabi_ddiv
  .text.__aeabi_dsub
-                0x00004018      0x1b4 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x00004018                __aeabi_dsub
+                0x00003e54      0x1b4 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00003e54                __aeabi_dsub
  .text.__aeabi_dadd
-                0x000041cc      0x118 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x000041cc                __aeabi_dadd
+                0x00004008      0x118 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004008                __aeabi_dadd
  .text.__aeabi_d2iz
-                0x000042e4       0x42 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x000042e4                __aeabi_d2iz
+                0x00004120       0x42 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004120                __aeabi_d2iz
  .text.__bhs_ui2d
-                0x00004326       0x46 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x00004326                __bhs_ui2d
+                0x00004162       0x46 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004162                __bhs_ui2d
  .text.__bhs_ul2d
-                0x0000436c       0x8a /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x0000436c                __bhs_ul2d
+                0x000041a8       0x8a /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x000041a8                __bhs_ul2d
  .text.__aeabi_i2d
-                0x000043f6       0x10 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x000043f6                __aeabi_i2d
+                0x00004232       0x10 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004232                __aeabi_i2d
  .text.__aeabi_ui2d
-                0x00004406        0x8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x00004406                __aeabi_ui2d
+                0x00004242        0x8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004242                __aeabi_ui2d
  .text.__aeabi_l2d
-                0x0000440e       0x1c /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x0000440e                __aeabi_l2d
+                0x0000424a       0x1c /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x0000424a                __aeabi_l2d
  .text.__aeabi_dcmplt
-                0x0000442a       0x56 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x0000442a                __aeabi_dcmplt
+                0x00004266       0x56 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00004266                __aeabi_dcmplt
  .text.__aeabi_dcmpgt
-                0x00004480       0x56 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
-                0x00004480                __aeabi_dcmpgt
- .text.__aeabi_memcpy
-                0x000044d6       0x34 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
-                0x000044d6                __aeabi_memcpy
-                0x000044e0                __aeabi_memcpy4
-                0x000044e0                __aeabi_memcpy8
+                0x000042bc       0x56 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x000042bc                __aeabi_dcmpgt
  .text.__aeabi_memset_lowlevel
-                0x0000450a       0x32 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
-                0x0000450a                __aeabi_lowlevel_memset
+                0x00004312       0x32 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+                0x00004312                __aeabi_lowlevel_memset
  *(.rodata*)
- *fill*         0x0000453c        0x4 
- .rodata        0x00004540      0x140 ./src/control.o
- .rodata        0x00004680       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
-                0x00004680                enctbl
- .rodata        0x00004690       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
- .rodata        0x000046cc       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
-                0x000046cc                USB_P_EP
- .rodata        0x000046e0       0x98 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
-                0x000046e0                USB_StringDescriptor
-                0x00004718                USB_ConfigDescriptor
-                0x00004744                USB_DeviceDescriptor
-                0x00004756                HID_ReportDescSize
-                0x00004758                HID_ReportDescriptor
+ .rodata        0x00004344       0x10 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+                0x00004344                enctbl
+ .rodata        0x00004354       0x3c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+ .rodata        0x00004390       0x14 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+                0x00004390                USB_P_EP
+ .rodata        0x000043a4       0x98 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
+                0x000043a4                USB_StringDescriptor
+                0x000043dc                USB_ConfigDescriptor
+                0x00004408                USB_DeviceDescriptor
+                0x0000441a                HID_ReportDescSize
+                0x0000441c                HID_ReportDescriptor
 
-.glue_7         0x00004778        0x0
- .glue_7        0x00004778        0x0 linker stubs
+.glue_7         0x0000443c        0x0
+ .glue_7        0x0000443c        0x0 linker stubs
 
-.glue_7t        0x00004778        0x0
- .glue_7t       0x00004778        0x0 linker stubs
+.glue_7t        0x0000443c        0x0
+ .glue_7t       0x0000443c        0x0 linker stubs
 
-.vfp11_veneer   0x00004778        0x0
- .vfp11_veneer  0x00004778        0x0 linker stubs
+.vfp11_veneer   0x0000443c        0x0
+ .vfp11_veneer  0x0000443c        0x0 linker stubs
 
-.v4_bx          0x00004778        0x0
- .v4_bx         0x00004778        0x0 linker stubs
+.v4_bx          0x0000443c        0x0
+ .v4_bx         0x0000443c        0x0 linker stubs
 
-.iplt           0x00004778        0x0
- .iplt          0x00004778        0x0 ./src/control.o
+.iplt           0x0000443c        0x0
+ .iplt          0x0000443c        0x0 ./src/control.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00004778                        __exidx_start = .
+                0x0000443c                        __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00004778                        __exidx_end = .
-                0x00004778                        _etext = .
+                0x0000443c                        __exidx_end = .
+                0x0000443c                        _etext = .
 
 .cmap           0x00007000      0x160
  *(.Const_Map*)
@@ -779,7 +787,7 @@ END GROUP
 .rel.dyn        0x00007160        0x0
  .rel.iplt      0x00007160        0x0 ./src/control.o
 
-.data           0x10000000       0x10 load address 0x00004778
+.data           0x10000000       0x10 load address 0x0000443c
                 0x10000000                        _data = .
  *(vtable)
  *(.data*)
@@ -794,10 +802,10 @@ END GROUP
                 0x1000000c                iap_entry
                 0x10000010                        _edata = .
 
-.igot.plt       0x10000010        0x0 load address 0x00004788
+.igot.plt       0x10000010        0x0 load address 0x0000444c
  .igot.plt      0x10000010        0x0 ./src/control.o
 
-.bss            0x10000010     0x152e load address 0x00004788
+.bss            0x10000010     0x152e load address 0x0000444c
                 0x10000010                        _bss = .
  *(.bss*)
  .bss           0x10000010       0x80 ./src/control.o
@@ -891,7 +899,7 @@ END GROUP
                 0x1000153d                HID_Protocol
                 0x1000153e                        _ebss = .
 
-.cr_heap        0x1000153e        0x0 load address 0x00004788
+.cr_heap        0x1000153e        0x0 load address 0x0000444c
                 0x1000153e                        end = .
                 0x1000153e                        _pvHeapStart = .
                 0x10002000                        _vRamTop = __top_RamLoc8
@@ -899,34 +907,33 @@ END GROUP
 OUTPUT(Balancer_2025.axf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000    0x10c99
- .debug_info    0x00000000      0xdde ./src/control.o
- .debug_info    0x00000dde      0x200 ./src/cr_startup_lpc13.o
- .debug_info    0x00000fde      0x999 ./src/main.o
- .debug_info    0x00001977      0xfda /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
- .debug_info    0x00002951      0x76a /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
- .debug_info    0x000030bb      0xcd9 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
- .debug_info    0x00003d94      0xb5a /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
- .debug_info    0x000048ee      0x651 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
- .debug_info    0x00004f3f      0xbe4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
- .debug_info    0x00005b23      0x69e /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
- .debug_info    0x000061c1      0x4be /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
- .debug_info    0x0000667f     0x11da /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
- .debug_info    0x00007859      0x545 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
- .debug_info    0x00007d9e     0x1859 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
- .debug_info    0x000095f7      0x8cb /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
- .debug_info    0x00009ec2      0x4bb /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(mot.o)
- .debug_info    0x0000a37d      0xb0c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
- .debug_info    0x0000ae89     0x1302 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
- .debug_info    0x0000c18b      0xc93 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
- .debug_info    0x0000ce1e      0x5bd /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
- .debug_info    0x0000d3db      0xe91 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
- .debug_info    0x0000e26c      0x6d5 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
- .debug_info    0x0000e941      0x12b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
- .debug_info    0x0000ea6c       0xfc /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
- .debug_info    0x0000eb68     0x2131 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+.debug_info     0x00000000    0x10b76
+ .debug_info    0x00000000      0xde6 ./src/control.o
+ .debug_info    0x00000de6      0x200 ./src/cr_startup_lpc13.o
+ .debug_info    0x00000fe6      0x999 ./src/main.o
+ .debug_info    0x0000197f      0xfda /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
+ .debug_info    0x00002959      0x76a /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+ .debug_info    0x000030c3      0xcd9 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+ .debug_info    0x00003d9c      0xb5a /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
+ .debug_info    0x000048f6      0x651 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
+ .debug_info    0x00004f47      0xbe4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+ .debug_info    0x00005b2b      0x69e /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
+ .debug_info    0x000061c9      0x4be /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_info    0x00006687     0x11da /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
+ .debug_info    0x00007861      0x545 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
+ .debug_info    0x00007da6     0x1859 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_info    0x000095ff      0x8cb /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+ .debug_info    0x00009eca      0x4bb /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(mot.o)
+ .debug_info    0x0000a385      0xb0c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+ .debug_info    0x0000ae91     0x1302 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_info    0x0000c193      0xc93 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_info    0x0000ce26      0x5bd /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .debug_info    0x0000d3e3      0xe91 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_info    0x0000e274      0x6d5 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_info    0x0000e949       0xfc /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_info    0x0000ea45     0x2131 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
 
-.debug_abbrev   0x00000000     0x33aa
+.debug_abbrev   0x00000000     0x32f4
  .debug_abbrev  0x00000000      0x2bb ./src/control.o
  .debug_abbrev  0x000002bb      0x119 ./src/cr_startup_lpc13.o
  .debug_abbrev  0x000003d4      0x24a ./src/main.o
@@ -949,35 +956,33 @@ LOAD linker stubs
  .debug_abbrev  0x0000296c       0xd4 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
  .debug_abbrev  0x00002a40      0x318 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
  .debug_abbrev  0x00002d58      0x17c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
- .debug_abbrev  0x00002ed4       0xb6 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
- .debug_abbrev  0x00002f8a       0xa8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
- .debug_abbrev  0x00003032      0x378 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .debug_abbrev  0x00002ed4       0xa8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_abbrev  0x00002f7c      0x378 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
 
-.debug_loc      0x00000000     0x63a7
- .debug_loc     0x00000000      0x4e3 ./src/control.o
- .debug_loc     0x000004e3       0x31 ./src/cr_startup_lpc13.o
- .debug_loc     0x00000514       0xce ./src/main.o
- .debug_loc     0x000005e2      0x13c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
- .debug_loc     0x0000071e      0x17b /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
- .debug_loc     0x00000899      0x11e /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
- .debug_loc     0x000009b7      0xabb /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
- .debug_loc     0x00001472       0x81 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
- .debug_loc     0x000014f3       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
- .debug_loc     0x00001533      0x150 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
- .debug_loc     0x00001683      0x1cd /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
- .debug_loc     0x00001850      0x214 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
- .debug_loc     0x00001a64      0x782 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
- .debug_loc     0x000021e6      0x255 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
- .debug_loc     0x0000243b      0x284 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
- .debug_loc     0x000026bf      0x1a7 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
- .debug_loc     0x00002866      0x293 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
- .debug_loc     0x00002af9      0x5a3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
- .debug_loc     0x0000309c      0x611 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
- .debug_loc     0x000036ad       0x81 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
- .debug_loc     0x0000372e       0x81 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
- .debug_loc     0x000037af     0x2bf8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+.debug_loc      0x00000000     0x634e
+ .debug_loc     0x00000000      0x50b ./src/control.o
+ .debug_loc     0x0000050b       0x31 ./src/cr_startup_lpc13.o
+ .debug_loc     0x0000053c       0xce ./src/main.o
+ .debug_loc     0x0000060a      0x13c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
+ .debug_loc     0x00000746      0x17b /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+ .debug_loc     0x000008c1      0x11e /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+ .debug_loc     0x000009df      0xabb /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
+ .debug_loc     0x0000149a       0x81 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
+ .debug_loc     0x0000151b       0x40 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+ .debug_loc     0x0000155b      0x150 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
+ .debug_loc     0x000016ab      0x1cd /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_loc     0x00001878      0x214 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
+ .debug_loc     0x00001a8c      0x782 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
+ .debug_loc     0x0000220e      0x255 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_loc     0x00002463      0x284 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+ .debug_loc     0x000026e7      0x1a7 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+ .debug_loc     0x0000288e      0x293 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_loc     0x00002b21      0x5a3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_loc     0x000030c4      0x611 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_loc     0x000036d5       0x81 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_loc     0x00003756     0x2bf8 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
 
-.debug_aranges  0x00000000      0x868
+.debug_aranges  0x00000000      0x848
  .debug_aranges
                 0x00000000       0x58 ./src/control.o
  .debug_aranges
@@ -1023,13 +1028,11 @@ LOAD linker stubs
  .debug_aranges
                 0x00000710       0x38 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
  .debug_aranges
-                0x00000748       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+                0x00000748       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
  .debug_aranges
-                0x00000768       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
- .debug_aranges
-                0x00000788       0xe0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+                0x00000768       0xe0 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
 
-.debug_ranges   0x00000000      0x938
+.debug_ranges   0x00000000      0x928
  .debug_ranges  0x00000000       0xe0 ./src/control.o
  .debug_ranges  0x000000e0       0x60 ./src/cr_startup_lpc13.o
  .debug_ranges  0x00000140       0x38 ./src/main.o
@@ -1050,64 +1053,61 @@ LOAD linker stubs
  .debug_ranges  0x00000520       0x88 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
  .debug_ranges  0x000005a8       0xd8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
  .debug_ranges  0x00000680       0x28 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
- .debug_ranges  0x000006a8       0x10 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
- .debug_ranges  0x000006b8       0x10 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
- .debug_ranges  0x000006c8      0x270 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .debug_ranges  0x000006a8       0x10 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_ranges  0x000006b8      0x270 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
 
-.debug_line     0x00000000     0x534e
- .debug_line    0x00000000      0x77b ./src/control.o
- .debug_line    0x0000077b      0x1d4 ./src/cr_startup_lpc13.o
- .debug_line    0x0000094f      0x319 ./src/main.o
- .debug_line    0x00000c68      0x1e6 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
- .debug_line    0x00000e4e      0x1e3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
- .debug_line    0x00001031      0x21d /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
- .debug_line    0x0000124e      0x23c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
- .debug_line    0x0000148a      0x19f /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
- .debug_line    0x00001629      0x196 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
- .debug_line    0x000017bf      0x21b /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
- .debug_line    0x000019da      0x18c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
- .debug_line    0x00001b66      0x22e /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
- .debug_line    0x00001d94      0x204 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
- .debug_line    0x00001f98      0x416 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
- .debug_line    0x000023ae      0x195 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
- .debug_line    0x00002543       0x93 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(mot.o)
- .debug_line    0x000025d6      0x209 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
- .debug_line    0x000027df      0x2e8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
- .debug_line    0x00002ac7      0x477 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
- .debug_line    0x00002f3e      0x13c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
- .debug_line    0x0000307a      0x43e /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
- .debug_line    0x000034b8      0x19a /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
- .debug_line    0x00003652      0x10b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
- .debug_line    0x0000375d       0xb3 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
- .debug_line    0x00003810     0x1b3e /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+.debug_line     0x00000000     0x5256
+ .debug_line    0x00000000      0x78e ./src/control.o
+ .debug_line    0x0000078e      0x1d4 ./src/cr_startup_lpc13.o
+ .debug_line    0x00000962      0x319 ./src/main.o
+ .debug_line    0x00000c7b      0x1e6 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
+ .debug_line    0x00000e61      0x1e3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+ .debug_line    0x00001044      0x21d /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+ .debug_line    0x00001261      0x23c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
+ .debug_line    0x0000149d      0x19f /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
+ .debug_line    0x0000163c      0x196 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+ .debug_line    0x000017d2      0x21b /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
+ .debug_line    0x000019ed      0x18c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_line    0x00001b79      0x22e /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
+ .debug_line    0x00001da7      0x204 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
+ .debug_line    0x00001fab      0x416 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_line    0x000023c1      0x195 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+ .debug_line    0x00002556       0x93 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(mot.o)
+ .debug_line    0x000025e9      0x209 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+ .debug_line    0x000027f2      0x2e8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_line    0x00002ada      0x477 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_line    0x00002f51      0x13c /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .debug_line    0x0000308d      0x43e /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_line    0x000034cb      0x19a /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_line    0x00003665       0xb3 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_line    0x00003718     0x1b3e /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
 
-.debug_str      0x00000000     0x278f
- .debug_str     0x00000000     0x278f ./src/control.o
+.debug_str      0x00000000     0x2767
+ .debug_str     0x00000000     0x2767 ./src/control.o
                                 0x6f3 (size before relaxing)
- .debug_str     0x0000278f      0x28e ./src/cr_startup_lpc13.o
- .debug_str     0x0000278f      0x683 ./src/main.o
- .debug_str     0x0000278f      0xdf1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
- .debug_str     0x0000278f      0x622 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
- .debug_str     0x0000278f      0xad2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
- .debug_str     0x0000278f      0x916 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
- .debug_str     0x0000278f      0x5ef /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
- .debug_str     0x0000278f      0xaf1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
- .debug_str     0x0000278f      0x5da /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
- .debug_str     0x0000278f      0x495 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
- .debug_str     0x0000278f      0xeb2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
- .debug_str     0x0000278f      0x262 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
- .debug_str     0x0000278f     0x10df /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
- .debug_str     0x0000278f      0x5dd /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
- .debug_str     0x0000278f      0x504 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(mot.o)
- .debug_str     0x0000278f      0x6bf /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
- .debug_str     0x0000278f      0xf06 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
- .debug_str     0x0000278f      0x776 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
- .debug_str     0x0000278f      0x5b9 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
- .debug_str     0x0000278f      0x7b3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
- .debug_str     0x0000278f      0x640 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
- .debug_str     0x0000278f      0x1b7 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
- .debug_str     0x0000278f      0x180 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
- .debug_str     0x0000278f      0x374 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .debug_str     0x00002767      0x28e ./src/cr_startup_lpc13.o
+ .debug_str     0x00002767      0x683 ./src/main.o
+ .debug_str     0x00002767      0xdf1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(adc.o)
+ .debug_str     0x00002767      0x622 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(current.o)
+ .debug_str     0x00002767      0xad2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(enc.o)
+ .debug_str     0x00002767      0x916 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gpio.o)
+ .debug_str     0x00002767      0x5ef /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(gyro.o)
+ .debug_str     0x00002767      0xaf1 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(i2c.o)
+ .debug_str     0x00002767      0x5da /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(log.o)
+ .debug_str     0x00002767      0x495 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(system_LPC13xx.o)
+ .debug_str     0x00002767      0xeb2 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(uart.o)
+ .debug_str     0x00002767      0x262 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(util.o)
+ .debug_str     0x00002767     0x10df /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(vs-bb022.o)
+ .debug_str     0x00002767      0x5dd /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(flash.o)
+ .debug_str     0x00002767      0x504 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(mot.o)
+ .debug_str     0x00002767      0x6bf /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(pad.o)
+ .debug_str     0x00002767      0xf06 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_user.o)
+ .debug_str     0x00002767      0x776 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
+ .debug_str     0x00002767      0x5b9 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
+ .debug_str     0x00002767      0x7b3 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
+ .debug_str     0x00002767      0x640 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
+ .debug_str     0x00002767      0x180 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_str     0x00002767      0x374 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
 
 .comment        0x00000000       0xb4
  .comment       0x00000000       0xb4 ./src/control.o
@@ -1133,7 +1133,6 @@ LOAD linker stubs
  .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_descriptors.o)
  .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
  .comment       0x000000b4       0x71 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
- .comment       0x000000b4       0x45 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
  .comment       0x000000b4       0x45 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
  .comment       0x000000b4       0x45 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
 
@@ -1184,19 +1183,17 @@ LOAD linker stubs
  .ARM.attributes
                 0x0000041d       0x33 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
  .ARM.attributes
-                0x00000450       0x2d /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
+                0x00000450       0x2d /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
  .ARM.attributes
-                0x0000047d       0x2d /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+                0x0000047d       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
  .ARM.attributes
-                0x000004aa       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_64.o)
+                0x00000498       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
  .ARM.attributes
-                0x000004c5       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(division_idiv0.o)
+                0x000004b3       0x2d /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
  .ARM.attributes
-                0x000004e0       0x2d /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
- .ARM.attributes
-                0x0000050d       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
+                0x000004e0       0x1b /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(memcpy.o)
 
-.debug_frame    0x00000000     0x144c
+.debug_frame    0x00000000     0x142c
  .debug_frame   0x00000000      0x140 ./src/control.o
  .debug_frame   0x00000140       0xc8 ./src/cr_startup_lpc13.o
  .debug_frame   0x00000208       0x50 ./src/main.o
@@ -1217,6 +1214,5 @@ LOAD linker stubs
  .debug_frame   0x00000c14      0x1d8 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_core.o)
  .debug_frame   0x00000dec      0x318 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hardware.o)
  .debug_frame   0x00001104       0x70 /Users/shimadalocal/src/Balancer2/MCUxpresso/Balancer_2025/lib/libBalancer2_lib.a(usb_hiduser.o)
- .debug_frame   0x00001174       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memcpy.o)
- .debug_frame   0x00001194       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
- .debug_frame   0x000011b4      0x298 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)
+ .debug_frame   0x00001174       0x20 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+ .debug_frame   0x00001194      0x298 /Applications/MCUXpressoIDE_24.12.148/ide/plugins/com.nxp.mcuxpresso.tools.macosx_24.12.0.202407110909/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7-m/nofp/libcr_eabihelpers.a(double.o)

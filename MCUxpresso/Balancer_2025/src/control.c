@@ -159,7 +159,6 @@ double Control_Adaptive(const double x[])
 
 	double u=0;
 	int N=4;                /* state dimension */
-	//double gamma = 300.0;   /* adaptation gain */
 	double TS=0.002;        /* sampling period [s] 500Hzらしい(MAIN_CYCLEマクロ)*/
 
 	/* -------- Auto‑generated C declarations -------- */
@@ -260,9 +259,9 @@ void Control(){
 
 	double u;
 
-	//u = Control_PID(x);
+	u = Control_PID(x);
 	//u = Control_Feedback(x);
-	u = Control_Adaptive(x);
+	//u = Control_Adaptive(x);
 
 	outL += u;
 	outR += u;
@@ -285,6 +284,10 @@ void Control(){
 	//memmap.values.T_CURRENT_L = (short)outL*1000;
 	//memmap.values.T_CURRENT_R = (short)outR*1000;
 	double gain = memmap.values.GAIN_OPTION5;
+	if (gain < 0.1 ){ // gainが0のときは100（デフォルト値）にする
+		gain = 100.0;
+		memmap.values.GAIN_OPTION5 = gain;
+	}
 	memmap.values.T_CURRENT_L = (short)(outL*gain);
 	memmap.values.T_CURRENT_R = (short)(outR*gain);
 
