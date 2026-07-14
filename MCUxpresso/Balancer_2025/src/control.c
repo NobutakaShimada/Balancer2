@@ -101,11 +101,18 @@ double Control_Feedback(const double x[])
 	// LQR　K[4]の計算結果を貼り込む
 
 	// インタラクティブにゲイン入力 上でKの値を直接入力したときは下をコメントアウトすること
+
 	K[0] = memmap.values.GAIN_OPTION1;
 	K[1] = memmap.values.GAIN_OPTION2;
 	K[2] = memmap.values.GAIN_OPTION3;
 	K[3] = memmap.values.GAIN_OPTION4;
 
+	/*
+	K[0] = 2.6596873091333073;
+	K[1] = 57.70584499803519;
+	K[2] = 0.6975601076982119;
+	K[3] = 9.119919580192606;
+	*/
 	// 最適制御による状態フィードバック制御
 	double u = 0.0, uu[4];
 	int i = 0;
@@ -129,7 +136,7 @@ double Control_Adaptive(const double x[])
 	/*---------------------------------------------------------------
 	 *  Adaptive MRAC controller for an inverted pendulum (C)
 	 *   - called every sampling period Ts by Control()
-	 *   - state  x[4]    : measured  [θ1, θ̇1, θ2, θ̇2]
+	 *   - state  x[4]    : measured  [θ1, θ2, θ̇1, θ̇2]
 	 *   - gain   K[4]    : fixed LQR row vector
 	 *   - model  A[4][4] : nominal closed-loop matrix A_c = A0-BK
 	 *             B[4]   : input vector (nominal)
@@ -144,6 +151,12 @@ double Control_Adaptive(const double x[])
 	memmap.values.USER_ARIA3 = x[2];
 	memmap.values.USER_ARIA4 = x[3];
 
+	double xs[4];
+	xs[0] = x[0] + x[1];   // θ1  = (θ1−θ2) + θ2
+	xs[1] = x[1];          // θ2
+	xs[2] = x[2] + x[3];   // θ̇1
+	xs[3] = x[3];          // θ̇2
+
 	double u=0;
 	int N=4;                /* state dimension */
 	//double gamma = 300.0;   /* adaptation gain */
@@ -151,11 +164,32 @@ double Control_Adaptive(const double x[])
 
 	/* -------- Auto‑generated C declarations -------- */
 	// ここに Ac[4][4], B[4], K[4], P[4][4]の計算結果を貼り込む。
-	const double Ac[4][4];
-	const double B[4];
-	const double K[4];
-	const double P[4][4];
+	//const double Ac[4][4];
+	//const double B[4];
+	//const double K[4];
+	//const double P[4][4];
+	/* -------- Auto‑generated C declarations -------- */
+	const double Ac[4][4] = {
+	    { 0.0000000000e+00, 0.0000000000e+00, 1.0000000000e+00, 0.0000000000e+00 },
+	    { 0.0000000000e+00, 0.0000000000e+00, 0.0000000000e+00, 1.0000000000e+00 },
+	    { 1.0450847990e+03, 7.2797201324e+04, 6.9679648786e+02, 1.2568333273e+04 },
+	    { -8.7594386970e+01, -6.0678281994e+03, -5.8402400702e+01, -1.0534221236e+03 }
+	};
 
+	const double B[4] = { 0.0000000000e+00, 0.0000000000e+00, -1.0450847990e+03, 8.7594386970e+01 };
+
+	const double K[4] = { 1.0000000000e+00, 7.0072270064e+01, 6.7570288052e-01, 1.2017171204e+01 };
+
+	const double P[4][4] = {
+	    { 2.0520356192e+00, 4.4737551669e+01, 6.4589867305e-01, 7.7118969405e+00 },
+	    { 4.4737551669e+01, 2.7046042039e+03, 3.8776068676e+01, 4.6520594935e+02 },
+	    { 6.4589867305e-01, 3.8776068676e+01, 5.5800299279e-01, 6.6771300422e+00 },
+	    { 7.7118969405e+00, 4.6520594935e+02, 6.6771300422e+00, 8.0106635066e+01 }
+	};
+
+
+
+	/* ------------------------------------------------ */
 	double gamma = memmap.values.GAIN_OPTION1; // 実行中に外から変更可能
 
 	/* --- static memories ------------------------------------- */
@@ -165,7 +199,7 @@ double Control_Adaptive(const double x[])
 	/* 1. initialize reference model at t = 0 ------------------ */
 	if (first_call) {
 		for (int i = 0; i < N; ++i) {
-			xm[i] = x[i];
+			xm[i] = xs[i];
 			theta_hat[i] = 0.0;
 		}
 		first_call = 0;
@@ -173,7 +207,7 @@ double Control_Adaptive(const double x[])
 
 	/* 2. error vector e = x − xm ------------------------------ */
 	double e[4];
-	for (int i = 0; i < N; ++i) e[i] = x[i] - xm[i];
+	for (int i = 0; i < N; ++i) e[i] = xs[i] - xm[i];
 
 	/* 3. compute s = Bᵀ P e   (scalar) ------------------------ */
 	double s = 0.0;
@@ -185,13 +219,13 @@ double Control_Adaptive(const double x[])
 
 	/* 4. update adaptive parameters  θ̂ ← θ̂ + θ̂̇·Ts ----------- */
 	for (int i = 0; i < N; ++i)
-		theta_hat[i] += (-gamma * s * x[i]) * TS;
+		theta_hat[i] += (-gamma * s * xs[i]) * TS;
 
 	/* 5. control input  u = −Kx + θ̂ᵀ x ----------------------- */
 	double u_k = 0.0, u_t = 0.0;
 	for (int i = 0; i < N; ++i) {
-		u_k += -K[i] * x[i];
-		u_t += theta_hat[i] * x[i];
+		u_k += -K[i] * xs[i];
+		u_t += theta_hat[i] * xs[i];
 	}
 	u = u_k + u_t;
 
@@ -227,8 +261,8 @@ void Control(){
 	double u;
 
 	//u = Control_PID(x);
-	u = Control_Feedback(x);
-	// u = Control_Adaptive(x);
+	//u = Control_Feedback(x);
+	u = Control_Adaptive(x);
 
 	outL += u;
 	outR += u;
